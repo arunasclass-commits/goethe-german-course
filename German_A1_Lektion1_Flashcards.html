@@ -1,0 +1,425 @@
+<title>Netzwerk neu A1 · Kapitel 1</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;800&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&family=JetBrains+Mono:wght@500&display=swap">
+<style>
+:root{
+  --bg:#EEF1F4; --panel:#FFFFFF; --ink:#16202A; --muted:#5B6773; --line:#D5DCE3;
+  --accent:#C8233C; --accent-ink:#FFFFFF; --soft:#F6E3E6;
+  --der:#2563A8; --die:#C4314B; --das:#2E8656; --pl:#8A5A12;
+  --ok:#23804F; --okbg:#DDF1E5; --bad:#B42335; --badbg:#F8E0E3;
+  --sans:"Archivo",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --serif:"Source Serif 4",Georgia,serif;
+  --mono:"JetBrains Mono",ui-monospace,Consolas,monospace;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    color-scheme:dark;
+    --bg:#11161C; --panel:#1A222B; --ink:#E8EDF2; --muted:#9AA7B4; --line:#2E3A46;
+    --accent:#F0566C; --accent-ink:#1A0A0D; --soft:#3A1F25;
+    --der:#6FA8EA; --die:#F07A8E; --das:#5CC48B; --pl:#E0B060;
+    --ok:#5CC48B; --okbg:#173325; --bad:#F07A8E; --badbg:#3A1F25;
+  }
+}
+:root[data-theme="dark"]{
+  color-scheme:dark;
+  --bg:#11161C; --panel:#1A222B; --ink:#E8EDF2; --muted:#9AA7B4; --line:#2E3A46;
+  --accent:#F0566C; --accent-ink:#1A0A0D; --soft:#3A1F25;
+  --der:#6FA8EA; --die:#F07A8E; --das:#5CC48B; --pl:#E0B060;
+  --ok:#5CC48B; --okbg:#173325; --bad:#F07A8E; --badbg:#3A1F25;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:16px;line-height:1.5}
+.wrap{max-width:860px;margin:0 auto;padding-inline:16px;padding-block:24px 48px}
+header{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:12px;margin-bottom:20px}
+.kap{display:flex;align-items:center;gap:14px}
+.kap .num{background:var(--accent);color:var(--accent-ink);font-weight:800;font-size:2.2rem;line-height:1;padding:10px 16px;border-radius:4px}
+h1{margin:0;font-size:1.7rem;font-weight:800;letter-spacing:-.01em;text-wrap:balance}
+.sub{color:var(--muted);font-size:.9rem}
+.legend{display:flex;gap:10px;flex-wrap:wrap;font-size:.8rem;color:var(--muted)}
+.legend b{font-weight:700}
+.tabs{display:flex;gap:6px;flex-wrap:wrap;border-bottom:2px solid var(--line);margin-bottom:16px}
+.tab{appearance:none;border:0;background:none;color:var(--muted);font:600 .95rem var(--sans);padding:10px 14px;cursor:pointer;border-bottom:3px solid transparent;margin-bottom:-2px}
+.tab[aria-selected="true"]{color:var(--ink);border-bottom-color:var(--accent)}
+.tab:focus-visible,button:focus-visible,select:focus-visible,input:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.bar{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-bottom:16px}
+select,.btn{font:600 .9rem var(--sans);color:var(--ink);background:var(--panel);border:1px solid var(--line);border-radius:6px;padding:8px 12px;cursor:pointer}
+.btn.primary{background:var(--accent);color:var(--accent-ink);border-color:var(--accent)}
+.btn:disabled{opacity:.45;cursor:default}
+.count{margin-left:auto;color:var(--muted);font-size:.85rem;font-variant-numeric:tabular-nums}
+.panel{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:24px}
+/* flashcard */
+.card{min-height:320px;display:flex;flex-direction:column;gap:14px;cursor:pointer;user-select:none}
+.card .top{display:flex;justify-content:space-between;align-items:center;gap:8px}
+.chip{font-size:.72rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.word{font-size:clamp(2rem,6vw,3rem);font-weight:800;letter-spacing:-.015em;line-height:1.1;overflow-wrap:anywhere}
+.art{font-weight:700}
+.g-der{color:var(--der)}.g-die{color:var(--die)}.g-das{color:var(--das)}.g-pl{color:var(--pl)}
+.hint{color:var(--muted);font-size:.85rem;margin-top:auto}
+.back{border-top:1px solid var(--line);padding-top:14px;display:grid;gap:12px}
+.meaning{font-size:1.4rem;font-weight:700}
+.label{font-size:.72rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);margin-bottom:2px}
+.ety,.ex{font-family:var(--serif);font-size:1.02rem;max-width:65ch}
+.ex i{color:var(--muted)}
+.speak{appearance:none;border:1px solid var(--line);background:var(--bg);color:var(--ink);border-radius:999px;padding:6px 12px;font:600 .85rem var(--sans);cursor:pointer;display:inline-flex;align-items:center;gap:6px}
+.speak svg{width:16px;height:16px;fill:currentColor}
+.nav{display:flex;gap:10px;justify-content:space-between;margin-top:14px;flex-wrap:wrap}
+/* quiz */
+.q{font-size:clamp(1.6rem,5vw,2.3rem);font-weight:800;margin:6px 0 18px;overflow-wrap:anywhere}
+.opts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+@media (max-width:520px){.opts{grid-template-columns:1fr}}
+.opt{appearance:none;text-align:left;border:1px solid var(--line);background:var(--bg);color:var(--ink);border-radius:8px;padding:14px;font:600 1rem var(--sans);cursor:pointer}
+.opt:hover:not(:disabled){border-color:var(--accent)}
+.opt.right{background:var(--okbg);border-color:var(--ok);color:var(--ok)}
+.opt.wrong{background:var(--badbg);border-color:var(--bad);color:var(--bad)}
+.feedback{min-height:1.6em;margin-top:14px;font-weight:600}
+.feedback.okc{color:var(--ok)}.feedback.badc{color:var(--bad)}
+.score{display:flex;gap:16px;font-variant-numeric:tabular-nums;font-size:.9rem;color:var(--muted)}
+.score b{color:var(--ink)}
+/* listen */
+.bigplay{appearance:none;border:0;background:var(--accent);color:var(--accent-ink);width:84px;height:84px;border-radius:50%;cursor:pointer;display:grid;place-items:center}
+.bigplay svg{width:34px;height:34px;fill:currentColor}
+.listenrow{display:flex;gap:14px;align-items:center;flex-wrap:wrap;margin-bottom:18px}
+.typein{width:100%;font:500 1.3rem var(--mono);padding:12px 14px;border:2px solid var(--line);border-radius:8px;background:var(--bg);color:var(--ink)}
+.typein.okb{border-color:var(--ok)}.typein.badb{border-color:var(--bad)}
+.note{font-size:.85rem;color:var(--muted);margin-top:8px}
+.note code{font-family:var(--mono);background:var(--bg);padding:1px 5px;border-radius:4px;border:1px solid var(--line)}
+.ans{font-size:1.2rem;font-weight:700}
+.settings{display:flex;gap:10px;align-items:center;font-size:.85rem;color:var(--muted);flex-wrap:wrap}
+input[type=range]{accent-color:var(--accent)}
+@media (prefers-reduced-motion:no-preference){.card,.opt{transition:border-color .15s,background .15s}}
+</style>
+
+<div class="wrap">
+  <header>
+    <div class="kap">
+      <div class="num">1</div>
+      <div>
+        <h1>Guten Tag!</h1>
+        <div class="sub">Netzwerk neu A1 · Kapitel 1 · <span id="total"></span> words</div>
+      </div>
+    </div>
+    <div class="legend"><span><b class="g-der">der</b> masculine</span><span><b class="g-die">die</b> feminine</span><span><b class="g-das">das</b> neuter</span><span><b class="g-pl">die</b> plural</span></div>
+  </header>
+
+  <div class="tabs" role="tablist">
+    <button class="tab" role="tab" id="t-cards" aria-selected="true" data-v="cards">Flashcards</button>
+    <button class="tab" role="tab" id="t-de" aria-selected="false" data-v="mcq-de">MCQ: Deutsch → English</button>
+    <button class="tab" role="tab" id="t-en" aria-selected="false" data-v="mcq-en">MCQ: English → Deutsch</button>
+    <button class="tab" role="tab" id="t-listen" aria-selected="false" data-v="listen">Listen &amp; type</button>
+  </div>
+
+  <div class="bar">
+    <select id="cat" aria-label="Topic"></select>
+    <button class="btn" id="shuffle">Shuffle</button>
+    <div class="settings"><label for="rate">Speed</label><input type="range" id="rate" min="0.5" max="1.1" step="0.1" value="0.85"></div>
+    <span class="count" id="count"></span>
+  </div>
+
+  <section id="v-cards" class="panel">
+    <div class="card" id="card" tabindex="0" aria-label="Flashcard. Click to turn over."></div>
+    <div class="nav">
+      <button class="btn" id="prev">← Back</button>
+      <button class="btn" id="flip">Turn over</button>
+      <button class="btn primary" id="next">Next →</button>
+    </div>
+  </section>
+
+  <section id="v-mcq" class="panel" hidden>
+    <div class="top" style="display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap">
+      <span class="chip" id="mcqLabel"></span>
+      <div class="score"><span>Right <b id="mOk">0</b></span><span>Wrong <b id="mBad">0</b></span></div>
+    </div>
+    <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap">
+      <div class="q" id="mq"></div>
+      <button class="speak" id="mSpeak" hidden><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3A4.5 4.5 0 0 0 14 8v8a4.5 4.5 0 0 0 2.5-4z"/></svg>Listen</button>
+    </div>
+    <div class="opts" id="mopts"></div>
+    <div class="feedback" id="mfb"></div>
+    <div class="nav"><span></span><button class="btn primary" id="mNext">Next question →</button></div>
+  </section>
+
+  <section id="v-listen" class="panel" hidden>
+    <div class="top" style="display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:12px">
+      <span class="chip">Listen, then type the German</span>
+      <div class="score"><span>Right <b id="lOk">0</b></span><span>Wrong <b id="lBad">0</b></span></div>
+    </div>
+    <div class="listenrow">
+      <button class="bigplay" id="lPlay" aria-label="Play word"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3A4.5 4.5 0 0 0 14 8v8a4.5 4.5 0 0 0 2.5-4z"/></svg></button>
+      <button class="btn" id="lSlow">Play slowly</button>
+      <button class="btn" id="lHint">Show English hint</button>
+      <span id="lHintTxt" class="sub"></span>
+    </div>
+    <form id="lForm" autocomplete="off">
+      <input class="typein" id="lInput" placeholder="Type what you hear…" spellcheck="false" autocapitalize="off">
+      <div class="note">No special letters needed: type <code>a</code> or <code>ae</code> for ä, <code>o</code>/<code>oe</code> for ö, <code>u</code>/<code>ue</code> for ü, <code>ss</code> or <code>s</code> for ß. Capitals and the article (der/die/das) are optional.</div>
+      <div class="feedback" id="lfb"></div>
+      <div class="nav"><button class="btn" type="button" id="lSkip">Show answer</button><button class="btn primary" type="submit" id="lCheck">Check</button></div>
+    </form>
+  </section>
+</div>
+
+<script>
+// [German, English, topic, gender(der/die/das/pl/''), etymology, example]
+const W = [
+// Greetings
+["Hallo","hello / hi","Greetings","","From Old High German halâ, a shout meaning “fetch!” – people called it to a ferryman on the other side of a river. Same idea as English “hollo/hello”.","Hallo Nina! – Hallo Niklas!"],
+["Guten Tag","good day / hello","Greetings","","Short for “Ich wünsche Ihnen einen guten Tag”. gut = English good; Tag = English day (Old High German tag).","Guten Tag, Herr Hansen!"],
+["Guten Morgen","good morning","Greetings","","Morgen comes from Old High German morgan – the same root as English morning and morrow.","Guten Morgen, Frau Weber!"],
+["Guten Abend","good evening","Greetings","","Abend comes from Old High German ābant, related to Old English ǣfen → English eve, evening.","Guten Abend! Wie geht es Ihnen?"],
+["Gute Nacht","good night","Greetings","","Nacht (Old High German naht) is a cousin of English night and Latin nox/noctis.","Gute Nacht und bis morgen!"],
+["Tschüs","bye (informal)","Greetings","","From Low German atschüs, which came from Spanish adiós / French adieu – “(I commend you) to God”.","Tschüs, bis morgen!"],
+["Ciao","bye / hi (informal)","Greetings","","Borrowed from Italian. It comes from Venetian s-ciào (vostro) = “(your) servant”, a polite phrase.","Ciao, Alexis!"],
+["Auf Wiedersehen","goodbye (formal)","Greetings","","Literally “until seeing again”: wieder = again, sehen = to see. Same idea as French au revoir.","Auf Wiedersehen, Frau Lang!"],
+["Wie geht's?","How are you?","Greetings","","Short for “Wie geht es (dir)?” – literally “How goes it?”. gehen = English go.","Wie geht's? – Danke, gut."],
+["Wie geht es Ihnen?","How are you? (formal)","Greetings","","Literally “How goes it to you?”. Ihnen is the formal “to you”, from Sie.","Guten Tag! Wie geht es Ihnen?"],
+["Danke","thank you","Greetings","","From danken (Old High German dankōn). Same Germanic root as English thank – and linked to denken, to think (to thank = to keep someone in mind).","Danke, sehr gut."],
+["sehr gut","very good / very well","Greetings","","sehr once meant “painfully, sorely” (like English sore); gut = English good.","Wie geht's? – Sehr gut!"],
+["ganz gut","quite good / okay","Greetings","","ganz (Old High German ganz = whole, complete). Here it softens gut: “fairly good”.","Wie geht es dir? – Ganz gut."],
+["Und dir?","And you? (informal)","Greetings","","dir is the “to you” form of du. Old High German dir; related to English thee.","Mir geht's gut. Und dir?"],
+["Und Ihnen?","And you? (formal)","Greetings","","Ihnen is the “to you” form of formal Sie. The polite Sie came from the plural “they” (see Sie).","Danke, gut. Und Ihnen?"],
+["Wie bitte?","Pardon? / Sorry?","Greetings","","bitte comes from bitten, to ask/request (Old High German bittan) – related to English bid.","Wie bitte? Noch einmal, bitte."],
+["der Herr","Mr / gentleman","Greetings","der","Old High German hēriro = “older, more respected”, the comparative of hēr (grey-haired, noble).","Das ist Herr Hansen."],
+["die Frau","Mrs / Ms / woman","Greetings","die","Old High German frouwa = lady, mistress. Same root as the goddess name Freya.","Das ist Frau Weber."],
+// Verbs
+["sein","to be","Verbs","","Very irregular: bin/bist come from the root *bheu- (English be); ist/sind from *es- (English is, Latin est).","Ich bin Julia."],
+["heißen","to be called","Verbs","","Old High German heizan = to command, to name. Old English had the same word: “hight” (was named).","Ich heiße Niklas."],
+["kommen","to come","Verbs","","Old High German queman – same word as English come.","Ich komme aus Spanien."],
+["wohnen","to live (reside)","Verbs","","Old High German wonēn = to stay, be used to. Related to English wont (habit).","Ich wohne in Frankfurt."],
+["sprechen","to speak","Verbs","","Old High German sprehhan. English speak comes from the same word (it lost its r). Sprache is built from it.","Ich spreche Deutsch und Russisch."],
+["lernen","to learn","Verbs","","Old High German lernēn – same word as English learn. Related to lehren (to teach).","Sie lernt Spanisch."],
+["buchstabieren","to spell","Verbs","","Buchstabe (letter) + the Latin-style verb ending -ieren.","Buchstabieren Sie, bitte!"],
+// Questions
+["wer","who","Question words","","Old High German hwer – same root as English who and Latin quis.","Wer ist das?"],
+["wie","how","Question words","","Old High German hwio – related to English how.","Wie heißen Sie?"],
+["wo","where","Question words","","Old High German hwār – same root as English where.","Wo wohnen Sie?"],
+["woher","where from","Question words","","wo (where) + her (towards here). So: “where to here from?” Compare old English whence.","Woher kommst du?"],
+["welche","which","Question words","","Old High German hwelīh = “who-like” – the same build as English which.","Welche Sprachen sprechen Sie?"],
+// Pronouns
+["ich","I","Pronouns","","Old High German ih. Old English had ic, which became I. Latin ego is a cousin.","Ich bin Selina."],
+["du","you (informal)","Pronouns","","Old High German dū – same word as English thou and Latin tu.","Wer bist du?"],
+["er","he","Pronouns","","Old High German er; related to Latin is (he).","Das ist Jan. Er wohnt in Zürich."],
+["sie","she","Pronouns","","Old High German siu. The same word also means “they”.","Das ist Frau Lang. Sie kommt aus Deutschland."],
+["Sie","you (formal)","Pronouns","","The plural “they”, used from the 1700s as the polite way to talk to one person. Always written with a capital S.","Woher kommen Sie?"],
+// Nouns about me
+["der Name","name","About me","der","Old High German namo – same root as English name and Latin nomen.","Mein Name ist Nina Weber."],
+["die Telefonnummer","telephone number","About me","die","Telefon from Greek tēle (far) + phōnē (voice); Nummer from Latin numerus.","Wie ist Ihre Telefonnummer?"],
+["die E-Mail-Adresse","email address","About me","die","E-Mail is from English; Adresse from French adresse (adresser = to direct).","Wie ist deine E-Mail-Adresse?"],
+["der Buchstabe","letter (of the alphabet)","About me","der","Literally “beech stick”: Buch (beech) + Stab (stick). Early Germanic runes were carved on beech wood.","Das Wort hat fünf Buchstaben."],
+["die Zahl","number","About me","die","Old High German zala = count, list. English tale and tell (as in bank teller = counter) share the root.","Zahlen von 0 bis 20."],
+["das Land","country","About me","das","Old High German lant – same as English land.","Aus welchem Land kommst du?"],
+["die Sprache","language","About me","die","Made from sprechen (to speak). Old High German sprāhha.","Deutsch ist eine schöne Sprache."],
+// Opening page words
+["das Handtuch","towel","Page 9 words","das","Hand (hand) + Tuch (cloth). A “hand cloth”.","Das Handtuch ist rot."],
+["die Flasche","bottle","Page 9 words","die","Old High German flasca, from Late Latin flasca. English flask is the same word.","Die Flasche ist leer."],
+["der Koffer","suitcase","Page 9 words","der","From French coffre (chest), from Latin cophinus, Greek kophinos (basket). English coffer.","Mein Koffer ist schwer."],
+["das Würstchen","small sausage","Page 9 words","das","Wurst (sausage) + -chen, which makes things small. All -chen words are das.","Ich esse ein Würstchen."],
+["der Kindergarten","kindergarten","Page 9 words","der","Invented by Friedrich Fröbel in 1840: Kinder (children) + Garten (garden). English borrowed it unchanged.","Das Kind geht in den Kindergarten."],
+["das Butterbrot","slice of bread and butter","Page 9 words","das","Butter (from Latin butyrum, Greek boutyron “cow cheese”) + Brot (bread; English bread).","Ein Butterbrot, bitte."],
+["der Kranke","sick person (male)","Page 9 words","der","From krank (sick). In older German krank meant “weak, thin”.","Der Kranke liegt im Bett."],
+["die Autobahn","motorway / highway","Page 9 words","die","Auto (short for Automobil, Greek autos = self) + Bahn (track, path). English uses the word too.","Die Autobahn nach Frankfurt."],
+["die Nudeln","noodles / pasta","Page 9 words","pl","Origin unclear, maybe linked to Knödel (dumpling). English noodle was borrowed from German Nudel.","Die Nudeln sind lecker."],
+// Countries & languages
+["Deutschland","Germany","Countries & languages","","deutsch comes from Old High German diutisk = “of the people” (diot = people) + Land.","Ich komme aus Deutschland."],
+["Deutsch","German (language)","Countries & languages","","Old High German diutisk = the people's language, as opposed to Latin. Dutch is the same word.","Ich spreche Deutsch."],
+["Österreich","Austria","Countries & languages","","Ostarrîchi (year 996) = “eastern realm”: Ost (east) + Reich (realm).","Er kommt aus Österreich."],
+["die Schweiz","Switzerland","Countries & languages","die","Named after the canton Schwyz. It always takes the article: aus der Schweiz.","Alessia wohnt in der Schweiz."],
+["Spanien","Spain","Countries & languages","","From Latin Hispania.","Ich komme aus Spanien."],
+["Spanisch","Spanish (language)","Countries & languages","","Spanien + -isch, the ending that makes languages and adjectives.","Olivia lernt Spanisch."],
+["Frankreich","France","Countries & languages","","“Realm of the Franks”: Franken + Reich.","Sie wohnt in Frankreich."],
+["Französisch","French (language)","Countries & languages","","From Franzose (French person) + -isch.","Alessia spricht Französisch."],
+["Italien","Italy","Countries & languages","","From Latin Italia.","Er kommt aus Italien."],
+["Italienisch","Italian (language)","Countries & languages","","Italien + -isch.","Ich spreche Italienisch."],
+["England","England","Countries & languages","","“Land of the Angles”, a Germanic tribe.","Sie kommt aus England."],
+["Englisch","English (language)","Countries & languages","","England + -isch.","Olivia spricht Englisch."],
+["Russland","Russia","Countries & languages","","Rus' (a medieval people) + Land.","Ich komme aus Russland."],
+["Russisch","Russian (language)","Countries & languages","","Russ- + -isch.","Ich spreche Deutsch und Russisch."],
+["Japan","Japan","Countries & languages","","Via Chinese 日本 Rìběn = “origin of the sun”.","Frau Tanaka kommt aus Japan."],
+["Japanisch","Japanese (language)","Countries & languages","","Japan + -isch.","Saki spricht Japanisch."],
+["Brasilien","Brazil","Countries & languages","","Named after pau-brasil, brazilwood (brasa = glowing coal, for its red dye).","Gabriel kommt aus Brasilien."],
+["Portugiesisch","Portuguese (language)","Countries & languages","","Portugal (from Portus Cale, a Roman port) + -iesisch.","Er spricht Portugiesisch."],
+["die USA","the USA","Countries & languages","pl","Abbreviation of the English name. German treats it as plural: aus den USA.","Olivia kommt aus den USA."],
+["die Türkei","Turkey","Countries & languages","die","Türke (Turk) + -ei, an ending for places. Always with the article: aus der Türkei.","Er kommt aus der Türkei."],
+["Türkisch","Turkish (language)","Countries & languages","","Türk- + -isch.","Ich lerne Türkisch."],
+// Numbers
+["null","zero","Numbers 0–20","","From Latin nullus = none.","Die Nummer ist null-sechs-fünf-null."],
+["eins","one","Numbers 0–20","","Old High German ein – English one, Latin unus.",""],
+["zwei","two","Numbers 0–20","","Old High German zwei – English two (tw-), Latin duo.",""],
+["drei","three","Numbers 0–20","","English three, Latin tres.",""],
+["vier","four","Numbers 0–20","","English four.",""],
+["fünf","five","Numbers 0–20","","English five, Latin quinque (sound shifted).",""],
+["sechs","six","Numbers 0–20","","English six, Latin sex.",""],
+["sieben","seven","Numbers 0–20","","English seven, Latin septem.",""],
+["acht","eight","Numbers 0–20","","English eight, Latin octo.",""],
+["neun","nine","Numbers 0–20","","English nine, Latin novem.",""],
+["zehn","ten","Numbers 0–20","","English ten, Latin decem.",""],
+["elf","eleven","Numbers 0–20","","Old Germanic ain-lif = “one left over” (after counting ten).",""],
+["zwölf","twelve","Numbers 0–20","","twa-lif = “two left over” after ten. English twelve has the same story.",""],
+["dreizehn","thirteen","Numbers 0–20","","drei + zehn = three-ten.",""],
+["vierzehn","fourteen","Numbers 0–20","","vier + zehn.",""],
+["fünfzehn","fifteen","Numbers 0–20","","fünf + zehn.",""],
+["sechzehn","sixteen","Numbers 0–20","","sechs + zehn, but the s drops: sechzehn.",""],
+["siebzehn","seventeen","Numbers 0–20","","sieben + zehn, but -en drops: siebzehn.",""],
+["achtzehn","eighteen","Numbers 0–20","","acht + zehn.",""],
+["neunzehn","nineteen","Numbers 0–20","","neun + zehn.",""],
+["zwanzig","twenty","Numbers 0–20","","zwei + -zig (“tens”). English -ty is the same ending.",""]
+].map(([de,en,cat,g,ety,ex],i)=>({i,de,en,cat,g,ety,ex}));
+
+const $=id=>document.getElementById(id);
+const esc=s=>s.replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const shuffleArr=a=>{a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a};
+$("total").textContent=W.length;
+
+// ---- speech
+let deVoice=null;
+function pickVoice(){const vs=speechSynthesis.getVoices();deVoice=vs.find(v=>/^de(-|_)DE/i.test(v.lang)&&/google|natural|online/i.test(v.name))||vs.find(v=>/^de/i.test(v.lang))||null}
+if("speechSynthesis" in window){pickVoice();speechSynthesis.onvoiceschanged=pickVoice}
+function say(text,slow){
+  if(!("speechSynthesis" in window))return;
+  speechSynthesis.cancel();
+  const u=new SpeechSynthesisUtterance(text.replace(/-/g," "));
+  u.lang="de-DE"; if(deVoice)u.voice=deVoice;
+  const r=parseFloat($("rate").value)||0.85; u.rate=slow?Math.max(0.45,r-0.3):r;
+  speechSynthesis.speak(u);
+}
+const spk=`<svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3A4.5 4.5 0 0 0 14 8v8a4.5 4.5 0 0 0 2.5-4z"/></svg>`;
+
+// ---- word display with coloured article
+function deHTML(w){
+  const m=w.de.match(/^(der|die|das) (.*)$/);
+  if(m){const cls=w.g==="pl"?"g-pl":"g-"+m[1];return `<span class="art ${cls}">${m[1]}</span> <span class="${cls}">${esc(m[2])}</span>`}
+  return esc(w.de);
+}
+const gName={der:"masculine",die:"feminine",das:"neuter",pl:"plural"};
+
+// ---- topic filter
+const cats=["All topics",...new Set(W.map(w=>w.cat))];
+$("cat").innerHTML=cats.map(c=>`<option>${c}</option>`).join("");
+let deck=[],pos=0,flipped=false,view="cards";
+function build(shuf){
+  const c=$("cat").value;
+  deck=W.filter(w=>c==="All topics"||w.cat===c);
+  if(shuf)deck=shuffleArr(deck);
+  pos=0;flipped=false;render();
+}
+$("cat").onchange=()=>build(false);
+$("shuffle").onclick=()=>build(true);
+
+// ---- flashcards
+function renderCard(){
+  const w=deck[pos];
+  $("count").textContent=`${pos+1} / ${deck.length}`;
+  $("card").innerHTML=`
+    <div class="top"><span class="chip">${esc(w.cat)}${w.g?` · ${gName[w.g]}`:""}</span>
+      <button class="speak" id="cSpeak">${spk}Listen</button></div>
+    <div class="word">${deHTML(w)}</div>
+    ${flipped?`<div class="back">
+      <div><div class="label">Meaning</div><div class="meaning">${esc(w.en)}</div></div>
+      <div><div class="label">Word story</div><div class="ety">${esc(w.ety)}</div></div>
+      ${w.ex?`<div><div class="label">Example</div><div class="ex">${esc(w.ex)} <button class="speak" id="xSpeak" style="margin-left:6px">${spk}</button></div></div>`:""}
+    </div>`:`<div class="hint">Click the card or press Space to see the meaning.</div>`}`;
+  $("cSpeak").onclick=e=>{e.stopPropagation();say(w.de)};
+  if($("xSpeak"))$("xSpeak").onclick=e=>{e.stopPropagation();say(w.ex)};
+  $("flip").textContent=flipped?"Hide meaning":"Turn over";
+}
+$("card").onclick=()=>{flipped=!flipped;renderCard()};
+$("flip").onclick=()=>{flipped=!flipped;renderCard()};
+$("next").onclick=()=>{pos=(pos+1)%deck.length;flipped=false;renderCard()};
+$("prev").onclick=()=>{pos=(pos-1+deck.length)%deck.length;flipped=false;renderCard()};
+document.addEventListener("keydown",e=>{
+  if(view!=="cards"||e.target.tagName==="INPUT"||e.target.tagName==="SELECT")return;
+  if(e.key===" "){e.preventDefault();flipped=!flipped;renderCard()}
+  if(e.key==="ArrowRight")$("next").click();
+  if(e.key==="ArrowLeft")$("prev").click();
+});
+
+// ---- MCQ
+let mOk=0,mBad=0,mCur=null,mDir="de";
+function mcqNext(){
+  mCur=deck[pos%deck.length];
+  pos++;
+  $("count").textContent=`${deck.length} words in this set`;
+  const same=W.filter(w=>w!==mCur&&w.cat===mCur.cat&&w.en!==mCur.en&&w.de!==mCur.de);
+  const other=W.filter(w=>w!==mCur&&w.cat!==mCur.cat);
+  let distract=shuffleArr(same).slice(0,3);
+  if(distract.length<3)distract=distract.concat(shuffleArr(other).slice(0,3-distract.length));
+  const opts=shuffleArr([mCur,...distract]);
+  $("mfb").textContent="";$("mfb").className="feedback";
+  if(mDir==="de"){
+    $("mcqLabel").textContent="What does this mean in English?";
+    $("mq").innerHTML=deHTML(mCur); $("mSpeak").hidden=false;
+    $("mopts").innerHTML=opts.map(o=>`<button class="opt" data-i="${o.i}">${esc(o.en)}</button>`).join("");
+  }else{
+    $("mcqLabel").textContent="Pick the German word";
+    $("mq").textContent=mCur.en; $("mSpeak").hidden=true;
+    $("mopts").innerHTML=opts.map(o=>`<button class="opt" data-i="${o.i}">${deHTML(o)}</button>`).join("");
+  }
+  $("mopts").querySelectorAll(".opt").forEach(b=>b.onclick=()=>mcqPick(b));
+}
+function mcqPick(b){
+  const right=+b.dataset.i===mCur.i;
+  $("mopts").querySelectorAll(".opt").forEach(x=>{x.disabled=true;if(+x.dataset.i===mCur.i)x.classList.add("right")});
+  if(right){mOk++;$("mfb").textContent="Richtig! ✓ "+mCur.de+" = "+mCur.en;$("mfb").className="feedback okc"}
+  else{mBad++;b.classList.add("wrong");$("mfb").textContent="Not quite. "+mCur.de+" = "+mCur.en;$("mfb").className="feedback badc"}
+  $("mOk").textContent=mOk;$("mBad").textContent=mBad;
+  say(mCur.de);
+}
+$("mNext").onclick=mcqNext;
+$("mSpeak").onclick=()=>say(mCur.de);
+
+// ---- Listen & type
+let lOk=0,lBad=0,lCur=null,lDone=false;
+function stripArt(s){return s.replace(/^(der|die|das|den)\s+/,"")}
+function forms(s){ // returns set of acceptable normalised spellings
+  s=s.toLowerCase().replace(/[?!.,'’"]/g,"").replace(/-/g," ").replace(/\s+/g," ").trim();
+  s=stripArt(s);
+  const a=s.replace(/ä/g,"ae").replace(/ö/g,"oe").replace(/ü/g,"ue").replace(/ß/g,"ss");
+  const b=s.replace(/ä/g,"a").replace(/ö/g,"o").replace(/ü/g,"u").replace(/ß/g,"ss");
+  const c=b.replace(/ss/g,"s");
+  return [a,b,c,a.replace(/ /g,""),b.replace(/ /g,"")];
+}
+function normIn(s){
+  s=s.toLowerCase().replace(/[?!.,'’"]/g,"").replace(/-/g," ").replace(/\s+/g," ").trim();
+  s=stripArt(s);
+  return s.replace(/ä/g,"ae").replace(/ö/g,"oe").replace(/ü/g,"ue").replace(/ß/g,"ss");
+}
+function listenNext(){
+  lCur=deck[pos%deck.length];pos++;lDone=false;
+  $("count").textContent=`${deck.length} words in this set`;
+  $("lInput").value="";$("lInput").className="typein";
+  $("lfb").textContent="";$("lfb").className="feedback";$("lHintTxt").textContent="";
+  $("lCheck").textContent="Check";
+  $("lInput").focus({preventScroll:true});
+}
+$("lForm").onsubmit=e=>{
+  e.preventDefault();
+  if(lDone){listenNext();setTimeout(()=>say(lCur.de),150);return}
+  const v=normIn($("lInput").value);
+  if(!v){say(lCur.de);return}
+  const ok=forms(lCur.de).some(f=>f===v||f===v.replace(/ /g,""));
+  lDone=true;$("lCheck").textContent="Next word →";
+  if(ok){lOk++;$("lInput").className="typein okb";$("lfb").innerHTML=`Richtig! ✓ <span class="ans">${deHTML(lCur)}</span> = ${esc(lCur.en)}`;$("lfb").className="feedback okc"}
+  else{lBad++;$("lInput").className="typein badb";$("lfb").innerHTML=`The answer is <span class="ans">${deHTML(lCur)}</span> = ${esc(lCur.en)}`;$("lfb").className="feedback badc"}
+  $("lOk").textContent=lOk;$("lBad").textContent=lBad;
+};
+$("lSkip").onclick=()=>{if(lDone)return;lDone=true;lBad++;$("lBad").textContent=lBad;$("lCheck").textContent="Next word →";$("lfb").innerHTML=`<span class="ans">${deHTML(lCur)}</span> = ${esc(lCur.en)}`;$("lfb").className="feedback badc";say(lCur.de)};
+$("lPlay").onclick=()=>say(lCur.de);
+$("lSlow").onclick=()=>say(lCur.de,true);
+$("lHint").onclick=()=>{$("lHintTxt").textContent="Hint: "+lCur.en};
+
+// ---- tabs
+function render(){
+  $("v-cards").hidden=view!=="cards";
+  $("v-mcq").hidden=!view.startsWith("mcq");
+  $("v-listen").hidden=view!=="listen";
+  if(view==="cards")renderCard();
+  else if(view.startsWith("mcq")){mDir=view==="mcq-de"?"de":"en";mcqNext()}
+  else listenNext();
+}
+document.querySelectorAll(".tab").forEach(t=>t.onclick=()=>{
+  document.querySelectorAll(".tab").forEach(x=>x.setAttribute("aria-selected",x===t));
+  view=t.dataset.v;pos=0;
+  if(view!=="cards")deck=shuffleArr(deck);
+  render();
+});
+build(false);
+</script>
