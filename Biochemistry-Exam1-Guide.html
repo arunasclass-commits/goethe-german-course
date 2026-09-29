@@ -1,0 +1,2189 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<style>body{margin:0;font-size:14px}img{max-width:100%}[hidden]{display:none!important}</style>
+<title>Biochem Exam 1 Guide</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,500;6..72,700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: one reading column (max 880px), sticky chip nav of the 8 textbook parts, topic blocks numbered to match the study guide (#1–#130), SVG figures inline. */
+:root{
+  --paper:#f4f7f8; --card:#ffffff; --ink:#14222b; --muted:#56666f; --line:#d3dde2;
+  --accent:#1d5ea6; --accent-soft:#e2ecf7;
+  --clin:#ad3f2c; --clin-soft:#f7e6e1;
+  --ok:#2a7549; --ok-soft:#e0f0e6;
+  --warn:#8a6100; --warn-soft:#f9efd6;
+  --f-display:"Newsreader", Georgia, "Times New Roman", serif;
+  --f-body:"IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --f-mono:"IBM Plex Mono", ui-monospace, Consolas, monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --paper:#0e161b; --card:#15212a; --ink:#e2eaee; --muted:#96a7b1; --line:#283843;
+  --accent:#86b6ec; --accent-soft:#182b3e; --clin:#f08f7b; --clin-soft:#38201b;
+  --ok:#7fcb9d; --ok-soft:#162d20; --warn:#e6b955; --warn-soft:#322813; color-scheme:dark;}}
+:root[data-theme="dark"]{
+  --paper:#0e161b; --card:#15212a; --ink:#e2eaee; --muted:#96a7b1; --line:#283843;
+  --accent:#86b6ec; --accent-soft:#182b3e; --clin:#f08f7b; --clin-soft:#38201b;
+  --ok:#7fcb9d; --ok-soft:#162d20; --warn:#e6b955; --warn-soft:#322813; color-scheme:dark;}
+*{box-sizing:border-box}
+body{background:var(--paper);color:var(--ink);font:16px/1.6 var(--f-body);padding-inline:16px;padding-block:0 64px}
+.wrap{max-width:880px;margin:0 auto}
+h1,h2,h3{font-family:var(--f-display);text-wrap:balance;line-height:1.2;margin:0}
+h1{font-size:clamp(2rem,5vw,2.9rem);font-weight:700}
+h2{font-size:1.9rem;font-weight:700}
+h3{font-size:1.25rem;font-weight:700;display:flex;gap:.6rem;align-items:baseline;flex-wrap:wrap}
+p{margin:0}
+.num{font:500 .8rem var(--f-mono);color:var(--accent);letter-spacing:.02em}
+.pg{font:500 .72rem var(--f-mono);color:var(--muted);border:1px solid var(--line);border-radius:4px;padding:1px 6px;white-space:nowrap}
+header.top{padding-block:40px 20px;display:grid;gap:14px}
+.eyebrow{font:600 .75rem var(--f-body);letter-spacing:.12em;text-transform:uppercase;color:var(--accent)}
+.lede{color:var(--muted);max-width:62ch}
+nav.parts{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--paper);border-bottom:1px solid var(--line);padding-block:10px;margin-bottom:8px;overflow-x:auto;white-space:nowrap}
+nav.parts a{display:inline-block;font:500 .82rem var(--f-body);color:var(--ink);text-decoration:none;border:1px solid var(--line);background:var(--card);border-radius:999px;padding:5px 12px;margin-right:6px}
+nav.parts a:hover,nav.parts a:focus-visible{border-color:var(--accent);color:var(--accent);outline:none}
+.map{overflow-x:auto;margin-block:8px}
+table{border-collapse:collapse;width:100%;font-size:.92rem}
+th,td{text-align:left;padding:7px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font:600 .74rem var(--f-body);letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+td.n{font-family:var(--f-mono);font-variant-numeric:tabular-nums;white-space:nowrap}
+.tbl{overflow-x:auto;background:var(--card);border:1px solid var(--line);border-radius:8px}
+section.part{padding-block:44px 8px;border-top:2px solid var(--ink);margin-top:36px}
+.parthead{display:grid;gap:6px;margin-bottom:10px}
+.parthead .sub{color:var(--muted)}
+.topic{padding-block:22px;border-bottom:1px solid var(--line);display:grid;gap:12px}
+.topic > *{min-width:0}
+ul.k{margin:0;padding-left:1.2rem;display:grid;gap:3px}
+ul.k.cols{grid-template-columns:repeat(auto-fill,minmax(220px,1fr));column-gap:24px}
+b.t{color:var(--accent);font-weight:600}
+.flow{display:flex;flex-wrap:wrap;align-items:center;gap:6px;font-size:.92rem}
+.flow span{background:var(--card);border:1px solid var(--line);border-radius:6px;padding:4px 10px}
+.flow i{font-style:normal;color:var(--muted)}
+.flow span.hi{border-color:var(--accent);background:var(--accent-soft)}
+.flow span.bad{border-color:var(--clin);background:var(--clin-soft)}
+.flow.v{flex-direction:column;align-items:flex-start}
+.box{border-radius:8px;padding:12px 14px;font-size:.94rem;display:grid;gap:4px}
+.box strong{font:600 .72rem var(--f-body);letter-spacing:.1em;text-transform:uppercase}
+.mem{background:var(--accent-soft)} .mem strong{color:var(--accent)}
+.clin{background:var(--clin-soft)} .clin strong{color:var(--clin)}
+.caut{background:var(--warn-soft)} .caut strong{color:var(--warn)}
+.okb{background:var(--ok-soft)} .okb strong{color:var(--ok)}
+.two{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px}
+.two > *{min-width:0}
+.mini{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:12px 14px;display:grid;gap:6px;font-size:.94rem}
+.mini h4{margin:0;font:600 1rem var(--f-body)}
+figure{margin:0;background:var(--card);border:1px solid var(--line);border-radius:10px;padding:12px;overflow-x:auto}
+figure svg{display:block;width:100%;height:auto;min-width:520px}
+figure.sm svg{min-width:300px;max-width:460px;margin:0 auto}
+figcaption{font-size:.84rem;color:var(--muted);margin-top:8px}
+.eq{font-family:var(--f-mono);background:var(--card);border:1px solid var(--line);border-radius:6px;padding:10px 14px;overflow-x:auto;font-size:.95rem}
+/* svg tokens */
+.sv-t{fill:var(--ink);font:12px var(--f-body)}
+.sv-s{fill:var(--muted);font:10.5px var(--f-body)}
+.sv-b{fill:var(--ink);font:600 12px var(--f-body)}
+.sv-a{fill:var(--accent);font:600 11.5px var(--f-body)}
+.sv-r{fill:var(--clin);font:600 11px var(--f-body)}
+.sv-g{fill:var(--ok);font:600 11px var(--f-body)}
+.sv-box{fill:var(--card);stroke:var(--line);stroke-width:1.2}
+.sv-boxa{fill:var(--accent-soft);stroke:var(--accent);stroke-width:1.2}
+.sv-boxr{fill:var(--clin-soft);stroke:var(--clin);stroke-width:1.2}
+.sv-boxg{fill:var(--ok-soft);stroke:var(--ok);stroke-width:1.2}
+.sv-l{stroke:var(--muted);stroke-width:1.4;fill:none}
+.sv-la{stroke:var(--accent);stroke-width:2;fill:none}
+.sv-lr{stroke:var(--clin);stroke-width:2;fill:none}
+.sv-lg{stroke:var(--ok);stroke-width:2;fill:none}
+.sv-fill-m{fill:var(--muted)} .sv-fill-a{fill:var(--accent)} .sv-fill-r{fill:var(--clin)} .sv-fill-g{fill:var(--ok)}
+.sv-ax{stroke:var(--ink);stroke-width:1.2;fill:none}
+.sv-grid{stroke:var(--line);stroke-width:1;fill:none}
+.dash{stroke-dasharray:5 4}
+/* checklist */
+.ckgroup{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:14px 16px;display:grid;gap:10px}
+.ckgroup h4{margin:0;font:600 1rem var(--f-body);display:flex;justify-content:space-between;gap:8px;flex-wrap:wrap}
+.ckgroup h4 span{font:500 .8rem var(--f-mono);color:var(--muted)}
+.cklist{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:4px 16px}
+.cklist label{display:flex;gap:8px;align-items:flex-start;font-size:.92rem;cursor:pointer}
+.cklist input{margin-top:4px;accent-color:var(--accent)}
+.cklist input:checked + span{color:var(--muted);text-decoration:line-through}
+.bar{height:8px;background:var(--line);border-radius:99px;overflow:hidden}
+.bar i{display:block;height:100%;background:var(--ok);width:0}
+.btn{font:500 .85rem var(--f-body);background:var(--card);color:var(--ink);border:1px solid var(--line);border-radius:6px;padding:6px 12px;cursor:pointer}
+.btn:hover,.btn:focus-visible{border-color:var(--accent);outline:none}
+.route{font:600 1rem var(--f-body);display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+.route span{background:var(--ink);color:var(--paper);border-radius:4px;padding:3px 9px}
+.route i{font-style:normal;color:var(--muted)}
+a{color:var(--accent)}
+@media (prefers-reduced-motion:reduce){*{scroll-behavior:auto!important}}
+html{scroll-behavior:smooth}
+section[id],div[id]{scroll-margin-top:64px}
+</style>
+</head>
+<body>
+
+<!-- shared SVG arrowheads -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" class="sv-fill-m"/></marker>
+    <marker id="ahA" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" class="sv-fill-a"/></marker>
+    <marker id="ahR" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" class="sv-fill-r"/></marker>
+    <marker id="ahG" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" class="sv-fill-g"/></marker>
+    <pattern id="lipTop" width="16" height="44" patternUnits="userSpaceOnUse">
+      <circle cx="8" cy="7" r="6" class="sv-boxa"/>
+      <path d="M6,13 L6,42 M10,13 L10,42" class="sv-l"/>
+    </pattern>
+    <pattern id="lipBot" width="16" height="44" patternUnits="userSpaceOnUse">
+      <circle cx="8" cy="37" r="6" class="sv-boxa"/>
+      <path d="M6,2 L6,31 M10,2 L10,31" class="sv-l"/>
+    </pattern>
+  </defs>
+</svg>
+
+<div class="wrap">
+<header class="top">
+  <div class="eyebrow">I MBBS Biochemistry · SRM Exam 1</div>
+  <h1>Biochemistry Exam 1: the full guide, explained</h1>
+  <p class="lede">Every topic from the Exam 1 list, explained in simple words with diagrams. Page numbers point to Vasudevan, Sreekumari &amp; Vaidyanathan, <em>Textbook of Biochemistry for Medical Students</em>, 6th edition. Topic numbers (#1 to #130) match your study list.</p>
+  <div class="map tbl">
+    <table>
+      <thead><tr><th>Part</th><th>Exam 1 topic</th><th>Vasudevan chapter</th><th>Pages</th></tr></thead>
+      <tbody>
+        <tr><td class="n">1</td><td><a href="#p1">Basic biochemistry / cell</a></td><td>Ch 2 · Subcellular organelles &amp; membranes</td><td class="n">7–18</td></tr>
+        <tr><td class="n">2</td><td><a href="#p2">Enzymes</a></td><td>Ch 5 · Enzymology</td><td class="n">40–59</td></tr>
+        <tr><td class="n">3</td><td><a href="#p3">Carbohydrate chemistry</a></td><td>Ch 6 · Chemistry of carbohydrates</td><td class="n">60–72</td></tr>
+        <tr><td class="n">4</td><td><a href="#p4">Glycolysis, gluconeogenesis, glycogen</a></td><td>Ch 9 · Major pathways of glucose</td><td class="n">90–112</td></tr>
+        <tr><td class="n">5</td><td><a href="#p5">HMP, fructose, galactose, others</a></td><td>Ch 10 · Minor pathways</td><td class="n">113–126</td></tr>
+        <tr><td class="n">6</td><td><a href="#p6">TCA cycle</a></td><td>Ch 18 · Citric acid cycle</td><td class="n">216–222</td></tr>
+        <tr><td class="n">7</td><td><a href="#p7">Clinical enzymes</a></td><td>Ch 23 · Clinical enzymology</td><td class="n">266–273</td></tr>
+        <tr><td class="n">8</td><td><a href="#p8">Blood glucose, GTT, diabetes</a></td><td>Ch 24 · Blood glucose &amp; diabetes</td><td class="n">274–291</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="route" aria-label="Study order">
+    <span>Cell</span><i>→</i><span>Enzyme</span><i>→</i><span>Carb chemistry</span><i>→</i><span>Glycolysis</span><i>→</i><span>Gluconeogenesis</span><i>→</i><span>Glycogen</span><i>→</i><span>HMP</span><i>→</i><span>Fructose + galactose</span><i>→</i><span>TCA</span><i>→</i><span>Clinical enzymes</span><i>→</i><span>Glucose + GTT + diabetes</span>
+  </div>
+</header>
+
+<nav class="parts" aria-label="Jump to part">
+  <a href="#p1">1 · Cell</a><a href="#p2">2 · Enzymes</a><a href="#p3">3 · Carb chemistry</a><a href="#p4">4 · Carb metabolism</a><a href="#p5">5 · Minor pathways</a><a href="#p6">6 · TCA</a><a href="#p7">7 · Clinical enzymes</a><a href="#p8">8 · Glucose &amp; diabetes</a><a href="#check">✓ Checklist</a>
+</nav>
+
+<!-- ============ PART 1 ============ -->
+<section class="part" id="p1">
+  <div class="parthead">
+    <div class="eyebrow">Part 1 · Chapter 2 · pp. 7–18 · BI 1.1</div>
+    <h2>Basic biochemistry: the cell</h2>
+    <p class="sub">What the cell is made of, what each part does, and how things cross the cell membrane.</p>
+  </div>
+
+  <div class="topic">
+    <h3><span class="num">#1</span> Cell organization: prokaryote vs eukaryote <span class="pg">pp. 7–8</span></h3>
+    <p>There are two kinds of cells. <b class="t">Prokaryotes</b> (bacteria) are small and simple. Their DNA floats in the cell with no wall around it. <b class="t">Eukaryotes</b> (human cells) are bigger and are divided into "rooms" called organelles, each wrapped in its own membrane.</p>
+    <figure>
+      <svg viewBox="0 0 660 300" role="img" aria-label="Prokaryotic cell compared with eukaryotic cell and its organelles">
+        <!-- prokaryote -->
+        <rect x="20" y="105" width="160" height="84" rx="42" class="sv-box"/>
+        <path d="M55,150 q10,-20 20,0 t20,0 t20,0 t20,0" class="sv-la"/>
+        <circle cx="60" cy="125" r="3" class="sv-fill-m"/><circle cx="130" cy="128" r="3" class="sv-fill-m"/><circle cx="150" cy="168" r="3" class="sv-fill-m"/><circle cx="75" cy="172" r="3" class="sv-fill-m"/><circle cx="105" cy="120" r="3" class="sv-fill-m"/>
+        <text x="100" y="212" text-anchor="middle" class="sv-b">Prokaryote (bacterium)</text>
+        <text x="100" y="228" text-anchor="middle" class="sv-s">No nucleus · DNA free (nucleoid)</text>
+        <text x="100" y="242" text-anchor="middle" class="sv-s">No membrane organelles</text>
+        <!-- eukaryote -->
+        <ellipse cx="440" cy="150" rx="205" ry="130" class="sv-box"/>
+        <circle cx="410" cy="148" r="48" class="sv-boxa"/>
+        <circle cx="420" cy="142" r="14" class="sv-fill-a" opacity=".55"/>
+        <text x="410" y="186" text-anchor="middle" class="sv-a">Nucleus</text>
+        <text x="420" y="124" text-anchor="middle" class="sv-s">nucleolus</text>
+        <!-- RER -->
+        <path d="M330,100 q-18,48 0,96 M318,92 q-22,56 0,112 M306,86 q-26,62 0,124" class="sv-l"/>
+        <circle cx="322" cy="120" r="2.4" class="sv-fill-m"/><circle cx="316" cy="150" r="2.4" class="sv-fill-m"/><circle cx="321" cy="180" r="2.4" class="sv-fill-m"/><circle cx="309" cy="112" r="2.4" class="sv-fill-m"/><circle cx="303" cy="160" r="2.4" class="sv-fill-m"/>
+        <text x="290" y="72" text-anchor="middle" class="sv-t">Rough ER</text>
+        <!-- SER -->
+        <path d="M270,215 q12,-10 24,0 t24,0 t24,0" class="sv-l"/><path d="M270,228 q12,-10 24,0 t24,0 t24,0" class="sv-l"/>
+        <text x="306" y="250" text-anchor="middle" class="sv-t">Smooth ER</text>
+        <!-- Golgi -->
+        <path d="M500,70 q40,-14 80,0 M504,82 q36,-12 72,0 M508,94 q32,-10 64,0 M512,106 q28,-8 56,0" class="sv-la"/>
+        <text x="540" y="126" text-anchor="middle" class="sv-t">Golgi</text>
+        <!-- Mitochondrion -->
+        <ellipse cx="520" cy="210" rx="48" ry="20" class="sv-boxg"/>
+        <path d="M482,210 l8,-12 l8,24 l8,-24 l8,24 l8,-24 l8,24 l8,-24 l8,24 l8,-12" class="sv-lg"/>
+        <text x="520" y="248" text-anchor="middle" class="sv-t">Mitochondrion</text>
+        <!-- Lysosome -->
+        <circle cx="365" cy="232" r="13" class="sv-boxr"/>
+        <text x="365" y="266" text-anchor="middle" class="sv-t">Lysosome</text>
+        <!-- Peroxisome -->
+        <circle cx="595" cy="155" r="11" class="sv-boxa"/>
+        <text x="595" y="182" text-anchor="middle" class="sv-s">Peroxisome</text>
+        <text x="440" y="296" text-anchor="middle" class="sv-b">Eukaryote (human cell)</text>
+      </svg>
+      <figcaption>Left: a bacterium. Right: a human cell with its main organelles. Each coloured "room" has its own membrane.</figcaption>
+    </figure>
+    <div class="tbl"><table>
+      <thead><tr><th>Feature</th><th>Prokaryote</th><th>Eukaryote</th></tr></thead>
+      <tbody>
+        <tr><td>Size</td><td>Small (1–2 µm)</td><td>Larger (10–100 µm)</td></tr>
+        <tr><td>Nucleus / nuclear membrane</td><td>Absent (nucleoid only)</td><td>Present, well defined</td></tr>
+        <tr><td>Membrane-bound organelles</td><td>Absent</td><td>Present</td></tr>
+        <tr><td>Mitochondria, lysosomes</td><td>Absent</td><td>Present</td></tr>
+        <tr><td>Example</td><td>Bacteria</td><td>Human cells</td></tr>
+      </tbody></table></div>
+  </div>
+
+  <div class="topic">
+    <h3><span class="num">#2</span> Nucleus <span class="pg">pp. 7–8</span></h3>
+    <p>The nucleus is the cell's <b class="t">control room and library</b>. It stores DNA and makes copies of it. It is wrapped in a double <b class="t">nuclear membrane</b> with <b class="t">nuclear pores</b> that let RNA out and proteins in.</p>
+    <ul class="k cols"><li>DNA packed with proteins = <b>chromatin</b></li><li>Chromatin condenses into <b>chromosomes</b> during cell division</li><li><b>DNA replication</b> happens here</li><li><b>Transcription</b> (DNA → RNA) happens here</li></ul>
+    <div class="box mem"><strong>Remember</strong>Nucleus = DNA storage + replication + transcription.</div>
+  </div>
+
+  <div class="topic">
+    <h3><span class="num">#3</span> Nucleolus <span class="pg">p. 8</span></h3>
+    <p>A dark spot inside the nucleus with no membrane of its own. It makes <b class="t">ribosomal RNA</b>, processes RNA, and builds <b class="t">ribosome</b> parts.</p>
+  </div>
+
+  <div class="topic">
+    <h3><span class="num">#4</span> Endoplasmic reticulum (ER) <span class="pg">p. 8</span></h3>
+    <p>A network of flat tubes and sacs joined to the nuclear membrane. It comes in two types.</p>
+    <div class="two">
+      <div class="mini"><h4>Rough ER</h4><p>Covered with ribosomes, so it looks rough.</p><ul class="k"><li>Protein synthesis</li><li>Glycoprotein synthesis</li><li>Lipoprotein synthesis</li></ul></div>
+      <div class="mini"><h4>Smooth ER</h4><p>No ribosomes.</p><ul class="k"><li>Drug detoxification</li><li>Cytochrome P450 reactions</li><li>Lipid and steroid work</li></ul></div>
+    </div>
+    <div class="box clin"><strong>Clinical link</strong>Cytochrome P450 in the smooth ER breaks down many drugs. This is why some drugs change the effect of others.</div>
+  </div>
+
+  <div class="topic">
+    <h3><span class="num">#5</span> Golgi apparatus <span class="pg">pp. 8–9</span></h3>
+    <p>Stacks of flat sacs. Proteins arrive from the ER at the <b class="t">cis</b> face, move through the <b class="t">medial</b> stacks, and leave from the <b class="t">trans</b> face.</p>
+    <div class="flow"><span>Rough ER makes protein</span><i>→</i><span class="hi">Cis Golgi</span><i>→</i><span class="hi">Medial Golgi</span><i>→</i><span class="hi">Trans Golgi</span><i>→</i><span>Secretion / lysosome / membrane</span></div>
+    <p>Jobs: modifies proteins (adds sugars), sorts them, packs them into vesicles, sends them out, and tags lysosomal enzymes.</p>
+    <div class="box mem"><strong>Easy memory</strong>Golgi = modify → sort → package → send. Think of it as the cell's post office.</div>
+  </div>
+
+  <div class="topic">
+    <h3><span class="num">#6</span> Lysosomes <span class="pg">p. 9</span></h3>
+    <p>Small bags full of <b class="t">hydrolytic enzymes</b> that work best at <b class="t">acidic pH (about 5)</b>. They digest proteins, carbohydrates, lipids and nucleic acids. Think of them as the <b class="t">cell's stomach</b>.</p>
+    <div class="flow"><span>Primary lysosome (fresh enzymes)</span><i>+</i><span>Material taken in</span><i>→</i><span class="hi">Secondary lysosome / digestive vacuole</span><i>→</i><span>Small products reused</span></div>
+    <div class="box clin"><strong>Clinical link</strong>If one lysosomal enzyme is missing, its material piles up = <b>lysosomal storage disease</b>. Also linked: <b>gout</b> (urate crystals damage lysosomes), <b>silicosis</b> (silica bursts lysosomes in lung cells), <b>I-cell disease</b> (enzymes are not tagged, so they never reach the lysosome).</div>
+  </div>
+
+  <div class="topic">
+    <h3><span class="num">#7</span> Peroxisomes <span class="pg">p. 9</span></h3>
+    <p>Small organelles that contain <b class="t">catalase</b> and <b class="t">peroxidases</b>. They destroy hydrogen peroxide (H₂O₂), help detoxify, and oxidize very long-chain fatty acids.</p>
+    <div class="eq">2 H₂O₂ —(catalase)→ 2 H₂O + O₂</div>
+    <div class="box clin"><strong>Clinical link</strong><b>Zellweger syndrome</b> (peroxisomes do not form), <b>adrenoleukodystrophy</b> (very long-chain fatty acids build up), <b>primary hyperoxaluria</b> (oxalate stones).</div>
+  </div>
+
+  <div class="topic">
+    <h3><span class="num">#8</span> Mitochondria <span class="pg">pp. 9–10</span></h3>
+    <p>The <b class="t">power house</b> of the cell. It has an outer membrane, a folded inner membrane (folds = <b class="t">cristae</b>), and a fluid inside called the <b class="t">matrix</b>. It has its own DNA (from the mother).</p>
+    <div class="two">
+      <div class="mini"><h4>Inner membrane</h4><ul class="k"><li>Electron transport chain (ETC)</li><li>ATP synthase → ATP made here</li><li>Succinate dehydrogenase sits here</li></ul></div>
+      <div class="mini"><h4>Matrix</h4><ul class="k"><li>TCA cycle</li><li>β-oxidation of fatty acids</li><li>Ketone body formation</li><li>First steps of urea cycle, heme synthesis, gluconeogenesis</li></ul></div>
+    </div>
+    <div class="box mem"><strong>Very important</strong>Glycolysis → cytoplasm. TCA → mitochondrial matrix. ETC → inner mitochondrial membrane.</div>
+  </div>
+
+  <div class="topic">
+    <h3><span class="num">#9</span> Plasma membrane <span class="pg">pp. 11–12</span></h3>
+    <p>The thin skin around the cell. It is mainly a double layer of <b class="t">phospholipids</b>, with <b class="t">cholesterol</b>, <b class="t">proteins</b>, and sugar chains on the outside (<b class="t">glycolipids</b> and <b class="t">glycoproteins</b>).</p>
+  </div>
+
+  <div class="topic">
+    <h3><span class="num">#10</span> Fluid mosaic model <span class="pg">p. 11</span></h3>
+    <p>"Fluid" because the lipids and proteins can slide sideways. "Mosaic" because proteins sit in the lipid layer like tiles in a floor.</p>
+    <figure>
+      <svg viewBox="0 0 660 250" role="img" aria-label="Fluid mosaic model of the cell membrane">
+        <text x="12" y="30" class="sv-s">OUTSIDE cell</text>
+        <text x="12" y="238" class="sv-s">INSIDE cell (cytoplasm)</text>
+        <rect x="20" y="76" width="620" height="44" fill="url(#lipTop)"/>
+        <rect x="20" y="120" width="620" height="44" fill="url(#lipBot)"/>
+        <!-- integral protein -->
+        <rect x="230" y="62" width="56" height="118" rx="18" class="sv-boxg"/>
+        <path d="M258,62 L258,40 M258,48 L244,32 M258,48 L272,32 M244,32 l-8,-8 M272,32 l8,-8" class="sv-la"/>
+        <circle cx="236" cy="24" r="4" class="sv-fill-a"/><circle cx="280" cy="24" r="4" class="sv-fill-a"/>
+        <!-- channel -->
+        <rect x="400" y="62" width="26" height="118" rx="8" class="sv-boxg"/>
+        <rect x="444" y="62" width="26" height="118" rx="8" class="sv-boxg"/>
+        <path d="M435,50 L435,192" class="sv-la dash" marker-end="url(#ahA)"/>
+        <!-- peripheral -->
+        <ellipse cx="560" cy="192" rx="30" ry="14" class="sv-boxg"/>
+        <!-- cholesterol -->
+        <rect x="120" y="92" width="10" height="26" rx="3" class="sv-fill-r"/>
+        <!-- labels -->
+        <text x="258" y="14" text-anchor="middle" class="sv-s">Sugar chain (glycoprotein)</text>
+        <text x="258" y="200" text-anchor="middle" class="sv-t">Integral protein</text>
+        <text x="258" y="214" text-anchor="middle" class="sv-s">crosses both layers</text>
+        <text x="435" y="212" text-anchor="middle" class="sv-t">Channel protein</text>
+        <text x="560" y="228" text-anchor="middle" class="sv-t">Peripheral protein</text>
+        <text x="560" y="242" text-anchor="middle" class="sv-s">sits on the surface</text>
+        <path d="M125,90 L125,50" class="sv-l"/>
+        <text x="125" y="44" text-anchor="middle" class="sv-r">Cholesterol</text>
+        <path d="M60,82 L60,58" class="sv-l"/>
+        <text x="60" y="52" text-anchor="middle" class="sv-a">Hydrophilic head</text>
+        <path d="M600,100 L636,70" class="sv-l"/>
+        <text x="636" y="62" text-anchor="end" class="sv-s">Hydrophobic tails</text>
+      </svg>
+      <figcaption>Heads (circles) face water on both sides. Tails hide in the middle. Proteins float in this sea of lipid.</figcaption>
+    </figure>
+    <ul class="k cols">
+      <li><b>Hydrophilic heads</b> face water outside and inside</li>
+      <li><b>Hydrophobic tails</b> point inward</li>
+      <li><b>Integral proteins</b> pass through the bilayer</li>
+      <li><b>Peripheral proteins</b> sit on the surface</li>
+      <li><b>Lateral movement</b>: lipids and proteins slide sideways easily</li>
+      <li><b>Flip-flop</b> (moving from one layer to the other) is rare</li>
+      <li><b>Unsaturated fatty acids</b> (kinked tails) → more fluid</li>
+      <li><b>Cholesterol</b> acts as a buffer: stops the membrane getting too stiff in cold or too runny in heat</li>
+    </ul>
+  </div>
+
+  <div class="topic">
+    <h3><span class="num">#11</span> Membrane transport <span class="pg">pp. 13–18</span></h3>
+    <p>Things cross the membrane in two big ways: <b class="t">passive</b> (downhill, from high to low concentration, no ATP) and <b class="t">active</b> (uphill, from low to high, needs energy).</p>
+    <figure>
+      <svg viewBox="0 0 690 250" role="img" aria-label="Six types of membrane transport">
+        <text x="6" y="22" class="sv-s">Outside</text><text x="6" y="232" class="sv-s">Inside</text>
+        <!-- membrane band -->
+        <rect x="0" y="100" width="690" height="40" class="sv-boxa" opacity=".7"/>
+        <!-- 1 simple diffusion -->
+        <g>
+          <circle cx="45" cy="45" r="5" class="sv-fill-a"/><circle cx="62" cy="60" r="5" class="sv-fill-a"/><circle cx="80" cy="42" r="5" class="sv-fill-a"/><circle cx="55" cy="80" r="5" class="sv-fill-a"/>
+          <circle cx="70" cy="170" r="5" class="sv-fill-a"/>
+          <path d="M65,70 L65,160" class="sv-la" marker-end="url(#ahA)"/>
+          <text x="62" y="200" text-anchor="middle" class="sv-b">Simple</text><text x="62" y="214" text-anchor="middle" class="sv-b">diffusion</text>
+          <text x="62" y="228" text-anchor="middle" class="sv-s">no carrier, no ATP</text>
+        </g>
+        <!-- 2 facilitated -->
+        <g>
+          <rect x="150" y="92" width="44" height="56" rx="10" class="sv-boxg"/>
+          <circle cx="160" cy="45" r="5" class="sv-fill-a"/><circle cx="180" cy="58" r="5" class="sv-fill-a"/><circle cx="195" cy="40" r="5" class="sv-fill-a"/>
+          <path d="M172,66 L172,168" class="sv-la" marker-end="url(#ahA)"/>
+          <text x="172" y="200" text-anchor="middle" class="sv-b">Facilitated</text><text x="172" y="214" text-anchor="middle" class="sv-b">diffusion</text>
+          <text x="172" y="228" text-anchor="middle" class="sv-s">carrier (GLUT), no ATP</text>
+        </g>
+        <!-- 3 channel -->
+        <g>
+          <rect x="258" y="92" width="16" height="56" rx="5" class="sv-boxg"/><rect x="292" y="92" width="16" height="56" rx="5" class="sv-boxg"/>
+          <text x="283" y="54" text-anchor="middle" class="sv-a">Na⁺ K⁺ Ca²⁺</text>
+          <path d="M283,64 L283,168" class="sv-la" marker-end="url(#ahA)"/>
+          <text x="283" y="200" text-anchor="middle" class="sv-b">Ion channel</text>
+          <text x="283" y="214" text-anchor="middle" class="sv-s">voltage / ligand /</text><text x="283" y="228" text-anchor="middle" class="sv-s">mechanically gated</text>
+        </g>
+        <!-- 4 Na-K pump -->
+        <g>
+          <rect x="370" y="88" width="64" height="64" rx="10" class="sv-boxr"/>
+          <text x="402" y="124" text-anchor="middle" class="sv-r">ATPase</text>
+          <path d="M385,160 L385,62" class="sv-lr" marker-end="url(#ahR)"/>
+          <text x="385" y="54" text-anchor="middle" class="sv-r">3 Na⁺ out</text>
+          <path d="M420,62 L420,160" class="sv-lg" marker-end="url(#ahG)"/>
+          <text x="420" y="176" text-anchor="middle" class="sv-g">2 K⁺ in</text>
+          <text x="402" y="200" text-anchor="middle" class="sv-b">Na⁺/K⁺ pump</text>
+          <text x="402" y="214" text-anchor="middle" class="sv-s">active: uses ATP</text>
+        </g>
+        <!-- 5 symport -->
+        <g>
+          <rect x="510" y="92" width="44" height="56" rx="10" class="sv-boxg"/>
+          <path d="M520,56 L520,168" class="sv-la" marker-end="url(#ahA)"/>
+          <path d="M544,56 L544,168" class="sv-lg" marker-end="url(#ahG)"/>
+          <text x="512" y="48" text-anchor="middle" class="sv-a">Na⁺</text><text x="554" y="48" text-anchor="middle" class="sv-g">Glc</text>
+          <text x="532" y="200" text-anchor="middle" class="sv-b">Symport</text>
+          <text x="532" y="214" text-anchor="middle" class="sv-s">same direction</text><text x="532" y="228" text-anchor="middle" class="sv-s">(SGLT1)</text>
+        </g>
+        <!-- 6 antiport -->
+        <g>
+          <rect x="612" y="92" width="44" height="56" rx="10" class="sv-boxg"/>
+          <path d="M622,56 L622,168" class="sv-la" marker-end="url(#ahA)"/>
+          <path d="M646,168 L646,56" class="sv-lr" marker-end="url(#ahR)"/>
+          <text x="614" y="48" text-anchor="middle" class="sv-a">A</text><text x="652" y="186" text-anchor="middle" class="sv-r">B</text>
+          <text x="634" y="200" text-anchor="middle" class="sv-b">Antiport</text>
+          <text x="634" y="214" text-anchor="middle" class="sv-s">opposite</text><text x="634" y="228" text-anchor="middle" class="sv-s">directions</text>
+        </g>
+      </svg>
+      <figcaption>The first three are passive (downhill). The pump is active. Symport and antiport describe how many things move and in which direction.</figcaption>
+    </figure>
+    <div class="tbl"><table>
+      <thead><tr><th>Type</th><th>Direction</th><th>Carrier?</th><th>Energy?</th><th>Key point / example</th></tr></thead>
+      <tbody>
+        <tr><td><b>Simple diffusion</b></td><td>High → low</td><td>No</td><td>No</td><td>O₂, CO₂, small lipid-soluble molecules</td></tr>
+        <tr><td><b>Facilitated diffusion</b></td><td>High → low</td><td>Yes</td><td>No</td><td>Saturable (has a Vmax). Glucose via GLUT</td></tr>
+        <tr><td><b>Ion channels</b></td><td>High → low</td><td>Channel</td><td>No</td><td>Voltage-gated, ligand-gated (e.g. acetylcholine receptor), mechanically gated</td></tr>
+        <tr><td><b>Ionophores</b></td><td>High → low</td><td>Small molecule</td><td>No</td><td>Valinomycin carries K⁺ across; used to study transport</td></tr>
+        <tr><td><b>Primary active</b></td><td>Low → high</td><td>Yes</td><td>ATP directly</td><td>Na⁺/K⁺ ATPase: <b>3 Na⁺ out, 2 K⁺ in</b> per ATP; Ca²⁺ pump</td></tr>
+        <tr><td><b>Secondary active</b></td><td>Low → high</td><td>Yes</td><td>Uses Na⁺ gradient</td><td>SGLT1 carries glucose with Na⁺</td></tr>
+        <tr><td><b>Uniport</b></td><td colspan="4">One substance moves (GLUT)</td></tr>
+        <tr><td><b>Symport</b></td><td colspan="4">Two substances, same direction (Na⁺ + glucose)</td></tr>
+        <tr><td><b>Antiport</b></td><td colspan="4">Two substances, opposite directions (Na⁺/K⁺ pump, Cl⁻/HCO₃⁻ exchanger in RBC)</td></tr>
+      </tbody></table></div>
+    <div class="two">
+      <div class="mini"><h4>Exocytosis</h4><p>A vesicle fuses with the membrane and dumps its contents outside. Example: insulin release, neurotransmitter release.</p></div>
+      <div class="mini"><h4>Endocytosis</h4><p>The membrane folds in and swallows material.</p><ul class="k"><li><b>Pinocytosis</b>: "cell drinking" (fluid)</li><li><b>Phagocytosis</b>: "cell eating" (bacteria, debris)</li><li><b>Receptor-mediated</b>: specific (e.g. LDL via LDL receptor)</li></ul></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PART 2 ============ -->
+<section class="part" id="p2">
+  <div class="parthead">
+    <div class="eyebrow">Part 2 · Chapter 5 · pp. 40–59 · BI 2.1–2.7</div>
+    <h2>Enzymes</h2>
+    <p class="sub">What enzymes are, how they are named, how fast they work, and how they are switched on and off.</p>
+  </div>
+
+  <div class="topic">
+    <h3><span class="num">#12</span> What is an enzyme? <span class="pg">pp. 40–41</span></h3>
+    <p>An enzyme is a <b class="t">biological catalyst</b>: it speeds up a reaction without being used up. The molecule it works on is the <b class="t">substrate</b>; what comes out is the <b class="t">product</b>. The substrate fits into a pocket called the <b class="t">active site</b>.</p>
+    <div class="eq">E + S ⇌ ES complex → E + P</div>
+    <ul class="k cols"><li>Mostly proteins (ribozymes are RNA enzymes)</li><li>Destroyed by heat</li><li>Water soluble</li><li>Very specific</li><li>Speed up reactions a lot</li><li><b>Do not change the equilibrium</b>, only how fast it is reached</li></ul>
+  </div>
+
+  <div class="topic">
+    <h3><span class="num">#13</span> IUBMB classification: 6 classes <span class="pg">pp. 41–42</span></h3>
+    <div class="tbl"><table>
+      <thead><tr><th>Class</th><th>Name</th><th>What it does</th><th>Examples</th></tr></thead>
+      <tbody>
+        <tr><td class="n">1</td><td><b>Oxidoreductases</b></td><td>Oxidation–reduction (move H or electrons)</td><td>LDH, G6PD, succinate dehydrogenase</td></tr>
+        <tr><td class="n">2</td><td><b>Transferases</b></td><td>Move a group from one molecule to another</td><td>Aminotransferases (ALT, AST), kinases (hexokinase)</td></tr>
+        <tr><td class="n">3</td><td><b>Hydrolases</b></td><td>Break bonds by adding water</td><td>Trypsin, acetylcholinesterase, lipase</td></tr>
+        <tr><td class="n">4</td><td><b>Lyases</b></td><td>Break bonds without water or oxidation</td><td>Aldolase</td></tr>
+        <tr><td class="n">5</td><td><b>Isomerases</b></td><td>Change one isomer into another</td><td>Triose phosphate isomerase</td></tr>
+        <tr><td class="n">6</td><td><b>Ligases</b></td><td>Join two molecules, using ATP</td><td>Acetyl-CoA carboxylase, pyruvate carboxylase</td></tr>
+      </tbody></table></div>
+    <div class="box mem"><strong>Mnemonic</strong><b>O</b>ver <b>T</b>he <b>H</b>ill <b>L</b>ies <b>I</b>ndia's <b>L</b>ibrary → Oxidoreductase, Transferase, Hydrolase, Lyase, Isomerase, Ligase (in order 1–6). Each enzyme gets a 4-number code, e.g. EC 2.7.1.1 = hexokinase.</div>
+  </div>
+
+  <div class="topic">
+    <h3><span class="num">#14</span> Coenzymes and cofactors <span class="pg">pp. 42–43</span></h3>
+    <div class="flow"><span>Apoenzyme (protein part, inactive alone)</span><i>+</i><span>Coenzyme (organic) or cofactor (metal ion)</span><i>=</i><span class="hi">Holoenzyme (active)</span></div>
+    <p>Most coenzymes are made from <b class="t">B-complex vitamins</b>. That is why B-vitamin deficiency slows down metabolism.</p>
+    <div class="tbl"><table>
+      <thead><tr><th>Coenzyme</th><th>From vitamin</th><th>Carries / transfers</th><th>Example enzyme</th></tr></thead>
+      <tbody>
+        <tr><td><b>TPP</b></td><td>B1 (thiamine)</td><td>Hydroxyethyl (2-carbon) groups</td><td>PDH, transketolase</td></tr>
+        <tr><td><b>FAD / FMN</b></td><td>B2 (riboflavin)</td><td>Hydrogen / electrons</td><td>Succinate dehydrogenase</td></tr>
+        <tr><td><b>NAD⁺ / NADP⁺</b></td><td>B3 (niacin)</td><td>Hydrogen / electrons</td><td>LDH, G6PD</td></tr>
+        <tr><td><b>Coenzyme A</b></td><td>B5 (pantothenic acid)</td><td>Acyl groups</td><td>PDH, TCA</td></tr>
+        <tr><td><b>PLP</b></td><td>B6 (pyridoxine)</td><td>Amino groups</td><td>ALT, AST, glycogen phosphorylase</td></tr>
+        <tr><td><b>Biotin</b></td><td>B7</td><td>CO₂</td><td>Pyruvate carboxylase</td></tr>
+        <tr><td><b>THF</b></td><td>B9 (folic acid)</td><td>One-carbon groups</td><td>Purine synthesis</td></tr>
+      </tbody></table></div>
+  </div>
+
+  <div class="topic">
+    <h3><span class="num">#15</span> Mechanism of enzyme action <span class="pg">pp. 44–47</span></h3>
+    <p>Every reaction must climb an energy "hill" called <b class="t">activation energy</b> to reach the <b class="t">transition state</b>. Enzymes <b class="t">lower the hill</b>, so many more molecules can cross it. The start and end levels do not change.</p>
+    <div class="two">
+      <figure class="sm">
+        <svg viewBox="0 0 320 210" role="img" aria-label="Energy diagram: enzyme lowers activation energy">
+          <path d="M30,20 L30,185 L305,185" class="sv-ax"/>
+          <text x="14" y="110" transform="rotate(-90 14 110)" text-anchor="middle" class="sv-s">Energy</text>
+          <text x="170" y="202" text-anchor="middle" class="sv-s">Progress of reaction →</text>
+          <path d="M35,125 L75,125 C115,125 125,30 165,30 C205,30 215,160 255,160 L300,160" class="sv-lr"/>
+          <path d="M75,125 C115,125 125,88 165,88 C205,88 215,160 255,160" class="sv-la dash"/>
+          <text x="40" y="118" class="sv-s">Substrate</text>
+          <text x="258" y="153" class="sv-s">Product</text>
+          <text x="172" y="24" class="sv-r">Without enzyme</text>
+          <text x="172" y="82" class="sv-a">With enzyme</text>
+          <path d="M100,125 L100,34" class="sv-l" marker-end="url(#ah)" marker-start="url(#ah)"/>
+          <text x="96" y="70" text-anchor="end" class="sv-s">Ea</text>
+        </svg>
+        <figcaption>Enzyme lowers activation energy (Ea). The ΔG between substrate and product stays the same.</figcaption>
+      </figure>
+      <figure class="sm">
+        <svg viewBox="0 0 320 210" role="img" aria-label="Lock and key versus induced fit">
+          <text x="80" y="20" text-anchor="middle" class="sv-b">Lock and key</text>
+          <text x="80" y="34" text-anchor="middle" class="sv-s">(Fischer)</text>
+          <path d="M30,150 L30,90 L60,90 L80,65 L100,90 L130,90 L130,150 Z" class="sv-boxg"/>
+          <path d="M60,82 L80,57 L100,82 Z" class="sv-boxa" transform="translate(0,-18)"/>
+          <text x="80" y="54" text-anchor="middle" class="sv-a" dy="-4">S</text>
+          <text x="80" y="130" text-anchor="middle" class="sv-g">Enzyme</text>
+          <text x="80" y="176" text-anchor="middle" class="sv-s">Site is rigid; shape</text>
+          <text x="80" y="190" text-anchor="middle" class="sv-s">already fits exactly</text>
+          <text x="240" y="20" text-anchor="middle" class="sv-b">Induced fit</text>
+          <text x="240" y="34" text-anchor="middle" class="sv-s">(Koshland)</text>
+          <path d="M190,150 L190,90 Q205,90 215,78 Q240,95 265,78 Q275,90 290,90 L290,150 Z" class="sv-boxg"/>
+          <circle cx="240" cy="68" r="14" class="sv-boxa"/>
+          <text x="240" y="72" text-anchor="middle" class="sv-a">S</text>
+          <path d="M212,72 L222,80 M268,72 L258,80" class="sv-lg" marker-end="url(#ahG)"/>
+          <text x="240" y="130" text-anchor="middle" class="sv-g">Enzyme</text>
+          <text x="240" y="176" text-anchor="middle" class="sv-s">Substrate binding makes</text>
+          <text x="240" y="190" text-anchor="middle" class="sv-s">the site wrap around it</text>
+        </svg>
+        <figcaption>Induced fit is the accepted modern model.</figcaption>
+      </figure>
+    </div>
+  </div>
+
+  <div class="topic">
+    <h3><span class="num">#16</span> Active site <span class="pg">pp. 46–47</span></h3>
+    <p>A small 3-D pocket or cleft on the enzyme, made by amino acids that may be far apart in the chain but come close when the protein folds.</p>
+    <ul class="k cols"><li><b>Binding site</b>: holds the substrate</li><li><b>Catalytic site</b>: does the chemistry</li><li>Catalytic residues often serine, histidine, cysteine, aspartate</li><li>Substrate held by <b>non-covalent</b> bonds (H-bonds, ionic, hydrophobic)</li><li>Shape of site explains <b>specificity</b></li></ul>
+  </div>
+
+  <div class="topic">
+    <h3><span class="num">#17</span> Enzyme kinetics: Km and Vmax <span class="pg">pp. 47–50</span></h3>
+    <p>As you add more substrate, the speed rises, then flattens out when every enzyme molecule is busy. That flat top is <b class="t">Vmax</b>. <b class="t">Km</b> is the substrate concentration that gives half of Vmax.</p>
+    <figure class="sm">
+      <svg viewBox="0 0 340 230" role="img" aria-label="Michaelis-Menten hyperbolic curve and allosteric sigmoid curve">
+        <path d="M40,15 L40,190 L320,190" class="sv-ax"/>
+        <text x="16" y="105" transform="rotate(-90 16 105)" text-anchor="middle" class="sv-s">Velocity (V)</text>
+        <text x="180" y="222" text-anchor="middle" class="sv-s">Substrate concentration [S] →</text>
+        <path d="M40,50 L320,50" class="sv-grid dash"/>
+        <text x="316" y="44" text-anchor="end" class="sv-b">Vmax</text>
+        <path d="M40,120 L90,120 L90,190" class="sv-grid dash"/>
+        <text x="44" y="114" class="sv-s">½ Vmax</text>
+        <text x="90" y="205" text-anchor="middle" class="sv-a">Km</text>
+        <polyline points="40,190 45,177 50,167 65,143 75,132 90,120 115,106 140,97 190,85 240,78 300,72.5" class="sv-la"/>
+        <polyline points="40,190 70,182 100,153 130,120 160,96 200,77 240,67 300,59" class="sv-lr dash"/>
+        <text x="236" y="98" class="sv-a">Michaelis–Menten</text>
+        <text x="236" y="110" class="sv-s">(hyperbola)</text>
+        <text x="150" y="140" class="sv-r">Allosteric (sigmoid)</text>
+      </svg>
+      <figcaption>Blue: normal enzyme (hyperbola). Red dashed: allosteric enzyme (S-shaped, see #21).</figcaption>
+    </figure>
+    <div class="eq">V = Vmax [S] / (Km + [S])        When [S] = Km  →  V = ½ Vmax</div>
+    <div class="box mem"><strong>Key rule</strong><b>Low Km = high affinity</b> (the enzyme needs only a little substrate to work at half speed). Example: hexokinase (low Km) grabs glucose even when blood glucose is low; glucokinase (high Km) works only when glucose is high, after meals.</div>
+  </div>
+
+  <div class="topic">
+    <h3><span class="num">#18</span> Lineweaver–Burk (double reciprocal) plot <span class="pg">p. 50</span></h3>
+    <p>Taking 1/V and 1/[S] turns the curve into a straight line. This makes Km and Vmax easy to read, and makes inhibitor types easy to tell apart.</p>
+    <div class="eq">1/V = (Km/Vmax) · 1/[S] + 1/Vmax</div>
+    <figure class="sm">
+      <svg viewBox="0 0 340 230" role="img" aria-label="Lineweaver-Burk plot with inhibitor lines">
+        <path d="M10,190 L330,190 M120,15 L120,205" class="sv-ax"/>
+        <text x="326" y="206" text-anchor="end" class="sv-s">1/[S]</text>
+        <text x="126" y="22" class="sv-s">1/V</text>
+        <line x1="20" y1="190" x2="320" y2="100" class="sv-la"/>
+        <line x1="70" y1="190" x2="320" y2="40" class="sv-lr"/>
+        <line x1="20" y1="190" x2="300" y2="22" class="sv-lg dash"/>
+        <line x1="20" y1="160" x2="320" y2="70" class="sv-l dash"/>
+        <circle cx="20" cy="190" r="3.5" class="sv-fill-a"/><circle cx="120" cy="160" r="3.5" class="sv-fill-a"/>
+        <text x="20" y="208" text-anchor="middle" class="sv-a">−1/Km</text>
+        <text x="126" y="170" class="sv-a">1/Vmax</text>
+        <text x="322" y="104" class="sv-a" text-anchor="end" dy="14">No inhibitor</text>
+        <text x="258" y="60" class="sv-r">Competitive</text>
+        <text x="200" y="70" class="sv-g" text-anchor="end">Non-competitive</text>
+        <text x="322" y="88" class="sv-s" text-anchor="end">Uncompetitive</text>
+      </svg>
+      <figcaption>Competitive: same Y-intercept (Vmax same). Non-competitive: same X-intercept (Km same). Uncompetitive: parallel line.</figcaption>
+    </figure>
+    <ul class="k"><li><b>X-intercept = −1/Km</b></li><li><b>Y-intercept = 1/Vmax</b></li><li>Slope = Km/Vmax</li></ul>
+  </div>
+
+  <div class="topic">
+    <h3><span class="num">#19</span> Factors affecting enzyme activity <span class="pg">pp. 48–51</span></h3>
+    <div class="tbl"><table>
+      <thead><tr><th>Factor</th><th>Effect</th></tr></thead>
+      <tbody>
+        <tr><td><b>Enzyme concentration</b></td><td>More enzyme → faster, in a straight line (if substrate is plenty)</td></tr>
+        <tr><td><b>Substrate concentration</b></td><td>Rises, then flattens at Vmax (hyperbola)</td></tr>
+        <tr><td><b>Product concentration</b></td><td>Too much product slows the reaction (product inhibition)</td></tr>
+        <tr><td><b>Temperature</b></td><td>Rate rises up to an <b>optimum</b> (≈ 37 °C in humans), then falls as the protein is destroyed. Bell-shaped curve</td></tr>
+        <tr><td><b>pH</b></td><td>Each enzyme has an optimum pH. Pepsin ≈ 2, most enzymes ≈ 7.4, alkaline phosphatase ≈ 10, acid phosphatase ≈ 5. Bell-shaped curve</td></tr>
+        <tr><td><b>Activators</b></td><td>Metal ions such as Mg²⁺ (kinases), Cl⁻ (salivary amylase)</td></tr>
+        <tr><td><b>Inhibitors</b></td><td>Slow or stop the enzyme (#20)</td></tr>
+        <tr><td><b>Induction / repression</b></td><td>Change the <i>amount</i> of enzyme made (#23)</td></tr>
+        <tr><td><b>Covalent modification</b></td><td>Phosphate added or removed switches it on/off (#24)</td></tr>
+      </tbody></table></div>
+    <p>Some enzymes are made as an inactive form called a <b class="t">zymogen</b> (proenzyme), e.g. trypsinogen → trypsin, pepsinogen → pepsin. They become active only when a piece is cut off.</p>
+  </div>
+
+  <div class="topic">
+    <h3><span class="num">#20</span> Enzyme inhibition <span class="pg">pp. 52–55</span></h3>
+    <div class="tbl"><table>
+      <thead><tr><th>Type</th><th>Where inhibitor binds</th><th>Km</th><th>Vmax</th><th>Beat it with more substrate?</th><th>Examples</th></tr></thead>
+      <tbody>
+        <tr><td><b>Competitive</b></td><td>Active site (looks like substrate)</td><td>↑</td><td>Same</td><td>Yes</td><td>Malonate → succinate DH; statins → HMG-CoA reductase; methotrexate → dihydrofolate reductase</td></tr>
+        <tr><td><b>Non-competitive</b></td><td>Another site</td><td>Same</td><td>↓</td><td>No</td><td>Cyanide (cytochrome oxidase), heavy metals (Pb, Hg), iodoacetate</td></tr>
+        <tr><td><b>Uncompetitive</b></td><td>Only the ES complex</td><td>↓</td><td>↓</td><td>No</td><td>Rare; e.g. some inhibitors of placental ALP</td></tr>
+        <tr><td><b>Suicide (irreversible)</b></td><td>Enzyme turns the inhibitor into a reactive form that kills it</td><td colspan="2">Enzyme permanently lost</td><td>No</td><td>Allopurinol (xanthine oxidase), aspirin (cyclo-oxygenase), 5-FU</td></tr>
+      </tbody></table></div>
+    <div class="box mem"><strong>Remember</strong><b>C</b>ompetitive = <b>C</b>hanges Km. <b>N</b>on-competitive = <b>N</b>ot Km, only Vmax. <b>U</b>ncompetitive = <b>U</b>nder both (both go down).</div>
+  </div>
+
+  <div class="topic">
+    <h3><span class="num">#21</span> Allosteric regulation <span class="pg">p. 55</span></h3>
+    <p>"Allo" means "other". An allosteric enzyme has a second site (the <b class="t">allosteric site</b>) away from the active site. A molecule binding there changes the enzyme's shape and its speed.</p>
+    <div class="two">
+      <div class="mini"><h4>Positive modifier</h4><p>Speeds up the enzyme. Example: AMP and fructose-2,6-bisphosphate activate PFK-1.</p></div>
+      <div class="mini"><h4>Negative modifier</h4><p>Slows it down. Example: ATP and citrate inhibit PFK-1.</p></div>
+    </div>
+    <ul class="k"><li>Usually several subunits → <b>cooperativity</b> (one binding makes the next easier)</li><li>Gives an <b>S-shaped (sigmoid)</b> curve, not a hyperbola (see #17 graph)</li><li>Usually the <b>key / rate-limiting enzyme</b> of a pathway, placed at the first committed step</li></ul>
+  </div>
+
+  <div class="topic">
+    <h3><span class="num">#22</span> Feedback inhibition</h3>
+    <p>The end product of a pathway turns off the first enzyme. This stops the cell making more than it needs.</p>
+    <figure class="sm">
+      <svg viewBox="0 0 380 120" role="img" aria-label="Feedback inhibition: end product D inhibits first enzyme E1">
+        <rect x="10" y="60" width="48" height="30" rx="6" class="sv-box"/><text x="34" y="80" text-anchor="middle" class="sv-b">A</text>
+        <rect x="110" y="60" width="48" height="30" rx="6" class="sv-box"/><text x="134" y="80" text-anchor="middle" class="sv-b">B</text>
+        <rect x="210" y="60" width="48" height="30" rx="6" class="sv-box"/><text x="234" y="80" text-anchor="middle" class="sv-b">C</text>
+        <rect x="310" y="60" width="48" height="30" rx="6" class="sv-boxa"/><text x="334" y="80" text-anchor="middle" class="sv-a">D</text>
+        <path d="M58,75 L108,75 M158,75 L208,75 M258,75 L308,75" class="sv-l" marker-end="url(#ah)"/>
+        <text x="84" y="104" text-anchor="middle" class="sv-s">E1</text><text x="184" y="104" text-anchor="middle" class="sv-s">E2</text><text x="284" y="104" text-anchor="middle" class="sv-s">E3</text>
+        <path d="M334,58 C334,10 84,10 84,66" class="sv-lr dash" marker-end="url(#ahR)"/>
+        <text x="210" y="24" text-anchor="middle" class="sv-r">D inhibits E1 (⊖)</text>
+      </svg>
+    </figure>
+    <p>Example: CTP inhibits aspartate transcarbamoylase in pyrimidine synthesis; cholesterol inhibits HMG-CoA reductase.</p>
+  </div>
+
+  <div class="topic">
+    <h3><span class="num">#23</span> Induction and repression <span class="pg">p. 56</span></h3>
+    <div class="two">
+      <div class="mini"><h4>Induction</h4><p>The cell <b>makes more</b> of the enzyme. Example: insulin induces glucokinase; alcohol and barbiturates induce cytochrome P450.</p></div>
+      <div class="mini"><h4>Repression</h4><p>The cell <b>makes less</b> of the enzyme. Example: heme represses ALA synthase.</p></div>
+    </div>
+    <div class="box mem"><strong>Remember</strong>Induction and repression change the <i>amount</i> of enzyme (slow, hours to days). Allosteric and covalent control change the <i>activity</i> of enzyme already present (fast, seconds to minutes).</div>
+  </div>
+
+  <div class="topic">
+    <h3><span class="num">#24</span> Covalent modification <span class="pg">pp. 57–58</span></h3>
+    <p>A phosphate group is added (by a <b class="t">kinase</b>) or removed (by a <b class="t">phosphatase</b>). This flips the enzyme on or off.</p>
+    <div class="tbl"><table>
+      <thead><tr><th>Enzyme</th><th>Phosphorylated (glucagon / adrenaline)</th><th>Dephosphorylated (insulin)</th></tr></thead>
+      <tbody>
+        <tr><td>Glycogen phosphorylase</td><td><b>Active</b></td><td>Inactive</td></tr>
+        <tr><td>Glycogen synthase</td><td>Inactive</td><td><b>Active</b></td></tr>
+        <tr><td>Pyruvate dehydrogenase</td><td>Inactive</td><td><b>Active</b></td></tr>
+        <tr><td>Acetyl-CoA carboxylase</td><td>Inactive</td><td><b>Active</b></td></tr>
+      </tbody></table></div>
+    <div class="box mem"><strong>Pattern</strong>Glucagon (fasting) → phosphorylation → breaking-down enzymes ON. Insulin (fed) → dephosphorylation → building enzymes ON.</div>
+  </div>
+
+  <div class="topic">
+    <h3><span class="num">#25</span> Enzyme specificity <span class="pg">pp. 57–58</span></h3>
+    <div class="tbl"><table>
+      <thead><tr><th>Type</th><th>Meaning</th><th>Example</th></tr></thead>
+      <tbody>
+        <tr><td><b>Absolute</b></td><td>Only one substrate</td><td>Urease acts only on urea</td></tr>
+        <tr><td><b>Bond</b></td><td>One type of bond</td><td>Peptidases act on peptide bonds</td></tr>
+        <tr><td><b>Group</b></td><td>A group of related substrates</td><td>Trypsin cuts after lysine or arginine; hexokinase acts on several hexoses</td></tr>
+        <tr><td><b>Stereo</b></td><td>Only one optical form (D or L)</td><td>L-amino acid oxidase acts only on L-amino acids</td></tr>
+      </tbody></table></div>
+  </div>
+
+  <div class="topic">
+    <h3><span class="num">#26</span> Enzyme assay and units <span class="pg">p. 58</span></h3>
+    <p>We usually measure an enzyme by how fast it works (its <b class="t">activity</b>), not by its weight.</p>
+    <ul class="k"><li><b>International Unit (U)</b>: amount of enzyme that converts <b>1 µmol</b> of substrate per <b>minute</b> under set conditions. Serum values are in <b>U/L</b></li><li><b>Katal</b>: converts <b>1 mol per second</b> (SI unit)</li><li><b>Spectrophotometric assay</b>: NADH absorbs light at <b>340 nm</b>, NAD⁺ does not. So we follow the change in light absorbed at 340 nm (e.g. LDH, ALT, AST assays)</li></ul>
+  </div>
+
+  <div class="topic">
+    <h3><span class="num">#27</span> Isoenzymes and alloenzymes <span class="pg">pp. 58–59</span></h3>
+    <div class="two">
+      <div class="mini"><h4>Isoenzymes</h4><p>Different forms of an enzyme that do the <b>same reaction</b> but differ in structure, charge, Km and tissue. Separated by <b>electrophoresis</b>. Tell us <b>which organ</b> is damaged.</p><p>Examples: <b>LDH</b> (5 forms), <b>CK</b> (3 forms), <b>ALP</b> (bone, liver, placenta, intestine).</p></div>
+      <div class="mini"><h4>Alloenzymes (allozymes)</h4><p>Different forms made by <b>different alleles of the same gene</b> (small genetic variation between people). Example: variants of G6PD.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PART 3 ============ -->
+<section class="part" id="p3">
+  <div class="parthead">
+    <div class="eyebrow">Part 3 · Chapter 6 · pp. 60–72 · BI 3.1</div>
+    <h2>Chemistry of carbohydrates</h2>
+    <p class="sub">What sugars are, how they are built, how they differ from each other, and their test reactions.</p>
+  </div>
+
+  <div class="topic">
+    <h3><span class="num">#28</span> Functions of carbohydrates <span class="pg">p. 60</span></h3>
+    <ul class="k cols"><li><b>Main energy source</b>: 4 kcal/g</li><li><b>Storage</b>: glycogen (animals), starch (plants)</li><li><b>Structure</b>: cellulose (plants), chitin, GAGs in cartilage</li><li>Part of <b>cell membranes</b> (glycocalyx)</li><li>Part of <b>glycoproteins and glycolipids</b></li><li>Extra glucose is <b>turned into fat</b></li><li>Part of nucleic acids (ribose, deoxyribose)</li></ul>
+  </div>
+
+  <div class="topic">
+    <h3><span class="num">#29</span> Classification</h3>
+    <div class="flow"><span class="hi">Monosaccharide (1 unit)</span><i>→</i><span class="hi">Disaccharide (2)</span><i>→</i><span class="hi">Oligosaccharide (3–10)</span><i>→</i><span class="hi">Polysaccharide (&gt;10)</span></div>
+    <div class="two">
+      <div class="mini"><h4>By functional group</h4><p><b>Aldose</b>: has an aldehyde (–CHO) group, e.g. glucose.</p><p><b>Ketose</b>: has a ketone (C=O) group, e.g. fructose.</p></div>
+      <div class="mini"><h4>By number of carbons</h4><p>Triose (3) · Tetrose (4) · Pentose (5) · Hexose (6) · Heptose (7)</p><p>So glucose = <b>aldohexose</b>, fructose = <b>ketohexose</b>, ribose = <b>aldopentose</b>.</p></div>
+    </div>
+  </div>
+
+  <div class="topic">
+    <h3><span class="num">#30</span> Important monosaccharides <span class="pg">pp. 60–62</span></h3>
+    <div class="tbl"><table>
+      <thead><tr><th>Sugar</th><th>Type</th><th>Why it matters</th></tr></thead>
+      <tbody>
+        <tr><td><b>Glucose</b></td><td>Aldohexose</td><td>Main blood sugar; main fuel for brain and RBC</td></tr>
+        <tr><td><b>Fructose</b></td><td>Ketohexose</td><td>Fruit sugar; part of sucrose; sugar of semen</td></tr>
+        <tr><td><b>Galactose</b></td><td>Aldohexose</td><td>Part of lactose (milk sugar), glycoproteins, glycolipids</td></tr>
+        <tr><td><b>Mannose</b></td><td>Aldohexose</td><td>Part of glycoproteins</td></tr>
+      </tbody></table></div>
+  </div>
+
+  <div class="topic">
+    <h3><span class="num">#31</span> Stereoisomerism and epimers <span class="pg">pp. 60–63</span></h3>
+    <p>A carbon with four different groups attached is an <b class="t">asymmetric (chiral) carbon</b>. Molecules with the same formula but different 3-D arrangement are <b class="t">stereoisomers</b>. Glucose has 4 chiral carbons, so 2⁴ = 16 possible isomers.</p>
+    <ul class="k cols">
+      <li><b>D and L forms</b>: decided by the OH on the carbon farthest from C1 (C5 in glucose). OH on the right = D. Body sugars are mostly D</li>
+      <li><b>Optical activity</b>: rotates polarised light. <b>Dextrorotatory (+)</b> to the right, <b>Levorotatory (−)</b> to the left. D/L is not the same as +/−</li>
+      <li><b>Diastereoisomers</b>: stereoisomers that are not mirror images</li>
+      <li><b>Epimers</b>: differ at <b>only one</b> carbon (other than C1)</li>
+    </ul>
+    <figure>
+      <svg viewBox="0 0 580 240" role="img" aria-label="Fischer projections of D-glucose, D-mannose, D-galactose and D-fructose">
+        <g><!-- glucose cx=80 -->
+          <text x="80" y="36" text-anchor="middle" class="sv-b">CHO</text>
+          <path d="M80,42 L80,178" class="sv-l"/>
+          <path d="M50,70 L110,70 M50,100 L110,100 M50,130 L110,130 M50,160 L110,160" class="sv-l"/>
+          <text x="46" y="74" text-anchor="end" class="sv-t">H</text><text x="114" y="74" class="sv-t">OH</text>
+          <text x="46" y="104" text-anchor="end" class="sv-t">HO</text><text x="114" y="104" class="sv-t">H</text>
+          <text x="46" y="134" text-anchor="end" class="sv-t">H</text><text x="114" y="134" class="sv-t">OH</text>
+          <text x="46" y="164" text-anchor="end" class="sv-t">H</text><text x="114" y="164" class="sv-t">OH</text>
+          <text x="80" y="196" text-anchor="middle" class="sv-b">CH₂OH</text>
+          <text x="80" y="222" text-anchor="middle" class="sv-b">D-Glucose</text>
+        </g>
+        <g><!-- mannose cx=225 -->
+          <text x="225" y="36" text-anchor="middle" class="sv-b">CHO</text>
+          <path d="M225,42 L225,178" class="sv-l"/>
+          <path d="M195,70 L255,70 M195,100 L255,100 M195,130 L255,130 M195,160 L255,160" class="sv-l"/>
+          <rect x="164" y="60" width="32" height="18" rx="4" class="sv-boxr"/>
+          <text x="191" y="74" text-anchor="end" class="sv-r">HO</text><text x="259" y="74" class="sv-t">H</text>
+          <text x="191" y="104" text-anchor="end" class="sv-t">HO</text><text x="259" y="104" class="sv-t">H</text>
+          <text x="191" y="134" text-anchor="end" class="sv-t">H</text><text x="259" y="134" class="sv-t">OH</text>
+          <text x="191" y="164" text-anchor="end" class="sv-t">H</text><text x="259" y="164" class="sv-t">OH</text>
+          <text x="225" y="196" text-anchor="middle" class="sv-b">CH₂OH</text>
+          <text x="225" y="222" text-anchor="middle" class="sv-b">D-Mannose</text>
+          <text x="225" y="236" text-anchor="middle" class="sv-r">C2 epimer</text>
+        </g>
+        <g><!-- galactose cx=370 -->
+          <text x="370" y="36" text-anchor="middle" class="sv-b">CHO</text>
+          <path d="M370,42 L370,178" class="sv-l"/>
+          <path d="M340,70 L400,70 M340,100 L400,100 M340,130 L400,130 M340,160 L400,160" class="sv-l"/>
+          <rect x="309" y="120" width="32" height="18" rx="4" class="sv-boxr"/>
+          <text x="336" y="74" text-anchor="end" class="sv-t">H</text><text x="404" y="74" class="sv-t">OH</text>
+          <text x="336" y="104" text-anchor="end" class="sv-t">HO</text><text x="404" y="104" class="sv-t">H</text>
+          <text x="336" y="134" text-anchor="end" class="sv-r">HO</text><text x="404" y="134" class="sv-t">H</text>
+          <text x="336" y="164" text-anchor="end" class="sv-t">H</text><text x="404" y="164" class="sv-t">OH</text>
+          <text x="370" y="196" text-anchor="middle" class="sv-b">CH₂OH</text>
+          <text x="370" y="222" text-anchor="middle" class="sv-b">D-Galactose</text>
+          <text x="370" y="236" text-anchor="middle" class="sv-r">C4 epimer</text>
+        </g>
+        <g><!-- fructose cx=510 -->
+          <text x="510" y="36" text-anchor="middle" class="sv-b">CH₂OH</text>
+          <path d="M510,42 L510,60 M510,80 L510,178" class="sv-l"/>
+          <text x="510" y="74" text-anchor="middle" class="sv-a">C=O</text>
+          <path d="M480,100 L540,100 M480,130 L540,130 M480,160 L540,160" class="sv-l"/>
+          <text x="476" y="104" text-anchor="end" class="sv-t">HO</text><text x="544" y="104" class="sv-t">H</text>
+          <text x="476" y="134" text-anchor="end" class="sv-t">H</text><text x="544" y="134" class="sv-t">OH</text>
+          <text x="476" y="164" text-anchor="end" class="sv-t">H</text><text x="544" y="164" class="sv-t">OH</text>
+          <text x="510" y="196" text-anchor="middle" class="sv-b">CH₂OH</text>
+          <text x="510" y="222" text-anchor="middle" class="sv-b">D-Fructose</text>
+          <text x="510" y="236" text-anchor="middle" class="sv-a">ketose, not epimer</text>
+        </g>
+      </svg>
+      <figcaption>Fischer projections. The red box shows the one carbon that differs from glucose. C5 OH on the right in all four = D-sugars.</figcaption>
+    </figure>
+    <div class="box mem"><strong>Must know</strong><b>Mannose = C2 epimer</b> of glucose. <b>Galactose = C4 epimer</b> of glucose. Mannose and galactose are <b>not</b> epimers of each other (they differ at two carbons). Glucose and fructose are not epimers; they are <b>aldose–ketose isomers</b>.</div>
+  </div>
+
+  <div class="topic">
+    <h3><span class="num">#32</span> Anomers and mutarotation <span class="pg">pp. 62–63</span></h3>
+    <p>In water, glucose mostly exists as a <b class="t">ring</b>. When the ring closes, C1 becomes a new chiral carbon called the <b class="t">anomeric carbon</b>. The OH on C1 can point down (<b class="t">α</b>) or up (<b class="t">β</b>).</p>
+    <figure class="sm">
+      <svg viewBox="0 0 400 170" role="img" aria-label="Alpha and beta glucose rings">
+        <g>
+          <path d="M40,80 L80,60 L140,60 L160,80 L140,100 L80,100 Z" class="sv-boxa"/>
+          <text x="124" y="54" class="sv-s">O</text>
+          <text x="164" y="84" class="sv-s">C1</text>
+          <path d="M160,80 L160,125" class="sv-lr"/>
+          <text x="160" y="140" text-anchor="middle" class="sv-r">OH down</text>
+          <text x="100" y="164" text-anchor="middle" class="sv-b">α-D-glucose (36%)</text>
+        </g>
+        <g>
+          <path d="M230,80 L270,60 L330,60 L350,80 L330,100 L270,100 Z" class="sv-boxa"/>
+          <text x="314" y="54" class="sv-s">O</text>
+          <text x="354" y="96" class="sv-s">C1</text>
+          <path d="M350,80 L350,35" class="sv-lg"/>
+          <text x="350" y="28" text-anchor="middle" class="sv-g">OH up</text>
+          <text x="290" y="164" text-anchor="middle" class="sv-b">β-D-glucose (63%)</text>
+        </g>
+        <text x="195" y="84" text-anchor="middle" class="sv-t">⇌</text>
+      </svg>
+      <figcaption>A 6-membered ring (like pyran) is a <b>pyranose</b>; a 5-membered ring (like furan, e.g. fructose) is a <b>furanose</b>. A little open-chain form links the two.</figcaption>
+    </figure>
+    <p><b class="t">Mutarotation</b>: fresh α-glucose has a rotation of +112°, β-glucose +19°. In water, both slowly change into each other until a fixed mixture forms at <b>+52.5°</b>. This change in optical rotation is mutarotation.</p>
+  </div>
+
+  <div class="topic">
+    <h3><span class="num">#33</span> Reactions of monosaccharides <span class="pg">pp. 63–66</span></h3>
+    <div class="two">
+      <div class="mini"><h4>1. Enediol formation</h4><p>In mild alkali, glucose, fructose and mannose change into each other through a shared <b>enediol</b> form. This is why sugars are good reducing agents in alkali.</p></div>
+      <div class="mini"><h4>2. Benedict's test</h4><p>Reducing sugar + blue Cu²⁺ (alkaline) → <b>red Cu₂O</b> precipitate. Colour green → yellow → orange → brick red as sugar rises. Detects any <b>reducing sugar</b>.</p></div>
+      <div class="mini"><h4>3. Osazone formation</h4><p>Reducing sugar + <b>phenylhydrazine</b> → yellow crystals (osazone). Glucose, fructose, mannose give the <b>same needle-shaped</b> crystals (they differ only at C1–C2). Lactose: <b>powder-puff</b>. Maltose: <b>sunflower</b>.</p></div>
+      <div class="mini"><h4>6. Furfural derivatives</h4><p>Strong acid dehydrates sugars to furfural, which gives a <b>violet ring</b> with α-naphthol = <b>Molisch test</b> (general test for all carbohydrates).</p></div>
+    </div>
+    <div class="tbl"><table>
+      <thead><tr><th>4. Oxidation of glucose</th><th>Carbon oxidised</th><th>Product</th></tr></thead>
+      <tbody>
+        <tr><td>Aldonic acid</td><td>C1 (aldehyde)</td><td>Gluconic acid</td></tr>
+        <tr><td>Uronic acid</td><td>C6 (last carbon)</td><td>Glucuronic acid (used to conjugate bilirubin and drugs)</td></tr>
+        <tr><td>Saccharic (aldaric) acid</td><td>Both C1 and C6</td><td>Glucosaccharic acid</td></tr>
+      </tbody></table></div>
+    <div class="tbl"><table>
+      <thead><tr><th>5. Reduction (sugar → sugar alcohol)</th><th>Product</th></tr></thead>
+      <tbody>
+        <tr><td>Glucose</td><td>Sorbitol</td></tr>
+        <tr><td>Mannose</td><td>Mannitol</td></tr>
+        <tr><td>Galactose</td><td>Dulcitol (galactitol)</td></tr>
+        <tr><td>Fructose</td><td>Sorbitol + mannitol</td></tr>
+      </tbody></table></div>
+    <div class="box clin"><strong>Clinical link</strong>Sorbitol and dulcitol cannot leave the lens easily. They pull in water and cause <b>cataract</b> in diabetes and galactosemia. Mannitol is used as an osmotic diuretic to reduce brain swelling.</div>
+  </div>
+
+  <div class="topic">
+    <h3><span class="num">#34</span> Glycosides <span class="pg">p. 66</span></h3>
+    <p>When the anomeric OH of a sugar joins with another molecule, a <b class="t">glycosidic bond</b> forms. The non-sugar part is the <b class="t">aglycone</b>.</p>
+    <p>Because C1 is now locked, glycosides <b>cannot open into the chain form</b>, so they are <b>non-reducing</b>. Examples: digoxin (heart drug, a cardiac glycoside), ouabain (blocks Na⁺/K⁺ ATPase), phlorizin (blocks glucose reabsorption in kidney).</p>
+  </div>
+
+  <div class="topic">
+    <h3><span class="num">#35</span> Amino sugars <span class="pg">p. 66</span></h3>
+    <p>The OH on C2 is replaced by an amino (–NH₂) group. Often acetylated.</p>
+    <ul class="k cols"><li>Glucosamine</li><li>Galactosamine</li><li>N-acetylglucosamine (GlcNAc)</li><li>N-acetylgalactosamine (GalNAc)</li></ul>
+    <p>They are building blocks of GAGs, glycoproteins and blood group substances.</p>
+  </div>
+
+  <div class="topic">
+    <h3><span class="num">#36</span> Deoxy sugars</h3>
+    <p>One oxygen is missing (an OH replaced by H).</p>
+    <ul class="k"><li><b>2-Deoxyribose</b> → in <b>DNA</b></li><li><b>L-Fucose</b> (6-deoxygalactose) → in glycoproteins and blood group substances</li></ul>
+  </div>
+
+  <div class="topic">
+    <h3><span class="num">#37</span> Pentoses <span class="pg">p. 67</span></h3>
+    <div class="tbl"><table>
+      <thead><tr><th>Pentose</th><th>Where it matters</th></tr></thead>
+      <tbody>
+        <tr><td>D-Ribose</td><td>RNA, ATP, NAD, FAD, CoA</td></tr>
+        <tr><td>2-Deoxyribose</td><td>DNA</td></tr>
+        <tr><td>D-Ribulose</td><td>HMP pathway (ribulose-5-phosphate)</td></tr>
+        <tr><td>L-Xylulose</td><td>Uronic acid pathway; found in urine in essential pentosuria</td></tr>
+        <tr><td>D-Xylose</td><td>Proteoglycans (links GAG to protein); D-xylose test for absorption</td></tr>
+      </tbody></table></div>
+  </div>
+
+  <div class="topic">
+    <h3><span class="num">#38</span> Disaccharides <span class="pg">pp. 67–68</span></h3>
+    <div class="tbl"><table>
+      <thead><tr><th>Disaccharide</th><th>Made of</th><th>Bond</th><th>Reducing?</th><th>Source / enzyme</th></tr></thead>
+      <tbody>
+        <tr><td><b>Sucrose</b></td><td>Glucose + fructose</td><td>α1 → β2</td><td><b>No</b> (both anomeric carbons used)</td><td>Cane sugar · sucrase</td></tr>
+        <tr><td><b>Lactose</b></td><td>Galactose + glucose</td><td>β1 → 4</td><td>Yes</td><td>Milk · lactase</td></tr>
+        <tr><td><b>Maltose</b></td><td>Glucose + glucose</td><td>α1 → 4</td><td>Yes</td><td>Starch digestion · maltase</td></tr>
+        <tr><td><b>Isomaltose</b></td><td>Glucose + glucose</td><td>α1 → 6</td><td>Yes</td><td>Branch points of starch/glycogen · isomaltase</td></tr>
+      </tbody></table></div>
+    <div class="box mem"><strong>Remember</strong>Sucrose is the only common non-reducing disaccharide → Benedict's negative. Sucrose is also called <b>invert sugar</b> once split, because the rotation flips from + to −.</div>
+  </div>
+
+  <div class="topic">
+    <h3><span class="num">#39</span> Polysaccharides <span class="pg">pp. 69–70</span></h3>
+    <figure>
+      <svg viewBox="0 0 620 170" role="img" aria-label="Amylose straight chain versus branched amylopectin and glycogen">
+        <text x="10" y="22" class="sv-b">Amylose</text><text x="80" y="22" class="sv-s">straight chain, α1→4 only</text>
+        <g class="sv-boxa">
+          <circle cx="20" cy="45" r="8"/><circle cx="40" cy="45" r="8"/><circle cx="60" cy="45" r="8"/><circle cx="80" cy="45" r="8"/><circle cx="100" cy="45" r="8"/><circle cx="120" cy="45" r="8"/><circle cx="140" cy="45" r="8"/><circle cx="160" cy="45" r="8"/><circle cx="180" cy="45" r="8"/><circle cx="200" cy="45" r="8"/><circle cx="220" cy="45" r="8"/><circle cx="240" cy="45" r="8"/>
+        </g>
+        <text x="330" y="22" class="sv-b">Glycogen / amylopectin</text><text x="330" y="36" class="sv-s">branched: α1→4 chains + α1→6 branch points</text>
+        <g class="sv-boxa">
+          <circle cx="330" cy="130" r="8"/><circle cx="350" cy="130" r="8"/><circle cx="370" cy="130" r="8"/><circle cx="390" cy="130" r="8"/><circle cx="410" cy="130" r="8"/><circle cx="430" cy="130" r="8"/><circle cx="450" cy="130" r="8"/><circle cx="470" cy="130" r="8"/><circle cx="490" cy="130" r="8"/><circle cx="510" cy="130" r="8"/>
+          <circle cx="390" cy="108" r="8"/><circle cx="405" cy="92" r="8"/><circle cx="420" cy="76" r="8"/><circle cx="440" cy="76" r="8"/><circle cx="460" cy="76" r="8"/>
+          <circle cx="480" cy="108" r="8"/><circle cx="495" cy="92" r="8"/><circle cx="515" cy="92" r="8"/><circle cx="535" cy="92" r="8"/>
+          <circle cx="440" cy="54" r="8"/><circle cx="455" cy="40" r="8"/><circle cx="475" cy="40" r="8"/>
+        </g>
+        <circle cx="390" cy="130" r="8" class="sv-boxr"/><circle cx="480" cy="130" r="8" class="sv-boxr"/><circle cx="440" cy="76" r="8" class="sv-boxr"/>
+        <text x="330" y="160" class="sv-r">Red = α1→6 branch point</text>
+        <text x="10" y="90" class="sv-t">Amylopectin: branch every 24–30 units</text>
+        <text x="10" y="108" class="sv-t">Glycogen: branch every 8–10 units</text>
+        <text x="10" y="126" class="sv-s">More branches = more free ends =</text>
+        <text x="10" y="140" class="sv-s">faster release of glucose when needed</text>
+      </svg>
+    </figure>
+    <div class="tbl"><table>
+      <thead><tr><th>Polysaccharide</th><th>Made of</th><th>Key facts</th></tr></thead>
+      <tbody>
+        <tr><td><b>Starch</b></td><td>Glucose (α)</td><td>Plant storage. Amylose (15–20%, unbranched, blue with iodine) + amylopectin (80–85%, branched)</td></tr>
+        <tr><td><b>Glycogen</b></td><td>Glucose (α)</td><td>Animal storage in <b>liver and muscle</b>. More branched than amylopectin. Red-brown with iodine</td></tr>
+        <tr><td><b>Cellulose</b></td><td>Glucose (<b>β1→4</b>)</td><td>Plant cell wall. <b>Humans cannot digest it</b> (no β-glucosidase). Adds fibre to stool</td></tr>
+        <tr><td><b>Inulin</b></td><td>Fructose</td><td>Filtered but not reabsorbed or secreted by kidney → used to measure <b>GFR</b></td></tr>
+        <tr><td><b>Dextran</b></td><td>Glucose (made by bacteria)</td><td>Used as plasma expander</td></tr>
+        <tr><td><b>Chitin</b></td><td>N-acetylglucosamine</td><td>Shells of insects and crabs</td></tr>
+      </tbody></table></div>
+  </div>
+
+  <div class="topic">
+    <h3><span class="num">#40</span> Glycosaminoglycans (GAGs) <span class="pg">pp. 71–72</span></h3>
+    <p>Long, unbranched chains of repeating <b class="t">disaccharide units</b> (an amino sugar + a uronic acid). They are negatively charged, hold lots of water, and form jelly-like ground substance. Old name: mucopolysaccharides.</p>
+    <div class="tbl"><table>
+      <thead><tr><th>GAG</th><th>Where</th><th>Special point</th></tr></thead>
+      <tbody>
+        <tr><td><b>Hyaluronic acid</b></td><td>Synovial fluid, vitreous humour, skin</td><td>Not sulphated; not attached to protein; lubricant and shock absorber</td></tr>
+        <tr><td><b>Heparin</b></td><td>Mast cells, liver, lungs</td><td><b>Anticoagulant</b> (activates antithrombin III); most negatively charged</td></tr>
+        <tr><td><b>Chondroitin sulphate</b></td><td>Cartilage, bone, tendons</td><td>Most abundant GAG</td></tr>
+        <tr><td><b>Dermatan sulphate</b></td><td>Skin, blood vessels, heart valves</td><td>—</td></tr>
+        <tr><td><b>Keratan sulphate</b></td><td>Cornea, cartilage</td><td>Has no uronic acid (galactose instead)</td></tr>
+        <tr><td><b>Heparan sulphate</b></td><td>Cell surfaces, basement membrane</td><td>Filtration barrier in kidney</td></tr>
+      </tbody></table></div>
+  </div>
+</section>
+
+<!-- ============ PART 4 ============ -->
+<section class="part" id="p4">
+  <div class="parthead">
+    <div class="eyebrow">Part 4 · Chapter 9 · pp. 90–112 · BI 3.2–3.4</div>
+    <h2>Major carbohydrate metabolism</h2>
+    <p class="sub">The biggest and most important part of Exam 1: digestion, glycolysis, gluconeogenesis and glycogen.</p>
+  </div>
+
+  <div class="topic">
+    <h3><span class="num">#41</span> Digestion of carbohydrates <span class="pg">pp. 90–91</span></h3>
+    <div class="flow v">
+      <span><b>Mouth</b>: salivary α-amylase starts breaking starch (α1→4 bonds)</span>
+      <i>↓</i>
+      <span><b>Stomach</b>: acid (HCl) stops salivary amylase. Almost no carbohydrate digestion here</span>
+      <i>↓</i>
+      <span><b>Small intestine</b>: pancreatic α-amylase → maltose, isomaltose, α-limit dextrins, oligosaccharides</span>
+      <i>↓</i>
+      <span class="hi"><b>Brush border enzymes</b> (on the gut lining): sucrase, maltase, isomaltase, lactase → monosaccharides</span>
+    </div>
+    <p>Amylase cannot break α1→6 bonds (isomaltase does) or β1→4 bonds (so cellulose passes undigested).</p>
+  </div>
+
+  <div class="topic">
+    <h3><span class="num">#42</span> Lactose intolerance <span class="pg">p. 90</span></h3>
+    <div class="flow"><span class="bad">Lactase deficiency</span><i>→</i><span>Lactose stays in gut</span><i>→</i><span>Pulls water in (osmotic)</span><i>+</i><span>Bacteria ferment it → gas + acids</span><i>→</i><span class="bad">Diarrhoea, bloating, flatulence</span></div>
+    <p>Very common in Asian and African adults. Treatment: avoid milk; curd and yoghurt are usually tolerated because the bacteria in them have already broken down some lactose.</p>
+  </div>
+
+  <div class="topic">
+    <h3><span class="num">#43</span> Absorption of carbohydrates <span class="pg">pp. 90–92</span></h3>
+    <p>Only <b class="t">monosaccharides</b> are absorbed.</p>
+    <figure>
+      <svg viewBox="0 0 620 230" role="img" aria-label="Glucose absorption across the intestinal cell">
+        <text x="60" y="22" text-anchor="middle" class="sv-b">Gut lumen</text>
+        <text x="310" y="22" text-anchor="middle" class="sv-b">Enterocyte (gut cell)</text>
+        <text x="560" y="22" text-anchor="middle" class="sv-b">Blood</text>
+        <rect x="150" y="36" width="320" height="180" rx="10" class="sv-box"/>
+        <!-- SGLT1 -->
+        <rect x="138" y="58" width="26" height="56" rx="8" class="sv-boxa"/>
+        <text x="151" y="130" text-anchor="middle" class="sv-a">SGLT1</text>
+        <path d="M40,74 L200,74" class="sv-la" marker-end="url(#ahA)"/><text x="40" y="68" class="sv-a">Glucose / galactose</text>
+        <path d="M40,100 L200,100" class="sv-lr" marker-end="url(#ahR)"/><text x="40" y="94" class="sv-r">2 Na⁺</text>
+        <!-- GLUT5 -->
+        <rect x="138" y="150" width="26" height="40" rx="8" class="sv-boxg"/>
+        <text x="151" y="206" text-anchor="middle" class="sv-g">GLUT5</text>
+        <path d="M40,170 L200,170" class="sv-lg" marker-end="url(#ahG)"/><text x="40" y="164" class="sv-g">Fructose</text>
+        <!-- GLUT2 -->
+        <rect x="456" y="62" width="26" height="56" rx="8" class="sv-boxa"/>
+        <text x="469" y="134" text-anchor="middle" class="sv-a">GLUT2</text>
+        <path d="M420,90 L590,90" class="sv-la" marker-end="url(#ahA)"/>
+        <text x="520" y="84" class="sv-s">all 3 sugars</text>
+        <!-- Na/K pump -->
+        <circle cx="469" cy="172" r="16" class="sv-boxr"/>
+        <text x="469" y="176" text-anchor="middle" class="sv-r">ATP</text>
+        <path d="M430,165 L585,165" class="sv-lr" marker-end="url(#ahR)"/><text x="530" y="159" class="sv-r">3 Na⁺ out</text>
+        <path d="M585,188 L430,188" class="sv-lg" marker-end="url(#ahG)"/><text x="530" y="204" class="sv-g">2 K⁺ in</text>
+        <text x="310" y="120" text-anchor="middle" class="sv-s">Low Na⁺ inside, kept low by the pump,</text>
+        <text x="310" y="134" text-anchor="middle" class="sv-s">drives SGLT1 = secondary active transport</text>
+      </svg>
+    </figure>
+    <ul class="k"><li><b>SGLT1</b> (lumen → cell): glucose/galactose with Na⁺ = <b>secondary active transport</b></li><li><b>GLUT5</b> (lumen → cell): fructose, facilitated diffusion</li><li><b>GLUT2</b> (cell → blood): facilitated diffusion</li><li><b>GLUT4</b> in muscle and fat is <b>insulin-dependent</b></li></ul>
+    <div class="box clin"><strong>Clinical link</strong>Oral rehydration solution (ORS) works because SGLT1 pulls Na⁺ and water in together with glucose, even in cholera.</div>
+  </div>
+
+  <div class="topic">
+    <h3><span class="num">#44</span> Glucose transporters <span class="pg">p. 91</span></h3>
+    <div class="tbl"><table>
+      <thead><tr><th>Transporter</th><th>Main location</th><th>Key point</th></tr></thead>
+      <tbody>
+        <tr><td><b>GLUT1</b></td><td>RBC, brain (blood–brain barrier), many tissues</td><td>Basal glucose uptake</td></tr>
+        <tr><td><b>GLUT2</b></td><td>Liver, intestine, kidney, pancreatic β-cells</td><td>High Km; works when glucose is high; glucose sensor in β-cell</td></tr>
+        <tr><td><b>GLUT3</b></td><td>Neurons</td><td>Low Km; brain gets glucose even when blood glucose falls</td></tr>
+        <tr><td><b>GLUT4</b></td><td>Skeletal muscle, heart, adipose tissue</td><td><b>Insulin-dependent</b></td></tr>
+        <tr><td><b>GLUT5</b></td><td>Intestine, sperm</td><td>Fructose transporter</td></tr>
+        <tr><td><b>GLUT7</b></td><td>Endoplasmic reticulum (liver)</td><td>Moves glucose out of ER after glucose-6-phosphatase</td></tr>
+        <tr><td><b>SGLT1 / SGLT2</b></td><td>Intestine / kidney tubule</td><td>Na⁺-linked. SGLT2 blockers (gliflozins) are diabetes drugs</td></tr>
+      </tbody></table></div>
+  </div>
+
+  <div class="topic" id="glycolysis">
+    <h3><span class="num">#45</span> Glycolysis (Embden–Meyerhof pathway) <span class="pg">pp. 92–99</span></h3>
+    <p>Glycolysis breaks <b class="t">1 glucose (6C) into 2 pyruvate (3C)</b> in the <b class="t">cytoplasm</b> of every cell. With oxygen, pyruvate goes on to the TCA cycle. Without oxygen (or in RBCs, which have no mitochondria), pyruvate becomes <b class="t">lactate</b>.</p>
+    <figure>
+      <svg viewBox="0 0 680 740" role="img" aria-label="Glycolysis pathway with gluconeogenesis bypass steps">
+        <!-- legend -->
+        <rect x="20" y="380" width="190" height="66" rx="6" class="sv-box"/>
+        <line x1="30" y1="398" x2="54" y2="398" class="sv-lr"/><text x="60" y="402" class="sv-s">Irreversible glycolysis step</text>
+        <line x1="30" y1="416" x2="54" y2="416" class="sv-lg"/><text x="60" y="420" class="sv-s">Gluconeogenesis bypass</text>
+        <line x1="30" y1="434" x2="54" y2="434" class="sv-l"/><text x="60" y="438" class="sv-s">Reversible (shared)</text>
+        <!-- metabolite boxes: center x=320, w=140 -->
+        <g>
+          <rect x="250" y="16" width="140" height="28" rx="6" class="sv-boxa"/><text x="320" y="35" text-anchor="middle" class="sv-a">Glucose</text>
+          <rect x="250" y="86" width="140" height="28" rx="6" class="sv-box"/><text x="320" y="105" text-anchor="middle" class="sv-b">Glucose-6-P</text>
+          <rect x="250" y="156" width="140" height="28" rx="6" class="sv-box"/><text x="320" y="175" text-anchor="middle" class="sv-b">Fructose-6-P</text>
+          <rect x="250" y="226" width="140" height="28" rx="6" class="sv-box"/><text x="320" y="245" text-anchor="middle" class="sv-b">Fructose-1,6-bisP</text>
+          <rect x="250" y="306" width="140" height="28" rx="6" class="sv-box"/><text x="320" y="325" text-anchor="middle" class="sv-b">Glyceraldehyde-3-P</text>
+          <rect x="520" y="306" width="140" height="28" rx="6" class="sv-box"/><text x="590" y="325" text-anchor="middle" class="sv-b">DHAP</text>
+          <rect x="250" y="386" width="140" height="28" rx="6" class="sv-box"/><text x="320" y="405" text-anchor="middle" class="sv-b">1,3-Bisphosphoglycerate</text>
+          <rect x="250" y="456" width="140" height="28" rx="6" class="sv-box"/><text x="320" y="475" text-anchor="middle" class="sv-b">3-Phosphoglycerate</text>
+          <rect x="250" y="526" width="140" height="28" rx="6" class="sv-box"/><text x="320" y="545" text-anchor="middle" class="sv-b">2-Phosphoglycerate</text>
+          <rect x="250" y="596" width="140" height="28" rx="6" class="sv-box"/><text x="320" y="615" text-anchor="middle" class="sv-b">Phosphoenolpyruvate</text>
+          <rect x="250" y="666" width="140" height="28" rx="6" class="sv-boxa"/><text x="320" y="685" text-anchor="middle" class="sv-a">Pyruvate</text>
+          <rect x="520" y="666" width="140" height="28" rx="6" class="sv-boxr"/><text x="590" y="685" text-anchor="middle" class="sv-r">Lactate</text>
+          <rect x="30" y="632" width="110" height="28" rx="6" class="sv-boxg"/><text x="85" y="651" text-anchor="middle" class="sv-g">Oxaloacetate</text>
+        </g>
+        <!-- glycolysis arrows -->
+        <path d="M320,44 L320,84" class="sv-lr" marker-end="url(#ahR)"/>
+        <text x="332" y="62" class="sv-r">① Hexokinase / glucokinase</text><text x="332" y="76" class="sv-s">ATP → ADP · irreversible</text>
+        <path d="M320,114 L320,154" class="sv-l" marker-end="url(#ah)" marker-start="url(#ah)"/>
+        <text x="332" y="138" class="sv-t">② Phosphohexose isomerase</text>
+        <path d="M320,184 L320,224" class="sv-lr" marker-end="url(#ahR)"/>
+        <text x="332" y="202" class="sv-r">③ PFK-1 · rate-limiting</text><text x="332" y="216" class="sv-s">ATP → ADP · irreversible</text>
+        <path d="M320,254 L320,304" class="sv-l" marker-end="url(#ah)"/>
+        <text x="332" y="284" class="sv-t">④ Aldolase</text>
+        <path d="M390,246 L560,304" class="sv-l" marker-end="url(#ah)"/>
+        <path d="M392,320 L518,320" class="sv-l" marker-end="url(#ah)" marker-start="url(#ah)"/>
+        <text x="590" y="352" text-anchor="middle" class="sv-t">⑤ Triose phosphate</text><text x="590" y="366" text-anchor="middle" class="sv-t">isomerase (TPI)</text>
+        <path d="M320,334 L320,384" class="sv-l" marker-end="url(#ah)" marker-start="url(#ah)"/>
+        <text x="332" y="356" class="sv-t">⑥ GA-3-P dehydrogenase</text><text x="332" y="370" class="sv-a">NAD⁺ → NADH (+ Pi)</text>
+        <path d="M320,414 L320,454" class="sv-l" marker-end="url(#ah)" marker-start="url(#ah)"/>
+        <text x="332" y="430" class="sv-t">⑦ Phosphoglycerate kinase</text><text x="332" y="444" class="sv-g">ADP → ATP (substrate-level)</text>
+        <path d="M320,484 L320,524" class="sv-l" marker-end="url(#ah)" marker-start="url(#ah)"/>
+        <text x="332" y="508" class="sv-t">⑧ Phosphoglycerate mutase</text>
+        <path d="M320,554 L320,594" class="sv-l" marker-end="url(#ah)" marker-start="url(#ah)"/>
+        <text x="332" y="570" class="sv-t">⑨ Enolase (Mg²⁺) · removes H₂O</text><text x="332" y="584" class="sv-r">Fluoride inhibits</text>
+        <path d="M320,624 L320,664" class="sv-lr" marker-end="url(#ahR)"/>
+        <text x="332" y="640" class="sv-r">⑩ Pyruvate kinase · irreversible</text><text x="332" y="654" class="sv-g">ADP → ATP (substrate-level)</text>
+        <path d="M392,680 L518,680" class="sv-l" marker-end="url(#ah)" marker-start="url(#ah)"/>
+        <text x="455" y="708" text-anchor="middle" class="sv-t">Lactate dehydrogenase</text><text x="455" y="722" text-anchor="middle" class="sv-a">NADH → NAD⁺ (anaerobic)</text>
+        <!-- gluconeogenesis bypasses -->
+        <path d="M250,100 C200,100 200,30 248,30" class="sv-lg" marker-end="url(#ahG)"/>
+        <text x="192" y="60" text-anchor="end" class="sv-g">Glucose-6-phosphatase</text><text x="192" y="74" text-anchor="end" class="sv-s">(liver, kidney; not muscle)</text>
+        <path d="M250,240 C200,240 200,170 248,170" class="sv-lg" marker-end="url(#ahG)"/>
+        <text x="192" y="200" text-anchor="end" class="sv-g">Fructose-1,6-</text><text x="192" y="214" text-anchor="end" class="sv-g">bisphosphatase</text>
+        <path d="M250,682 C200,684 170,672 142,656" class="sv-lg" marker-end="url(#ahG)"/>
+        <text x="20" y="690" class="sv-g">Pyruvate carboxylase</text><text x="20" y="704" class="sv-s">biotin + ATP · mitochondria</text>
+        <path d="M85,630 C85,606 180,610 248,610" class="sv-lg" marker-end="url(#ahG)"/>
+        <text x="20" y="596" class="sv-g">PEP carboxykinase (GTP)</text>
+      </svg>
+      <figcaption>Glycolysis runs down the middle. The three red steps are one-way; gluconeogenesis (green, #53–58) goes around them with four different enzymes.</figcaption>
+    </figure>
+    <div class="tbl"><table>
+      <thead><tr><th>Step</th><th>Reaction</th><th>Enzyme</th><th>Energy</th></tr></thead>
+      <tbody>
+        <tr><td class="n">1</td><td>Glucose → Glucose-6-P</td><td>Hexokinase (all tissues, low Km) / glucokinase (liver, β-cells, high Km)</td><td>−1 ATP · irreversible</td></tr>
+        <tr><td class="n">2</td><td>Glucose-6-P ⇌ Fructose-6-P</td><td>Phosphohexose isomerase</td><td>—</td></tr>
+        <tr><td class="n">3</td><td>Fructose-6-P → Fructose-1,6-bisP</td><td><b>PFK-1</b> (key, rate-limiting)</td><td>−1 ATP · irreversible</td></tr>
+        <tr><td class="n">4</td><td>Fructose-1,6-bisP → GA-3-P + DHAP</td><td>Aldolase A</td><td>—</td></tr>
+        <tr><td class="n">5</td><td>DHAP ⇌ GA-3-P</td><td>Triose phosphate isomerase</td><td>Now 2 × GA-3-P</td></tr>
+        <tr><td class="n">6</td><td>GA-3-P → 1,3-BPG</td><td>GA-3-P dehydrogenase</td><td>2 NADH made</td></tr>
+        <tr><td class="n">7</td><td>1,3-BPG → 3-PG</td><td>Phosphoglycerate kinase</td><td>+2 ATP (substrate-level)</td></tr>
+        <tr><td class="n">8</td><td>3-PG ⇌ 2-PG</td><td>Phosphoglycerate mutase</td><td>—</td></tr>
+        <tr><td class="n">9</td><td>2-PG → PEP + H₂O</td><td>Enolase (needs Mg²⁺; <b>fluoride inhibits</b>)</td><td>—</td></tr>
+        <tr><td class="n">10</td><td>PEP → Pyruvate</td><td>Pyruvate kinase</td><td>+2 ATP · irreversible</td></tr>
+        <tr><td class="n">+</td><td>Pyruvate → Lactate</td><td>Lactate dehydrogenase</td><td>Uses the 2 NADH (anaerobic)</td></tr>
+      </tbody></table></div>
+    <div class="box caut"><strong>Note on numbering</strong>Some textbooks number the steps a little differently (for example, counting the isomerase as step 4A and the LDH step as step 10). The reactions and enzymes are the same. Learn the enzymes, not just the numbers.</div>
+    <div class="box clin"><strong>Clinical link</strong>Blood for glucose testing is collected in a <b>sodium fluoride</b> tube. Fluoride blocks enolase, so RBCs cannot eat up the glucose while the sample waits.</div>
+  </div>
+
+  <div class="topic">
+    <h3><span class="num">#46</span> The three irreversible steps</h3>
+    <div class="flow"><span class="bad">Hexokinase / glucokinase</span><i>→</i><span class="bad">PFK-1</span><i>→</i><span class="bad">Pyruvate kinase</span></div>
+    <p>These steps release a lot of energy, so they only go one way. They are also the <b>control points</b> of glycolysis. Gluconeogenesis must use different enzymes to go around them.</p>
+  </div>
+
+  <div class="topic">
+    <h3><span class="num">#47</span> ATP yield of glycolysis</h3>
+    <div class="tbl"><table>
+      <thead><tr><th>Item</th><th>Aerobic (modern count)</th><th>Aerobic (old count)</th><th>Anaerobic</th></tr></thead>
+      <tbody>
+        <tr><td>ATP used (steps 1, 3)</td><td class="n">−2</td><td class="n">−2</td><td class="n">−2</td></tr>
+        <tr><td>ATP made (steps 7, 10)</td><td class="n">+4</td><td class="n">+4</td><td class="n">+4</td></tr>
+        <tr><td>2 NADH → ETC</td><td class="n">+5 (2.5 each)</td><td class="n">+6 (3 each)</td><td class="n">0 (used by LDH)</td></tr>
+        <tr><td><b>Net</b></td><td class="n"><b>7 ATP</b></td><td class="n"><b>8 ATP</b></td><td class="n"><b>2 ATP</b></td></tr>
+      </tbody></table></div>
+    <p>Complete oxidation of 1 glucose (glycolysis + PDH + TCA + ETC) gives about <b>32 ATP</b> (modern count; older books say 38).</p>
+  </div>
+
+  <div class="topic">
+    <h3><span class="num">#48</span> Regulation of glycolysis <span class="pg">pp. 97–99</span></h3>
+    <div class="tbl"><table>
+      <thead><tr><th>Enzyme</th><th>Turned ON by</th><th>Turned OFF by</th></tr></thead>
+      <tbody>
+        <tr><td><b>Hexokinase</b></td><td>—</td><td>Its product, glucose-6-P</td></tr>
+        <tr><td><b>Glucokinase</b></td><td>Insulin (induces it)</td><td>Glucagon; fructose-6-P via regulatory protein</td></tr>
+        <tr><td><b>PFK-1</b></td><td>AMP, <b>fructose-2,6-bisphosphate</b> (strongest)</td><td>ATP, citrate, low pH</td></tr>
+        <tr><td><b>Pyruvate kinase</b></td><td>Fructose-1,6-bisP (feed-forward), insulin</td><td>ATP, alanine, glucagon (phosphorylation)</td></tr>
+      </tbody></table></div>
+    <div class="box mem"><strong>Logic</strong>Low energy (AMP high) → speed up glycolysis. High energy (ATP, citrate high) → slow it down. <b>Insulin → glycolysis ↑</b>. <b>Glucagon → glycolysis ↓</b>.</div>
+  </div>
+
+  <div class="topic">
+    <h3><span class="num">#49</span> Cori cycle <span class="pg">pp. 99–100</span></h3>
+    <figure>
+      <svg viewBox="0 0 600 220" role="img" aria-label="Cori cycle between muscle and liver">
+        <rect x="20" y="40" width="170" height="140" rx="10" class="sv-boxr"/>
+        <text x="105" y="30" text-anchor="middle" class="sv-b">Muscle / RBC</text>
+        <text x="105" y="72" text-anchor="middle" class="sv-a">Glucose</text>
+        <path d="M105,80 L105,140" class="sv-lr" marker-end="url(#ahR)"/>
+        <text x="112" y="114" class="sv-s">glycolysis</text><text x="112" y="126" class="sv-s">(anaerobic, 2 ATP)</text>
+        <text x="105" y="160" text-anchor="middle" class="sv-r">Lactate</text>
+        <rect x="410" y="40" width="170" height="140" rx="10" class="sv-boxg"/>
+        <text x="495" y="30" text-anchor="middle" class="sv-b">Liver</text>
+        <text x="495" y="160" text-anchor="middle" class="sv-r">Lactate</text>
+        <path d="M495,140 L495,80" class="sv-lg" marker-end="url(#ahG)"/>
+        <text x="488" y="106" text-anchor="end" class="sv-s">gluconeogenesis</text><text x="488" y="118" text-anchor="end" class="sv-s">(costs 6 ATP)</text>
+        <text x="495" y="72" text-anchor="middle" class="sv-a">Glucose</text>
+        <text x="300" y="30" text-anchor="middle" class="sv-b">Blood</text>
+        <path d="M200,156 L400,156" class="sv-lr" marker-end="url(#ahR)"/>
+        <text x="300" y="148" text-anchor="middle" class="sv-r">lactate</text>
+        <path d="M400,68 L200,68" class="sv-la" marker-end="url(#ahA)"/>
+        <text x="300" y="60" text-anchor="middle" class="sv-a">glucose</text>
+        <text x="300" y="206" text-anchor="middle" class="sv-s">Net cost to body: 4 ATP per turn (6 spent in liver − 2 gained in muscle)</text>
+      </svg>
+    </figure>
+    <p>Purpose: stops lactate from building up during hard exercise, and recycles it back into glucose. The liver pays the energy bill for the muscle.</p>
+  </div>
+
+  <div class="topic">
+    <h3><span class="num">#50</span> Rapoport–Luebering (BPG) shunt <span class="pg">p. 100</span></h3>
+    <div class="flow"><span>1,3-BPG</span><i>→ bisphosphoglycerate mutase →</i><span class="hi">2,3-BPG</span><i>→ phosphatase →</i><span>3-PG</span></div>
+    <p>Happens in <b class="t">RBCs</b>. It skips step 7, so <b>no ATP</b> is made on this side road. The point is to make <b class="t">2,3-BPG</b>, which binds haemoglobin and makes it <b>let go of oxygen</b> more easily.</p>
+    <div class="box mem"><strong>Remember</strong>↑ 2,3-BPG → O₂ curve shifts right → more O₂ unloaded to tissues. Rises in high altitude, anaemia, chronic lung disease. Stored blood loses 2,3-BPG.</div>
+  </div>
+
+  <div class="topic">
+    <h3><span class="num">#51</span> Pyruvate: the metabolic junction <span class="pg">pp. 101–102</span></h3>
+    <figure class="sm">
+      <svg viewBox="0 0 420 250" role="img" aria-label="Four fates of pyruvate">
+        <rect x="160" y="108" width="100" height="34" rx="8" class="sv-boxa"/><text x="210" y="130" text-anchor="middle" class="sv-a">Pyruvate</text>
+        <rect x="10" y="20" width="130" height="44" rx="8" class="sv-box"/><text x="75" y="39" text-anchor="middle" class="sv-b">Acetyl-CoA</text><text x="75" y="55" text-anchor="middle" class="sv-s">→ TCA, fat</text>
+        <rect x="280" y="20" width="130" height="44" rx="8" class="sv-boxr"/><text x="345" y="39" text-anchor="middle" class="sv-r">Lactate</text><text x="345" y="55" text-anchor="middle" class="sv-s">no O₂</text>
+        <rect x="10" y="186" width="130" height="44" rx="8" class="sv-boxg"/><text x="75" y="205" text-anchor="middle" class="sv-g">Oxaloacetate</text><text x="75" y="221" text-anchor="middle" class="sv-s">→ gluconeogenesis</text>
+        <rect x="280" y="186" width="130" height="44" rx="8" class="sv-box"/><text x="345" y="205" text-anchor="middle" class="sv-b">Alanine</text><text x="345" y="221" text-anchor="middle" class="sv-s">→ protein</text>
+        <path d="M175,108 L120,66" class="sv-l" marker-end="url(#ah)"/><text x="150" y="80" text-anchor="end" class="sv-s">PDH</text>
+        <path d="M245,108 L300,66" class="sv-l" marker-end="url(#ah)" marker-start="url(#ah)"/><text x="272" y="80" class="sv-s">LDH</text>
+        <path d="M175,142 L120,184" class="sv-l" marker-end="url(#ah)"/><text x="150" y="175" text-anchor="end" class="sv-s">pyruvate carboxylase</text>
+        <path d="M245,142 L300,184" class="sv-l" marker-end="url(#ah)" marker-start="url(#ah)"/><text x="272" y="175" class="sv-s">ALT</text>
+      </svg>
+    </figure>
+  </div>
+
+  <div class="topic">
+    <h3><span class="num">#52</span> Pyruvate dehydrogenase (PDH) complex <span class="pg">pp. 101–102</span></h3>
+    <div class="eq">Pyruvate + CoA + NAD⁺ → Acetyl-CoA + CO₂ + NADH</div>
+    <p>A giant 3-enzyme complex in the <b>mitochondrial matrix</b>. It is <b>irreversible</b>, so acetyl-CoA can never be turned back into glucose. That is why fatty acids (which give acetyl-CoA) cannot make glucose.</p>
+    <div class="tbl"><table>
+      <thead><tr><th>Cofactor</th><th>Vitamin</th></tr></thead>
+      <tbody><tr><td>TPP</td><td>B1 thiamine</td></tr><tr><td>Lipoamide (lipoic acid)</td><td>—</td></tr><tr><td>CoA</td><td>B5 pantothenic acid</td></tr><tr><td>FAD</td><td>B2 riboflavin</td></tr><tr><td>NAD⁺</td><td>B3 niacin</td></tr></tbody></table></div>
+    <div class="box mem"><strong>Mnemonic</strong><b>T</b>ender <b>L</b>oving <b>C</b>are <b>F</b>or <b>N</b>ancy = TPP, Lipoamide, CoA, FAD, NAD⁺.</div>
+    <div class="box clin"><strong>Clinical link</strong>Thiamine deficiency (beriberi, alcoholics) → PDH slows → pyruvate and lactate rise → lactic acidosis. Arsenite blocks lipoamide. PDH is ON with insulin (dephosphorylated), OFF with high acetyl-CoA, NADH, ATP.</div>
+  </div>
+
+  <div class="topic">
+    <h3><span class="num">#53</span> Gluconeogenesis <span class="pg">pp. 102–106</span></h3>
+    <p>Making <b class="t">new glucose</b> from things that are not carbohydrates. Needed in fasting (after liver glycogen runs out, about 18–24 hours) to feed the brain and RBCs.</p>
+    <div class="two">
+      <div class="mini"><h4>Where</h4><p><b>Liver</b> (90%) and <b>kidney cortex</b> (10%; more in long fasting). Partly in mitochondria, mostly in cytoplasm.</p></div>
+      <div class="mini"><h4>Starting materials</h4><ul class="k"><li>Lactate (Cori cycle)</li><li>Alanine and other glucogenic amino acids</li><li>Glycerol (from fat breakdown)</li><li>Propionyl-CoA (odd-chain fatty acids)</li></ul></div>
+    </div>
+    <div class="box caut"><strong>Not a source</strong>Even-chain fatty acids and acetyl-CoA cannot make net glucose (PDH is one-way).</div>
+  </div>
+
+  <div class="topic">
+    <h3><span class="num">#54</span> The four gluconeogenic (bypass) enzymes</h3>
+    <div class="tbl"><table>
+      <thead><tr><th>#</th><th>Enzyme</th><th>Reaction</th><th>Bypasses</th><th>Needs</th></tr></thead>
+      <tbody>
+        <tr><td class="n">1</td><td><b>Pyruvate carboxylase</b> (#55)</td><td>Pyruvate → Oxaloacetate</td><td rowspan="2">Pyruvate kinase</td><td>Biotin, ATP, CO₂ · mitochondria</td></tr>
+        <tr><td class="n">2</td><td><b>PEP carboxykinase</b> (#56)</td><td>Oxaloacetate → PEP</td><td>GTP</td></tr>
+        <tr><td class="n">3</td><td><b>Fructose-1,6-bisphosphatase</b> (#57)</td><td>F-1,6-bisP → F-6-P</td><td>PFK-1</td><td>—</td></tr>
+        <tr><td class="n">4</td><td><b>Glucose-6-phosphatase</b> (#58)</td><td>G-6-P → Glucose</td><td>Hexokinase</td><td>ER membrane</td></tr>
+      </tbody></table></div>
+    <p>All the other steps are shared with glycolysis and simply run backwards.</p>
+  </div>
+
+  <div class="topic">
+    <h3><span class="num">#55</span> Pyruvate carboxylase</h3>
+    <div class="eq">Pyruvate + CO₂ + ATP —(biotin)→ Oxaloacetate + ADP + Pi</div>
+    <p>In <b>mitochondria</b>. Needs <b>biotin</b> and is switched on by <b>acetyl-CoA</b> (a signal that fat is being burned and glucose is needed). It is also an <b>anaplerotic</b> reaction that refills the TCA cycle (#94).</p>
+  </div>
+
+  <div class="topic">
+    <h3><span class="num">#56</span> PEP carboxykinase (PEPCK)</h3>
+    <div class="eq">Oxaloacetate + GTP → PEP + CO₂ + GDP</div>
+    <p>Oxaloacetate cannot cross the mitochondrial membrane. It is carried out as <b class="t">malate</b> (the <b>malate shuttle</b>) and turned back into oxaloacetate in the cytoplasm, where PEPCK acts. Glucagon and cortisol increase PEPCK.</p>
+  </div>
+
+  <div class="topic">
+    <h3><span class="num">#57</span> Fructose-1,6-bisphosphatase</h3>
+    <p>Removes a phosphate: F-1,6-bisP → F-6-P. Bypasses PFK-1. It is the <b>key control point</b> of gluconeogenesis.</p>
+  </div>
+
+  <div class="topic">
+    <h3><span class="num">#58</span> Glucose-6-phosphatase</h3>
+    <p>G-6-P → free glucose, which can leave the cell. Present in <b>liver and kidney</b>, <b>absent in muscle</b>.</p>
+    <div class="box mem"><strong>Why it matters</strong>Muscle glycogen can fuel only the muscle itself. It <b>cannot raise blood glucose</b>, because muscle has no glucose-6-phosphatase. Deficiency of this enzyme = Von Gierke disease (#68).</div>
+  </div>
+
+  <div class="topic">
+    <h3><span class="num">#59</span> Energy cost of gluconeogenesis</h3>
+    <div class="eq">2 Pyruvate + 4 ATP + 2 GTP + 2 NADH → Glucose</div>
+    <p>So it costs <b>6 high-energy phosphates</b> (4 ATP + 2 GTP) to make one glucose. Glycolysis gives back only 2 ATP. Making glucose is expensive.</p>
+  </div>
+
+  <div class="topic">
+    <h3><span class="num">#60</span> Regulation of gluconeogenesis</h3>
+    <div class="two">
+      <div class="mini"><h4>Promoted by</h4><ul class="k"><li>Glucagon</li><li>Glucocorticoids (cortisol)</li><li>Acetyl-CoA (activates pyruvate carboxylase)</li><li>Epinephrine</li></ul></div>
+      <div class="mini"><h4>Inhibited by</h4><ul class="k"><li>Insulin</li><li>AMP (inhibits F-1,6-bisphosphatase)</li><li>Fructose-2,6-bisphosphate</li></ul></div>
+    </div>
+    <div class="box mem"><strong>The switch</strong>Fructose-2,6-bisphosphate is the master switch. High (fed, insulin) → PFK-1 ON, F-1,6-bisphosphatase OFF → glycolysis. Low (fasting, glucagon) → the opposite → gluconeogenesis. Both pathways are never fully on together.</div>
+  </div>
+
+  <div class="topic">
+    <h3><span class="num">#61</span> Glucose–alanine cycle <span class="pg">p. 105</span></h3>
+    <div class="flow"><span>Muscle: pyruvate + NH₂ (from amino acids)</span><i>→ ALT →</i><span class="hi">Alanine</span><i>→ blood →</i><span>Liver: alanine → pyruvate (+ NH₂ → urea)</span><i>→</i><span class="hi">Glucose</span><i>→ blood → back to muscle</i></div>
+    <p>Like the Cori cycle, but it also carries <b>nitrogen</b> safely from muscle to liver to make urea. Very important in <b>starvation</b>, when muscle protein is broken down.</p>
+  </div>
+
+  <div class="topic">
+    <h3><span class="num">#62</span> Glycogen <span class="pg">pp. 106–112</span></h3>
+    <div class="two">
+      <div class="mini"><h4>Liver glycogen</h4><p>Up to ~100 g (6–8% of liver weight). Job: <b>keep blood glucose normal</b> between meals. Lasts about 12–18 hours of fasting.</p></div>
+      <div class="mini"><h4>Muscle glycogen</h4><p>~250–400 g in total (1–2% of muscle weight). Job: <b>fuel for the muscle's own contraction</b>. Cannot release free glucose.</p></div>
+    </div>
+  </div>
+
+  <div class="topic">
+    <h3><span class="num">#63</span> Glycogenolysis (breakdown) <span class="pg">pp. 107–108</span></h3>
+    <div class="flow"><span>Glycogen (n)</span><i>→ glycogen phosphorylase (PLP) + Pi →</i><span class="hi">Glucose-1-P</span><i>→ phosphoglucomutase →</i><span>Glucose-6-P</span><i>→ glucose-6-phosphatase (liver only) →</i><span class="hi">Free glucose</span></div>
+    <p>Phosphorylase cuts α1→4 bonds one glucose at a time from the ends, using phosphate (not water). It stops 4 glucose units before a branch point. It needs <b>PLP (vitamin B6)</b>. In muscle, G-6-P goes straight into glycolysis.</p>
+  </div>
+
+  <div class="topic">
+    <h3><span class="num">#64</span> Glycogen debranching</h3>
+    <p>The <b>debranching enzyme</b> has two activities:</p>
+    <ol style="margin:0;padding-left:1.2rem"><li><b>Transferase</b> (4-α-glucanotransferase): moves 3 of the 4 remaining glucose units to another chain</li><li><b>α-1,6-glucosidase</b>: cuts the last glucose at the branch point, releasing it as <b>free glucose</b> (not G-1-P). About 8% of glycogen glucose comes out this way</li></ol>
+  </div>
+
+  <div class="topic">
+    <h3><span class="num">#65</span> Glycogenesis (synthesis) <span class="pg">pp. 108–109</span></h3>
+    <div class="flow v">
+      <span>Glucose → Glucose-6-P → Glucose-1-P</span><i>↓ + UTP (UDP-glucose pyrophosphorylase)</i>
+      <span class="hi">UDP-glucose (activated glucose)</span><i>↓ added onto a primer (glycogenin protein)</i>
+      <span><b>Glycogen synthase</b> → makes α1→4 chains (key enzyme)</span><i>↓</i>
+      <span><b>Branching enzyme</b> → moves 6–8 units to make α1→6 branches</span>
+    </div>
+    <p>Cost: 2 high-energy phosphates per glucose added (1 ATP + 1 UTP).</p>
+  </div>
+
+  <div class="topic">
+    <h3><span class="num">#66</span> Regulation of glycogen metabolism</h3>
+    <div class="tbl"><table>
+      <thead><tr><th></th><th>Glycogen phosphorylase (breakdown)</th><th>Glycogen synthase (synthesis)</th></tr></thead>
+      <tbody>
+        <tr><td><b>Phosphorylated</b></td><td><b>Active</b></td><td>Inactive</td></tr>
+        <tr><td><b>Dephosphorylated</b></td><td>Inactive</td><td><b>Active</b></td></tr>
+        <tr><td>Allosteric ON</td><td>AMP (muscle), Ca²⁺ (muscle)</td><td>Glucose-6-P</td></tr>
+        <tr><td>Allosteric OFF</td><td>ATP, glucose-6-P, glucose (liver)</td><td>—</td></tr>
+      </tbody></table></div>
+    <div class="box mem"><strong>Remember</strong>Phosphorylation → glycogen <b>breakdown</b>. Dephosphorylation → glycogen <b>synthesis</b>. One signal switches one on and the other off at the same time.</div>
+  </div>
+
+  <div class="topic">
+    <h3><span class="num">#67</span> cAMP cascade <span class="pg">pp. 109–111</span></h3>
+    <div class="two">
+      <div class="flow v">
+        <span class="hi">Glucagon (liver) / Epinephrine (liver + muscle)</span><i>↓ binds</i>
+        <span>G-protein-coupled receptor</span><i>↓</i>
+        <span>Adenylate cyclase ON</span><i>↓</i>
+        <span>ATP → <b>cAMP</b> (second messenger)</span><i>↓</i>
+        <span>Protein kinase A (PKA) ON</span><i>↓</i>
+        <span>Phosphorylase kinase ON</span><i>↓</i>
+        <span>Glycogen phosphorylase b → <b>a</b> (active)</span><i>↓</i>
+        <span class="bad">Glycogen breakdown ↑</span>
+      </div>
+      <div class="flow v">
+        <span>PKA also phosphorylates</span><i>↓</i>
+        <span>Glycogen synthase → inactive</span><i>↓</i>
+        <span class="bad">Glycogen synthesis ↓</span>
+        <i>&nbsp;</i>
+        <span class="hi">Insulin</span><i>↓</i>
+        <span>Protein phosphatase-1 ON + phosphodiesterase breaks cAMP</span><i>↓</i>
+        <span>Dephosphorylates both enzymes</span><i>↓</i>
+        <span class="bad">Synthesis ↑, breakdown ↓</span>
+      </div>
+    </div>
+    <p>Each step activates many molecules of the next, so a tiny amount of hormone gives a huge effect (<b>amplification</b>). Muscle has <b>no glucagon receptors</b>, so glucagon does not act on muscle glycogen; epinephrine does. In muscle, Ca²⁺ released during contraction also switches on phosphorylase kinase.</p>
+  </div>
+
+  <div class="topic">
+    <h3><span class="num">#68</span> Glycogen storage diseases (GSD) <span class="pg">p. 111</span></h3>
+    <div class="tbl"><table>
+      <thead><tr><th>Type</th><th>Name</th><th>Missing enzyme</th><th>Main features</th></tr></thead>
+      <tbody>
+        <tr><td class="n">I</td><td><b>Von Gierke</b></td><td>Glucose-6-phosphatase</td><td>Severe fasting hypoglycaemia, big liver and kidneys, lactic acidosis, high uric acid, high lipids</td></tr>
+        <tr><td class="n">II</td><td><b>Pompe</b></td><td>Lysosomal acid maltase (α-1,4-glucosidase)</td><td>Heart failure in infants (cardiomegaly); a lysosomal storage disease</td></tr>
+        <tr><td class="n">III</td><td><b>Cori (Forbes)</b></td><td>Debranching enzyme</td><td>Milder Von Gierke picture; short outer branches (limit dextrin)</td></tr>
+        <tr><td class="n">IV</td><td><b>Andersen</b></td><td>Branching enzyme</td><td>Long unbranched glycogen; liver cirrhosis; early death</td></tr>
+        <tr><td class="n">V</td><td><b>McArdle</b></td><td>Muscle phosphorylase</td><td>Muscle cramps on exercise; no rise in lactate; myoglobinuria</td></tr>
+        <tr><td class="n">VI</td><td><b>Hers</b></td><td>Liver phosphorylase</td><td>Mild hypoglycaemia, big liver</td></tr>
+        <tr><td class="n">VII</td><td><b>Tarui</b></td><td>Muscle PFK-1</td><td>Like McArdle, plus haemolysis</td></tr>
+      </tbody></table></div>
+    <div class="box mem"><strong>Mnemonic</strong><b>V</b>ery <b>P</b>oor <b>C</b>arbohydrate <b>A</b>nd <b>M</b>etabolism = Von Gierke, Pompe, Cori, Andersen, McArdle (types I to V). Types I and III, V and VII look alike.</div>
+  </div>
+</section>
+
+<!-- ============ PART 5 ============ -->
+<section class="part" id="p5">
+  <div class="parthead">
+    <div class="eyebrow">Part 5 · Chapter 10 · pp. 113–126 · BI 3.5</div>
+    <h2>Minor (alternate) pathways of carbohydrates</h2>
+    <p class="sub">Side roads for glucose, plus how fructose, galactose and alcohol are handled. Many inherited diseases come from here.</p>
+  </div>
+
+  <div class="topic">
+    <h3><span class="num">#69</span> HMP shunt / pentose phosphate pathway <span class="pg">pp. 113–117</span></h3>
+    <p>Other names: <b>hexose monophosphate shunt</b>, <b>Dickens–Horecker pathway</b>, <b>phosphogluconate oxidative pathway</b>. Takes place in the <b>cytoplasm</b>. Very active in liver, fat tissue, adrenal cortex, lactating breast, RBCs and lens.</p>
+    <p>It makes <b>no ATP</b>. Its two products are:</p>
+    <div class="two">
+      <div class="mini"><h4>NADPH</h4><p>Reducing power for building fats and steroids, and for protecting cells against oxidation.</p></div>
+      <div class="mini"><h4>Ribose-5-phosphate</h4><p>Sugar for making DNA, RNA, ATP, NAD, FAD, CoA.</p></div>
+    </div>
+    <p>Key (rate-limiting) enzyme: <b class="t">glucose-6-phosphate dehydrogenase (G6PD)</b>. Its activity is controlled by the NADP⁺/NADPH ratio and induced by insulin.</p>
+  </div>
+
+  <div class="topic">
+    <h3><span class="num">#70</span> Oxidative phase (irreversible)</h3>
+    <figure>
+      <svg viewBox="0 0 640 240" role="img" aria-label="HMP shunt oxidative and non-oxidative phases">
+        <text x="10" y="20" class="sv-b">Oxidative phase (one-way)</text>
+        <rect x="10" y="34" width="118" height="30" rx="6" class="sv-boxa"/><text x="69" y="54" text-anchor="middle" class="sv-a">Glucose-6-P</text>
+        <rect x="170" y="34" width="150" height="30" rx="6" class="sv-box"/><text x="245" y="54" text-anchor="middle" class="sv-b">6-P-gluconolactone</text>
+        <rect x="360" y="34" width="130" height="30" rx="6" class="sv-box"/><text x="425" y="54" text-anchor="middle" class="sv-b">6-P-gluconate</text>
+        <rect x="520" y="34" width="112" height="30" rx="6" class="sv-boxa"/><text x="576" y="54" text-anchor="middle" class="sv-a">Ribulose-5-P</text>
+        <path d="M128,49 L168,49" class="sv-lr" marker-end="url(#ahR)"/><path d="M320,49 L358,49" class="sv-l" marker-end="url(#ah)"/><path d="M490,49 L518,49" class="sv-lr" marker-end="url(#ahR)"/>
+        <text x="148" y="84" text-anchor="middle" class="sv-r">G6PD</text><text x="148" y="98" text-anchor="middle" class="sv-g">NADPH</text>
+        <text x="339" y="84" text-anchor="middle" class="sv-s">lactonase</text><text x="339" y="98" text-anchor="middle" class="sv-s">+ H₂O</text>
+        <text x="504" y="84" text-anchor="middle" class="sv-r">6PG DH</text><text x="504" y="98" text-anchor="middle" class="sv-g">NADPH + CO₂</text>
+        <path d="M0,118 L640,118" class="sv-grid dash"/>
+        <text x="10" y="140" class="sv-b">Non-oxidative phase (reversible)</text>
+        <path d="M576,64 L576,156" class="sv-l" marker-end="url(#ah)"/>
+        <rect x="470" y="160" width="160" height="30" rx="6" class="sv-box"/><text x="550" y="180" text-anchor="middle" class="sv-b">Ribose-5-P · Xylulose-5-P</text>
+        <path d="M468,175 L380,175" class="sv-l" marker-end="url(#ah)" marker-start="url(#ah)"/>
+        <text x="424" y="166" text-anchor="middle" class="sv-a">Transketolase (TPP)</text>
+        <text x="424" y="198" text-anchor="middle" class="sv-a">Transaldolase</text>
+        <rect x="160" y="160" width="218" height="30" rx="6" class="sv-boxg"/><text x="269" y="180" text-anchor="middle" class="sv-g">Fructose-6-P + Glyceraldehyde-3-P</text>
+        <path d="M158,175 L90,175" class="sv-lg" marker-end="url(#ahG)"/>
+        <text x="10" y="170" class="sv-s">back into</text><text x="10" y="184" class="sv-s">glycolysis</text>
+        <text x="320" y="226" text-anchor="middle" class="sv-s">Overall: 3 Glucose-6-P → 6 NADPH + 3 CO₂ + 2 Fructose-6-P + 1 Glyceraldehyde-3-P</text>
+      </svg>
+    </figure>
+    <p>Every glucose-6-P that goes through the oxidative phase gives <b>2 NADPH</b> and <b>1 CO₂</b>.</p>
+  </div>
+
+  <div class="topic">
+    <h3><span class="num">#71</span> Non-oxidative phase</h3>
+    <p>Reshuffles 5-carbon sugars into 6-carbon and 3-carbon sugars using <b class="t">transketolase</b> (moves 2 carbons, needs <b>TPP</b>) and <b class="t">transaldolase</b> (moves 3 carbons). This lets the cell make exactly what it needs: more NADPH or more ribose.</p>
+    <div class="box clin"><strong>Clinical link</strong>Transketolase needs thiamine (B1). <b>RBC transketolase activity</b> is the test for thiamine deficiency (beriberi, Wernicke encephalopathy in alcoholics).</div>
+  </div>
+
+  <div class="topic">
+    <h3><span class="num">#72</span> Functions of NADPH</h3>
+    <ul class="k cols">
+      <li>Fatty acid synthesis</li><li>Cholesterol synthesis</li><li>Steroid hormone synthesis</li>
+      <li><b>Keeps glutathione reduced (GSH)</b></li><li>Protects RBC membrane from oxidation</li><li>Drug detoxification (cytochrome P450)</li>
+      <li>Methaemoglobin reduction</li><li>Keeps lens proteins clear</li><li><b>Respiratory burst</b> in macrophages/neutrophils (NADPH oxidase kills bacteria)</li>
+    </ul>
+  </div>
+
+  <div class="topic">
+    <h3><span class="num">#73</span> G6PD deficiency <span class="pg">pp. 116–118</span></h3>
+    <div class="flow"><span class="bad">G6PD low (X-linked)</span><i>→</i><span>NADPH ↓</span><i>→</i><span>Reduced glutathione ↓</span><i>→</i><span>H₂O₂ damages RBC membrane + Hb</span><i>→</i><span class="bad">Haemolytic anaemia (Heinz bodies)</span></div>
+    <p>RBCs are hit hardest because the HMP shunt is their <b>only</b> source of NADPH. Most people are fine until an oxidant "trigger" comes.</p>
+    <div class="two">
+      <div class="mini"><h4>Triggers</h4><ul class="k"><li>Primaquine (antimalarial)</li><li>Sulpha drugs, dapsone</li><li>Aspirin (high dose), nitrofurantoin</li><li>Fava beans (favism)</li><li>Infections</li></ul></div>
+      <div class="mini"><h4>Key facts</h4><ul class="k"><li><b>X-linked recessive</b>: mostly males</li><li>Most common enzyme deficiency in the world</li><li>Gives some protection against malaria</li></ul></div>
+    </div>
+  </div>
+
+  <div class="topic">
+    <h3><span class="num">#74</span> Glucuronic acid (uronic acid) pathway <span class="pg">p. 118</span></h3>
+    <div class="flow"><span>Glucose-6-P</span><i>→</i><span>Glucose-1-P</span><i>→</i><span>UDP-glucose</span><i>→ UDP-glucose dehydrogenase →</i><span class="hi">UDP-glucuronic acid</span><i>→ … →</i><span>L-gulonate → L-xylulose → D-xylulose → back to HMP</span></div>
+    <ul class="k"><li><b>UDP-glucuronic acid</b> is used to <b>conjugate</b> (attach to) bilirubin, steroids and drugs so they dissolve in water and leave in bile or urine</li><li>Used to make GAGs (hyaluronic acid, heparin, chondroitin)</li><li>In most animals (not humans or guinea pigs), this pathway makes <b>vitamin C</b>; humans lack <b>L-gulonolactone oxidase</b></li></ul>
+  </div>
+
+  <div class="topic">
+    <h3><span class="num">#75</span> Essential pentosuria</h3>
+    <p>Missing enzyme: <b>xylitol dehydrogenase</b> (L-xylulose reductase). <b>L-xylulose</b> builds up and appears in urine. Urine gives a <b>positive Benedict's test</b>, which may be wrongly read as diabetes. The condition is <b>harmless</b>; no treatment needed.</p>
+  </div>
+
+  <div class="topic">
+    <h3><span class="num">#76</span> Polyol (sorbitol) pathway <span class="pg">p. 119</span></h3>
+    <div class="flow"><span>Glucose</span><i>→ aldose reductase (NADPH) →</i><span class="hi">Sorbitol</span><i>→ sorbitol dehydrogenase (NAD⁺) →</i><span>Fructose</span></div>
+    <p>Normal use: makes fructose for <b>semen</b> (seminal vesicles).</p>
+    <div class="box clin"><strong>In diabetes</strong>High glucose → lots of sorbitol in tissues that lack sorbitol dehydrogenase (<b>lens, retina, nerves, kidney</b>). Sorbitol cannot leave → pulls in water → swelling → <b>cataract</b>, retinopathy, neuropathy, nephropathy.</div>
+  </div>
+
+  <div class="topic">
+    <h3><span class="num">#77</span> Fructose metabolism <span class="pg">pp. 119–120</span></h3>
+    <figure>
+      <svg viewBox="0 0 640 170" role="img" aria-label="Fructose metabolism in the liver with enzyme defects">
+        <rect x="10" y="60" width="100" height="30" rx="6" class="sv-boxa"/><text x="60" y="80" text-anchor="middle" class="sv-a">Fructose</text>
+        <rect x="190" y="60" width="130" height="30" rx="6" class="sv-box"/><text x="255" y="80" text-anchor="middle" class="sv-b">Fructose-1-P</text>
+        <rect x="420" y="20" width="210" height="30" rx="6" class="sv-box"/><text x="525" y="40" text-anchor="middle" class="sv-b">Glyceraldehyde → GA-3-P</text>
+        <rect x="420" y="100" width="210" height="30" rx="6" class="sv-box"/><text x="525" y="120" text-anchor="middle" class="sv-b">DHAP</text>
+        <path d="M110,75 L188,75" class="sv-la" marker-end="url(#ahA)"/>
+        <text x="149" y="58" text-anchor="middle" class="sv-a">Fructokinase</text><text x="149" y="100" text-anchor="middle" class="sv-s">ATP</text>
+        <path d="M320,70 L418,38 M320,80 L418,112" class="sv-la" marker-end="url(#ahA)"/>
+        <text x="368" y="86" text-anchor="middle" class="sv-a">Aldolase B</text>
+        <text x="525" y="160" text-anchor="middle" class="sv-s">both enter glycolysis below PFK-1</text>
+        <text x="149" y="130" text-anchor="middle" class="sv-r">✕ Essential fructosuria</text><text x="149" y="146" text-anchor="middle" class="sv-s">(harmless)</text>
+        <text x="368" y="130" text-anchor="middle" class="sv-r">✕ Hereditary fructose</text><text x="368" y="146" text-anchor="middle" class="sv-r">intolerance (serious)</text>
+      </svg>
+    </figure>
+    <p>Fructose enters glycolysis <b>after PFK-1</b>, skipping the main control step. So it is broken down faster than glucose and easily turned into fat. This is why a high-fructose diet is linked to fatty liver and high triglycerides.</p>
+  </div>
+
+  <div class="topic">
+    <h3><span class="num">#78</span> Hereditary fructose intolerance</h3>
+    <p>Missing: <b>aldolase B</b>. <b>Fructose-1-phosphate</b> piles up in liver and traps phosphate, so ATP falls and glycogen breakdown and gluconeogenesis are blocked.</p>
+    <ul class="k cols"><li>Hypoglycaemia after fruit/sugar</li><li>Vomiting</li><li>Hepatomegaly, jaundice, liver damage</li><li>Failure to thrive</li></ul>
+    <p>Appears when a baby starts fruit juice, honey or sugar (weaning). Treatment: remove fructose, sucrose and sorbitol from the diet.</p>
+  </div>
+
+  <div class="topic">
+    <h3><span class="num">#79</span> Essential fructosuria</h3>
+    <p>Missing: <b>fructokinase</b>. Fructose is not taken up by liver, so it spills into urine. <b>Benign</b>, no symptoms. Urine gives positive Benedict's and Seliwanoff's tests.</p>
+  </div>
+
+  <div class="topic">
+    <h3><span class="num">#80</span> Galactose metabolism <span class="pg">pp. 120–121</span></h3>
+    <figure>
+      <svg viewBox="0 0 660 190" role="img" aria-label="Galactose metabolism and galactosemia defects">
+        <rect x="10" y="40" width="100" height="30" rx="6" class="sv-boxa"/><text x="60" y="60" text-anchor="middle" class="sv-a">Galactose</text>
+        <rect x="180" y="40" width="130" height="30" rx="6" class="sv-box"/><text x="245" y="60" text-anchor="middle" class="sv-b">Galactose-1-P</text>
+        <rect x="400" y="40" width="130" height="30" rx="6" class="sv-box"/><text x="465" y="60" text-anchor="middle" class="sv-b">Glucose-1-P</text>
+        <rect x="560" y="40" width="94" height="30" rx="6" class="sv-boxa"/><text x="607" y="60" text-anchor="middle" class="sv-a">Glycolysis /</text>
+        <text x="607" y="86" text-anchor="middle" class="sv-s">glycogen</text>
+        <path d="M110,55 L178,55" class="sv-la" marker-end="url(#ahA)"/><text x="144" y="34" text-anchor="middle" class="sv-a">Galactokinase</text>
+        <path d="M310,55 L398,55" class="sv-la" marker-end="url(#ahA)"/><text x="354" y="34" text-anchor="middle" class="sv-a">GALT</text>
+        <path d="M530,55 L558,55" class="sv-l" marker-end="url(#ah)"/>
+        <rect x="260" y="120" width="130" height="30" rx="6" class="sv-box"/><text x="325" y="140" text-anchor="middle" class="sv-b">UDP-glucose</text>
+        <rect x="440" y="120" width="140" height="30" rx="6" class="sv-box"/><text x="510" y="140" text-anchor="middle" class="sv-b">UDP-galactose</text>
+        <path d="M325,118 L345,72" class="sv-l" marker-end="url(#ah)"/><path d="M385,72 L460,118" class="sv-l" marker-end="url(#ah)"/>
+        <path d="M390,142 L438,142" class="sv-l" marker-end="url(#ah)" marker-start="url(#ah)"/>
+        <text x="414" y="170" text-anchor="middle" class="sv-s">UDP-galactose 4-epimerase</text>
+        <text x="144" y="94" text-anchor="middle" class="sv-r">✕ galactokinase</text><text x="144" y="108" text-anchor="middle" class="sv-r">deficiency: cataract</text>
+        <text x="220" y="94" text-anchor="start" class="sv-r"></text>
+        <text x="60" y="140" text-anchor="middle" class="sv-r">✕ GALT = classic</text><text x="60" y="154" text-anchor="middle" class="sv-r">galactosemia</text>
+        <path d="M110,140 C180,140 330,110 354,64" class="sv-lr dash"/>
+      </svg>
+    </figure>
+    <p>GALT = <b>galactose-1-phosphate uridyltransferase</b>: it swaps galactose-1-P with UDP-glucose to give glucose-1-P and UDP-galactose. The <b>epimerase</b> turns UDP-galactose back into UDP-glucose (and the reverse, so the body can make galactose for lactose, glycolipids and glycoproteins even without dietary galactose).</p>
+  </div>
+
+  <div class="topic">
+    <h3><span class="num">#81</span> Classic galactosemia</h3>
+    <p>Missing: <b>GALT</b>. Galactose-1-P and galactitol pile up.</p>
+    <ul class="k cols"><li>Symptoms start once the baby drinks milk</li><li>Vomiting, hypoglycaemia</li><li>Hepatomegaly, jaundice, cirrhosis</li><li>Intellectual disability</li><li>Galactosemia + galactosuria (Benedict's positive, glucose oxidase negative)</li><li><b>Congenital cataract</b> (galactitol in lens)</li><li>Risk of E. coli sepsis</li></ul>
+    <div class="box okb"><strong>Treatment</strong>Remove lactose and galactose from the diet at once (lactose-free formula). Early treatment prevents most damage.</div>
+  </div>
+
+  <div class="topic">
+    <h3><span class="num">#82</span> Galactokinase deficiency</h3>
+    <p>Galactose itself builds up and is turned into galactitol by aldose reductase. Main problem: <b>cataract</b>. Much milder than classic galactosemia (no liver or brain damage).</p>
+  </div>
+
+  <div class="topic">
+    <h3><span class="num">#83</span> Alcohol metabolism <span class="pg">pp. 121–123</span></h3>
+    <div class="flow"><span>Ethanol</span><i>→ alcohol dehydrogenase (NAD⁺ → NADH) →</i><span class="hi">Acetaldehyde (toxic)</span><i>→ aldehyde dehydrogenase (NAD⁺ → NADH) →</i><span>Acetate → Acetyl-CoA</span></div>
+    <p>Heavy drinking also uses <b>MEOS</b> (microsomal ethanol-oxidising system, cytochrome P450 2E1), which is induced by chronic alcohol use.</p>
+    <p>The big problem is a flood of <b>NADH</b> (high NADH/NAD⁺ ratio) in the liver:</p>
+    <div class="tbl"><table>
+      <thead><tr><th>High NADH causes</th><th>Because</th></tr></thead>
+      <tbody>
+        <tr><td>Lactic acidosis</td><td>Pyruvate is pushed to lactate</td></tr>
+        <tr><td><b>Hypoglycaemia</b></td><td>Pyruvate and oxaloacetate are used up, so gluconeogenesis stops</td></tr>
+        <tr><td><b>Fatty liver</b></td><td>Fatty acid oxidation falls; fat synthesis rises</td></tr>
+        <tr><td>Ketosis</td><td>Excess acetyl-CoA</td></tr>
+        <tr><td>High uric acid (gout)</td><td>Lactate competes with urate for excretion</td></tr>
+      </tbody></table></div>
+    <div class="box clin"><strong>Clinical link</strong>Disulfiram blocks aldehyde dehydrogenase → acetaldehyde builds up → flushing, nausea. Used to help people stop drinking. Many East Asians have a weak form of this enzyme.</div>
+  </div>
+
+  <div class="topic">
+    <h3><span class="num">#84</span> Amino sugars (metabolism) <span class="pg">p. 124</span></h3>
+    <div class="flow"><span>Fructose-6-P + glutamine</span><i>→</i><span class="hi">Glucosamine-6-P</span><i>→</i><span>N-acetylglucosamine</span><i>→</i><span>N-acetylgalactosamine, N-acetylneuraminic acid (sialic acid)</span></div>
+    <p>These are used to build glycoproteins, glycolipids and GAGs. <b>N-acetylneuraminic acid (NANA)</b> is the main sialic acid; it gives cell surfaces their negative charge.</p>
+  </div>
+
+  <div class="topic">
+    <h3><span class="num">#85</span> Glycoproteins <span class="pg">pp. 124–126</span></h3>
+    <div class="two">
+      <div class="mini"><h4>Glycosylation (planned, by enzymes)</h4><ul class="k"><li><b>N-linked</b>: sugar on the N of <b>asparagine</b>; starts in ER (dolichol phosphate carrier)</li><li><b>O-linked</b>: sugar on the O of <b>serine / threonine</b>; in Golgi</li><li><b>GPI anchor</b>: protein tied to membrane via a glycolipid</li></ul></div>
+      <div class="mini"><h4>Glycation (unplanned, no enzyme)</h4><p>Glucose sticks to proteins by itself when blood glucose is high. Example: <b>HbA1c</b>. Long-term → <b>AGEs</b> (advanced glycation end products) that damage vessels (#130).</p></div>
+    </div>
+    <ul class="k cols"><li><b>Glycocalyx</b>: sugar coat on cell surface; cell recognition</li><li>Blood group substances (#86)</li><li><b>Proteoglycans</b>: protein core + many GAG chains (mostly sugar, 95%)</li><li>Glycoproteins are mostly protein with short sugar chains</li></ul>
+  </div>
+
+  <div class="topic">
+    <h3><span class="num">#86</span> Blood group substances</h3>
+    <div class="flow"><span class="hi">H antigen (basic structure, ends in fucose)</span><i>+ N-acetylgalactosamine →</i><span>A antigen</span><i>|</i><span class="hi">H antigen</span><i>+ galactose →</i><span>B antigen</span><i>|</i><span>Group O = H only</span></div>
+    <p>A and B antigens differ only in the <b>last sugar</b> added. Group AB has both enzymes. Bombay blood group has no H antigen at all.</p>
+  </div>
+
+  <div class="topic">
+    <h3><span class="num">#87</span> Mucopolysaccharidoses (MPS)</h3>
+    <div class="flow"><span class="bad">Lysosomal enzyme missing</span><i>→</i><span>GAG not broken down</span><i>→</i><span>GAG piles up in lysosomes</span><i>→</i><span class="bad">Lysosomal storage disease; GAG in urine</span></div>
+    <div class="tbl"><table>
+      <thead><tr><th>MPS</th><th>Name</th><th>Missing enzyme</th><th>Key point</th></tr></thead>
+      <tbody>
+        <tr><td class="n">I H</td><td><b>Hurler</b></td><td>α-L-iduronidase</td><td>Severe; corneal clouding, coarse face, intellectual disability</td></tr>
+        <tr><td class="n">I S</td><td><b>Scheie</b></td><td>α-L-iduronidase</td><td>Mild form of Hurler; normal intelligence</td></tr>
+        <tr><td class="n">II</td><td><b>Hunter</b></td><td>Iduronate sulphatase</td><td><b>X-linked</b>; no corneal clouding</td></tr>
+        <tr><td class="n">III</td><td><b>Sanfilippo</b></td><td>Heparan sulphate enzymes</td><td>Mainly brain involvement</td></tr>
+        <tr><td class="n">IV</td><td><b>Morquio</b></td><td>Galactose-6-sulphatase</td><td>Skeletal problems; normal intelligence</td></tr>
+        <tr><td class="n">VI</td><td><b>Maroteaux–Lamy</b></td><td>N-acetylgalactosamine-4-sulphatase</td><td>Normal intelligence</td></tr>
+        <tr><td class="n">VII</td><td><b>Sly</b></td><td>β-glucuronidase</td><td>—</td></tr>
+      </tbody></table></div>
+    <div class="box mem"><strong>Remember</strong>Hunter hunts with clear eyes (no corneal clouding) and is X-linked. All others are autosomal recessive.</div>
+  </div>
+</section>
+
+<!-- ============ PART 6 ============ -->
+<section class="part" id="p6">
+  <div class="parthead">
+    <div class="eyebrow">Part 6 · Chapter 18 · pp. 216–222 · BI 3.6</div>
+    <h2>TCA cycle (citric acid cycle, Krebs cycle)</h2>
+    <p class="sub">The final common pathway that burns the acetyl-CoA from carbohydrate, fat and protein. It is far from Chapter 9 in the book, but it is in Exam 1.</p>
+  </div>
+
+  <div class="topic">
+    <h3><span class="num">#88</span> Site</h3>
+    <p><b>Mitochondrial matrix</b>. The one exception is <b class="t">succinate dehydrogenase</b>, which is fixed in the <b>inner mitochondrial membrane</b> (it is also Complex II of the ETC). RBCs have no mitochondria, so they have no TCA cycle.</p>
+  </div>
+
+  <div class="topic">
+    <h3><span class="num">#89</span> The 8 steps <span class="pg">pp. 216–219</span></h3>
+    <figure>
+      <svg viewBox="0 0 540 490" role="img" aria-label="TCA cycle with eight intermediates, enzymes and products">
+        <circle cx="270" cy="250" r="160" class="sv-grid"/>
+        <!-- arrow arcs between nodes -->
+        <g class="sv-la">
+          <path d="M314,96 A160,160 0 0 1 348,110" marker-end="url(#ahA)"/>
+          <path d="M410,172 A160,160 0 0 1 424,206" marker-end="url(#ahA)"/>
+          <path d="M424,294 A160,160 0 0 1 410,328" marker-end="url(#ahA)"/>
+          <path d="M348,390 A160,160 0 0 1 325,400" marker-end="url(#ahA)"/>
+          <path d="M226,404 A160,160 0 0 1 192,390" marker-end="url(#ahA)"/>
+          <path d="M130,328 A160,160 0 0 1 116,294" marker-end="url(#ahA)"/>
+          <path d="M116,206 A160,160 0 0 1 130,172" marker-end="url(#ahA)"/>
+          <path d="M192,110 A160,160 0 0 1 215,100" marker-end="url(#ahA)"/>
+        </g>
+        <!-- nodes -->
+        <rect x="222" y="76" width="96" height="28" rx="6" class="sv-box"/><text x="270" y="95" text-anchor="middle" class="sv-b">Citrate (6C)</text>
+        <rect x="330" y="123" width="94" height="28" rx="6" class="sv-box"/><text x="377" y="142" text-anchor="middle" class="sv-b">Isocitrate</text>
+        <rect x="380" y="236" width="100" height="28" rx="6" class="sv-box"/><text x="430" y="255" text-anchor="middle" class="sv-b">α-KG (5C)</text>
+        <rect x="318" y="349" width="118" height="28" rx="6" class="sv-box"/><text x="377" y="368" text-anchor="middle" class="sv-b">Succinyl-CoA</text>
+        <rect x="222" y="396" width="96" height="28" rx="6" class="sv-box"/><text x="270" y="415" text-anchor="middle" class="sv-b">Succinate</text>
+        <rect x="110" y="349" width="94" height="28" rx="6" class="sv-box"/><text x="157" y="368" text-anchor="middle" class="sv-b">Fumarate</text>
+        <rect x="64" y="236" width="84" height="28" rx="6" class="sv-box"/><text x="106" y="255" text-anchor="middle" class="sv-b">Malate</text>
+        <rect x="96" y="123" width="112" height="28" rx="6" class="sv-boxg"/><text x="152" y="142" text-anchor="middle" class="sv-g">Oxaloacetate</text>
+        <!-- acetyl CoA -->
+        <rect x="14" y="30" width="116" height="28" rx="6" class="sv-boxa"/><text x="72" y="49" text-anchor="middle" class="sv-a">Acetyl-CoA (2C)</text>
+        <path d="M130,48 C170,50 200,58 222,76" class="sv-la" marker-end="url(#ahA)"/>
+        <!-- enzymes inside -->
+        <text x="222" y="170" text-anchor="middle" class="sv-s">① Citrate synthase</text>
+        <text x="322" y="180" text-anchor="middle" class="sv-s">② Aconitase</text>
+        <text x="352" y="215" text-anchor="middle" class="sv-s">③ Isocitrate DH</text>
+        <text x="352" y="295" text-anchor="middle" class="sv-s">④ α-KG DH</text>
+        <text x="306" y="330" text-anchor="middle" class="sv-s">⑤ Succinyl-CoA</text><text x="306" y="342" text-anchor="middle" class="sv-s">synthetase</text>
+        <text x="220" y="336" text-anchor="middle" class="sv-s">⑥ Succinate DH</text>
+        <text x="178" y="296" text-anchor="middle" class="sv-s">⑦ Fumarase</text>
+        <text x="186" y="212" text-anchor="middle" class="sv-s">⑧ Malate DH</text>
+        <text x="270" y="246" text-anchor="middle" class="sv-b">TCA cycle</text>
+        <text x="270" y="262" text-anchor="middle" class="sv-s">mitochondrial matrix</text>
+        <!-- products outside -->
+        <text x="468" y="168" class="sv-g" text-anchor="middle">CO₂ + NADH</text>
+        <text x="468" y="334" class="sv-g" text-anchor="middle">CO₂ + NADH</text>
+        <text x="360" y="452" class="sv-g" text-anchor="middle">GTP (→ ATP)</text>
+        <text x="180" y="452" class="sv-g" text-anchor="middle">FADH₂</text>
+        <text x="46" y="196" class="sv-g" text-anchor="middle">NADH</text>
+        <text x="72" y="318" class="sv-s" text-anchor="middle">+ H₂O</text>
+        <text x="270" y="484" text-anchor="middle" class="sv-s">Per turn: 2 CO₂ · 3 NADH · 1 FADH₂ · 1 GTP · oxaloacetate regenerated</text>
+      </svg>
+      <figcaption>Acetyl-CoA (2C) joins oxaloacetate (4C) to make citrate (6C). Two carbons leave as CO₂, and oxaloacetate comes back, ready for the next turn.</figcaption>
+    </figure>
+    <div class="tbl"><table>
+      <thead><tr><th>#</th><th>Reaction</th><th>Enzyme</th><th>Product / note</th></tr></thead>
+      <tbody>
+        <tr><td class="n">1</td><td>Oxaloacetate + Acetyl-CoA → Citrate</td><td>Citrate synthase</td><td>Irreversible</td></tr>
+        <tr><td class="n">2</td><td>Citrate ⇌ Isocitrate (via cis-aconitate)</td><td>Aconitase (Fe²⁺)</td><td>Fluoroacetate blocks</td></tr>
+        <tr><td class="n">3</td><td>Isocitrate → α-Ketoglutarate</td><td>Isocitrate dehydrogenase</td><td><b>NADH + CO₂</b> · rate-limiting</td></tr>
+        <tr><td class="n">4</td><td>α-KG → Succinyl-CoA</td><td>α-KG dehydrogenase complex (same 5 cofactors as PDH)</td><td><b>NADH + CO₂</b> · arsenite blocks</td></tr>
+        <tr><td class="n">5</td><td>Succinyl-CoA → Succinate</td><td>Succinyl-CoA synthetase (succinate thiokinase)</td><td><b>GTP</b> (substrate-level phosphorylation)</td></tr>
+        <tr><td class="n">6</td><td>Succinate → Fumarate</td><td>Succinate dehydrogenase</td><td><b>FADH₂</b> · malonate blocks · in inner membrane</td></tr>
+        <tr><td class="n">7</td><td>Fumarate + H₂O → Malate</td><td>Fumarase</td><td>—</td></tr>
+        <tr><td class="n">8</td><td>Malate → Oxaloacetate</td><td>Malate dehydrogenase</td><td><b>NADH</b></td></tr>
+      </tbody></table></div>
+    <div class="box mem"><strong>Mnemonic</strong><b>C</b>itrate <b>I</b>s <b>K</b>rebs' <b>S</b>tarting <b>S</b>ubstrate <b>F</b>or <b>M</b>aking <b>O</b>xaloacetate = Citrate, Isocitrate, α-Ketoglutarate, Succinyl-CoA, Succinate, Fumarate, Malate, Oxaloacetate.</div>
+  </div>
+
+  <div class="topic">
+    <h3><span class="num">#90</span> Energy yield</h3>
+    <div class="tbl"><table>
+      <thead><tr><th>Per acetyl-CoA</th><th>ATP each (modern)</th><th>Total</th></tr></thead>
+      <tbody>
+        <tr><td>3 NADH</td><td class="n">2.5</td><td class="n">7.5</td></tr>
+        <tr><td>1 FADH₂</td><td class="n">1.5</td><td class="n">1.5</td></tr>
+        <tr><td>1 GTP</td><td class="n">1</td><td class="n">1</td></tr>
+        <tr><td><b>Total</b></td><td></td><td class="n"><b>10 ATP</b> (older books: 12)</td></tr>
+      </tbody></table></div>
+    <p>One glucose gives 2 acetyl-CoA, so the TCA cycle gives 20 ATP per glucose. Add PDH (2 NADH = 5 ATP) and glycolysis (7 ATP) = <b>32 ATP</b> per glucose.</p>
+  </div>
+
+  <div class="topic">
+    <h3><span class="num">#91</span> Regulation</h3>
+    <div class="tbl"><table>
+      <thead><tr><th>Enzyme</th><th>Activated by</th><th>Inhibited by</th></tr></thead>
+      <tbody>
+        <tr><td>Citrate synthase</td><td>—</td><td>ATP, NADH, succinyl-CoA, citrate</td></tr>
+        <tr><td><b>Isocitrate dehydrogenase</b> (main control)</td><td>ADP, Ca²⁺</td><td>ATP, NADH</td></tr>
+        <tr><td>α-KG dehydrogenase</td><td>Ca²⁺</td><td>NADH, succinyl-CoA</td></tr>
+      </tbody></table></div>
+    <p>Simple logic: when the cell has plenty of energy (ATP, NADH high), the cycle slows. When energy is low (ADP high) or muscle is working (Ca²⁺ high), it speeds up. There is no hormone acting directly on the cycle.</p>
+  </div>
+
+  <div class="topic">
+    <h3><span class="num">#92</span> TCA inhibitors</h3>
+    <div class="tbl"><table>
+      <thead><tr><th>Inhibitor</th><th>Enzyme blocked</th><th>Type</th></tr></thead>
+      <tbody>
+        <tr><td><b>Fluoroacetate</b> (rat poison)</td><td>Aconitase (after conversion to fluorocitrate)</td><td>Suicide inhibition</td></tr>
+        <tr><td><b>Arsenite</b></td><td>α-KG dehydrogenase (and PDH), binds lipoamide</td><td>Non-competitive</td></tr>
+        <tr><td><b>Malonate</b></td><td>Succinate dehydrogenase</td><td>Competitive (looks like succinate)</td></tr>
+      </tbody></table></div>
+  </div>
+
+  <div class="topic">
+    <h3><span class="num">#93</span> Amphibolic role</h3>
+    <p>"Amphi" = both. The cycle both <b>breaks down</b> (catabolic: burns acetyl-CoA for energy) and <b>builds up</b> (anabolic: gives starting materials).</p>
+    <div class="tbl"><table>
+      <thead><tr><th>TCA intermediate</th><th>Used to make</th></tr></thead>
+      <tbody>
+        <tr><td>Citrate</td><td>Fatty acids and cholesterol (carries acetyl-CoA out to cytoplasm)</td></tr>
+        <tr><td>α-Ketoglutarate</td><td>Glutamate → other amino acids</td></tr>
+        <tr><td>Succinyl-CoA</td><td><b>Heme</b> (with glycine)</td></tr>
+        <tr><td>Oxaloacetate</td><td>Aspartate, glucose (gluconeogenesis), pyrimidines</td></tr>
+        <tr><td>Malate</td><td>Carries oxaloacetate out for gluconeogenesis</td></tr>
+      </tbody></table></div>
+  </div>
+
+  <div class="topic">
+    <h3><span class="num">#94</span> Anaplerotic reactions</h3>
+    <p>"Anaplerotic" = filling up. When intermediates are taken out for building, the cycle would slow down. These reactions <b>top it back up</b>.</p>
+    <ul class="k"><li><b>Pyruvate → Oxaloacetate</b> (pyruvate carboxylase, biotin): the most important one</li><li>Glutamate → α-ketoglutarate (transamination / glutamate dehydrogenase)</li><li>Aspartate → oxaloacetate (transamination)</li><li>Propionyl-CoA → succinyl-CoA (from odd-chain fats, some amino acids; needs B12)</li></ul>
+  </div>
+</section>
+
+<!-- ============ PART 7 ============ -->
+<section class="part" id="p7">
+  <div class="parthead">
+    <div class="eyebrow">Part 7 · Chapter 23 · pp. 266–273 · BI 2.5–2.7</div>
+    <h2>Clinical enzymology and biomarkers</h2>
+    <p class="sub">When cells are damaged, their enzymes leak into the blood. Which enzyme rises tells us which organ is hurt.</p>
+  </div>
+
+  <div class="topic">
+    <h3><span class="num">#95</span> Cardiac markers (heart attack / MI)</h3>
+    <figure>
+      <svg viewBox="0 0 400 250" role="img" aria-label="Rise and fall of cardiac markers after myocardial infarction">
+        <path d="M50,20 L50,200 L360,200" class="sv-ax"/>
+        <path d="M50,50 L360,50" class="sv-grid dash"/>
+        <text x="20" y="120" transform="rotate(-90 20 120)" text-anchor="middle" class="sv-s">Rise above normal (peak = top)</text>
+        <g class="sv-s" text-anchor="middle">
+          <text x="50" y="216">0</text><text x="80" y="216">1</text><text x="110" y="216">2</text><text x="140" y="216">3</text><text x="170" y="216">4</text><text x="200" y="216">5</text><text x="230" y="216">6</text><text x="260" y="216">7</text><text x="290" y="216">8</text><text x="320" y="216">9</text><text x="350" y="216">10</text>
+        </g>
+        <text x="205" y="238" text-anchor="middle" class="sv-s">Days after chest pain</text>
+        <polyline points="50,200 57.5,155 80,50 110,140 140,192.5 170,200" class="sv-lr"/>
+        <polyline points="50,200 57.5,162.5 80,65 110,50 170,95 260,155 350,192.5" class="sv-la"/>
+        <polyline points="50,200 65,185 80,140 125,50 200,110 290,162.5 350,188" class="sv-lg dash"/>
+        <text x="84" y="42" class="sv-r">CK-MB</text>
+        <text x="175" y="88" class="sv-a">Troponin I / T</text>
+        <text x="210" y="124" class="sv-g">LDH</text>
+      </svg>
+      <figcaption>Shape of the curves only (not to exact scale). CK-MB comes and goes fast; troponin stays up for over a week; LDH rises late and stays longest.</figcaption>
+    </figure>
+    <div class="tbl"><table>
+      <thead><tr><th>Marker</th><th>Starts rising</th><th>Peak</th><th>Back to normal</th><th>Use</th></tr></thead>
+      <tbody>
+        <tr><td><b>Troponin I / T</b></td><td class="n">3–6 h</td><td class="n">24–48 h</td><td class="n">7–14 days</td><td><b>Best marker</b> today; very specific for heart muscle</td></tr>
+        <tr><td><b>CK-MB</b></td><td class="n">3–6 h</td><td class="n">~24 h</td><td class="n">2–3 days</td><td>Good for detecting a <b>second attack</b> (re-infarction)</td></tr>
+        <tr><td><b>AST</b></td><td class="n">6–8 h</td><td class="n">24–48 h</td><td class="n">4–5 days</td><td>Old marker, not specific</td></tr>
+        <tr><td><b>LDH</b></td><td class="n">12–24 h</td><td class="n">2–3 days</td><td class="n">8–14 days</td><td>Old marker; useful for late cases (flipped pattern)</td></tr>
+        <tr><td><b>Myoglobin</b></td><td class="n">1–3 h</td><td class="n">6–9 h</td><td class="n">~24 h</td><td>Earliest, but not specific</td></tr>
+      </tbody></table></div>
+  </div>
+
+  <div class="topic">
+    <h3><span class="num">#96</span> Creatine kinase (CK) isoenzymes</h3>
+    <p>CK is a dimer made of M (muscle) and B (brain) subunits.</p>
+    <div class="tbl"><table>
+      <thead><tr><th>Isoenzyme</th><th>Subunits</th><th>Main tissue</th><th>Rises in</th></tr></thead>
+      <tbody>
+        <tr><td>CK-1</td><td>BB</td><td>Brain</td><td>Brain injury, some cancers</td></tr>
+        <tr><td><b>CK-2</b></td><td><b>MB</b></td><td><b>Heart</b> (about 20–30% of heart CK)</td><td><b>Myocardial infarction</b></td></tr>
+        <tr><td>CK-3</td><td>MM</td><td>Skeletal muscle (and most of heart CK)</td><td>Muscle injury, IM injection, muscular dystrophy, heavy exercise</td></tr>
+      </tbody></table></div>
+    <div class="box mem"><strong>Remember</strong>Total CK is highest in <b>Duchenne muscular dystrophy</b>. CK-MB = heart.</div>
+  </div>
+
+  <div class="topic">
+    <h3><span class="num">#97</span> LDH isoenzymes</h3>
+    <p>LDH is a tetramer (4 subunits) of H (heart) and M (muscle) types, giving 5 isoenzymes. They are separated by electrophoresis; LDH-1 moves fastest.</p>
+    <div class="two">
+      <div class="tbl"><table>
+        <thead><tr><th>Form</th><th>Subunits</th><th>Main tissue</th></tr></thead>
+        <tbody>
+          <tr><td><b>LDH-1</b></td><td>H₄</td><td>Heart, RBC, kidney</td></tr>
+          <tr><td><b>LDH-2</b></td><td>H₃M</td><td>Heart, RBC (highest in normal serum)</td></tr>
+          <tr><td>LDH-3</td><td>H₂M₂</td><td>Lung, brain, spleen</td></tr>
+          <tr><td>LDH-4</td><td>HM₃</td><td>Liver, muscle</td></tr>
+          <tr><td><b>LDH-5</b></td><td>M₄</td><td><b>Liver, skeletal muscle</b></td></tr>
+        </tbody></table></div>
+      <figure class="sm">
+        <svg viewBox="0 0 400 230" role="img" aria-label="LDH isoenzyme pattern normal versus myocardial infarction">
+          <path d="M40,190 L390,190" class="sv-ax"/>
+          <g>
+            <rect x="36" y="102.5" width="22" height="87.5" class="sv-fill-m" opacity=".5"/><rect x="62" y="50" width="22" height="140" class="sv-fill-r"/>
+            <rect x="102" y="67.5" width="22" height="122.5" class="sv-fill-m" opacity=".5"/><rect x="128" y="78" width="22" height="112" class="sv-fill-r"/>
+            <rect x="168" y="120" width="22" height="70" class="sv-fill-m" opacity=".5"/><rect x="194" y="137.5" width="22" height="52.5" class="sv-fill-r"/>
+            <rect x="234" y="155" width="22" height="35" class="sv-fill-m" opacity=".5"/><rect x="260" y="165.5" width="22" height="24.5" class="sv-fill-r"/>
+            <rect x="300" y="155" width="22" height="35" class="sv-fill-m" opacity=".5"/><rect x="326" y="169" width="22" height="21" class="sv-fill-r"/>
+          </g>
+          <g class="sv-t" text-anchor="middle"><text x="60" y="208">LDH-1</text><text x="126" y="208">LDH-2</text><text x="192" y="208">LDH-3</text><text x="258" y="208">LDH-4</text><text x="324" y="208">LDH-5</text></g>
+          <rect x="220" y="20" width="12" height="12" class="sv-fill-m" opacity=".5"/><text x="238" y="30" class="sv-s">Normal (LDH-2 &gt; LDH-1)</text>
+          <rect x="220" y="40" width="12" height="12" class="sv-fill-r"/><text x="238" y="50" class="sv-s">After MI (LDH-1 &gt; LDH-2)</text>
+          <text x="73" y="44" text-anchor="middle" class="sv-r">flip</text>
+        </svg>
+        <figcaption>The "flipped pattern": after MI, LDH-1 becomes higher than LDH-2.</figcaption>
+      </figure>
+    </div>
+    <p>LDH-1 rises in heart attack and haemolysis (RBC). LDH-5 rises in liver disease and muscle injury.</p>
+  </div>
+
+  <div class="topic">
+    <h3><span class="num">#98</span> AST (SGOT) <span class="pg">pp. 269–270</span></h3>
+    <p><b>Aspartate aminotransferase</b>; old name serum glutamate oxaloacetate transaminase. Needs <b>PLP (B6)</b>. Found in heart, liver, skeletal muscle, kidney, RBC. Present in both cytoplasm and mitochondria.</p>
+    <p>Rises in: liver disease, muscle disease, and (old use) myocardial infarction.</p>
+  </div>
+
+  <div class="topic">
+    <h3><span class="num">#99</span> ALT (SGPT)</h3>
+    <p><b>Alanine aminotransferase</b>; old name serum glutamate pyruvate transaminase. Needs <b>PLP</b>. Found mainly in the <b>liver cytoplasm</b>, so it is <b>more liver-specific</b> than AST.</p>
+    <div class="box mem"><strong>AST : ALT ratio</strong>Viral hepatitis: <b>ALT &gt; AST</b> (ratio &lt; 1), often in thousands. Alcoholic liver disease: <b>AST &gt; ALT</b> (ratio &gt; 2), because alcohol damages mitochondria (where much AST lives) and alcoholics lack B6.</div>
+  </div>
+
+  <div class="topic">
+    <h3><span class="num">#100</span> Alkaline phosphatase (ALP)</h3>
+    <p>Works at <b>pH 9–10</b>. Needs Zn²⁺ and Mg²⁺. Isoenzymes from <b>bone</b>, <b>liver</b>, <b>placenta</b>, <b>intestine</b>.</p>
+    <div class="two">
+      <div class="mini"><h4>Liver causes (high)</h4><ul class="k"><li><b>Obstructive jaundice</b> / cholestasis (very high)</li><li>Liver cancer or secondaries</li></ul></div>
+      <div class="mini"><h4>Bone causes (high)</h4><ul class="k"><li>Rickets, osteomalacia</li><li><b>Paget disease</b> (very high)</li><li>Hyperparathyroidism, bone secondaries, healing fractures</li><li>Normal in growing children and pregnancy (placental)</li></ul></div>
+    </div>
+    <p><b>Regan isoenzyme</b>: a placental-like ALP made by some cancers (carcinoplacental). Placental ALP is <b>heat-stable</b>; bone ALP is heat-labile.</p>
+  </div>
+
+  <div class="topic">
+    <h3><span class="num">#101</span> 5′-Nucleotidase</h3>
+    <p>An <b>ecto-enzyme</b> (on the outer cell surface). Rises in <b>liver / biliary obstruction</b> but <b>not</b> in bone disease.</p>
+    <div class="box mem"><strong>Use</strong>If ALP is high: high 5′-nucleotidase (or high GGT) → the ALP is from <b>liver</b>. Normal 5′-nucleotidase → the ALP is from <b>bone</b>.</div>
+  </div>
+
+  <div class="topic">
+    <h3><span class="num">#102</span> GGT (gamma-glutamyl transferase)</h3>
+    <p>Found in liver and bile ducts. Rises in biliary obstruction and <b>alcoholism</b> (very sensitive marker of alcohol intake; induced by alcohol and some drugs). Like 5′-nucleotidase, it helps confirm a liver source of high ALP.</p>
+  </div>
+
+  <div class="topic">
+    <h3><span class="num">#103</span> Acid phosphatase (ACP)</h3>
+    <p>Works at <b>pH 5</b>. Found in prostate, RBC, platelets, bone, liver. The <b>prostatic</b> fraction is <b>tartrate-labile</b> (inhibited by tartrate); the RBC fraction is not. Old marker of <b>prostate cancer</b> (spread to bone), now replaced by <b>PSA</b> (prostate-specific antigen, a serine protease). Also used in forensic tests for semen.</p>
+  </div>
+
+  <div class="topic">
+    <h3><span class="num">#104</span> Cholinesterase</h3>
+    <div class="two">
+      <div class="mini"><h4>True cholinesterase (acetylcholinesterase)</h4><p>At nerve endings and on RBCs. Breaks down acetylcholine.</p></div>
+      <div class="mini"><h4>Pseudocholinesterase (butyrylcholinesterase)</h4><p>Made in <b>liver</b>, found in plasma. Falls in liver disease.</p></div>
+    </div>
+    <div class="box clin"><strong>Clinical link</strong><b>Organophosphate poisoning</b> (pesticides) blocks cholinesterase → acetylcholine piles up → sweating, pinpoint pupils, slow heart, breathing failure. Low RBC cholinesterase confirms it. People with a genetic <b>pseudocholinesterase variant</b> cannot break down <b>succinylcholine</b> (a muscle relaxant used in surgery), so they stay paralysed and cannot breathe for hours ("scoline apnoea").</div>
+  </div>
+
+  <div class="topic">
+    <h3><span class="num">#105</span> G6PD (as a lab test)</h3>
+    <p>Measured in RBCs to diagnose G6PD deficiency before giving oxidant drugs like primaquine. Deficiency → oxidative haemolysis (see #73). Test after a haemolytic episode can be falsely normal because young RBCs have more enzyme.</p>
+  </div>
+
+  <div class="topic">
+    <h3><span class="num">#106</span> Amylase</h3>
+    <p>From <b>salivary glands</b> and <b>pancreas</b>. Small enough to be filtered into urine.</p>
+    <p>In <b>acute pancreatitis</b>: rises within 2–12 h, peaks at 24 h, normal in 3–4 days. Also high in mumps (salivary), perforated ulcer, intestinal obstruction.</p>
+  </div>
+
+  <div class="topic">
+    <h3><span class="num">#107</span> Lipase</h3>
+    <p>Mainly from the pancreas. In acute pancreatitis it rises with amylase but <b>stays high longer</b> (7–14 days) and is <b>more specific</b>. So lipase is the better test, especially if the patient comes late.</p>
+  </div>
+
+  <div class="topic">
+    <h3><span class="num">#108</span> Enzymes as lab tools, and enzyme profiles <span class="pg">p. 273</span></h3>
+    <div class="tbl"><table>
+      <thead><tr><th>Enzyme used as reagent</th><th>To measure</th></tr></thead>
+      <tbody>
+        <tr><td>Urease</td><td>Urea</td></tr>
+        <tr><td>Uricase</td><td>Uric acid</td></tr>
+        <tr><td>Glucose oxidase (GOD) + peroxidase (POD)</td><td>Glucose</td></tr>
+        <tr><td>Hexokinase + G6PD</td><td>Glucose (reference method)</td></tr>
+        <tr><td>Cholesterol esterase + cholesterol oxidase</td><td>Cholesterol</td></tr>
+        <tr><td>Lipase</td><td>Triglycerides</td></tr>
+        <tr><td>Peroxidase</td><td>Final colour step in many tests; ELISA label</td></tr>
+      </tbody></table></div>
+    <div class="tbl"><table>
+      <thead><tr><th>Disease</th><th>Enzyme pattern</th></tr></thead>
+      <tbody>
+        <tr><td>Myocardial infarction</td><td>Troponin ↑, CK-MB ↑, LDH-1 &gt; LDH-2, AST ↑</td></tr>
+        <tr><td>Viral hepatitis</td><td>ALT ↑↑ &gt; AST ↑, ALP mildly ↑</td></tr>
+        <tr><td>Obstructive jaundice</td><td>ALP ↑↑, GGT ↑, 5′-NT ↑; ALT/AST mildly ↑</td></tr>
+        <tr><td>Bone disease</td><td>ALP ↑, 5′-NT and GGT normal</td></tr>
+        <tr><td>Muscle disease</td><td>CK-MM ↑↑, aldolase ↑, AST ↑, LDH-5 ↑</td></tr>
+        <tr><td>Acute pancreatitis</td><td>Amylase ↑, lipase ↑ (longer)</td></tr>
+        <tr><td>Prostate cancer</td><td>PSA ↑, tartrate-labile ACP ↑</td></tr>
+      </tbody></table></div>
+    <div class="two">
+      <div class="mini"><h4>Therapeutic enzymes</h4><ul class="k"><li><b>Streptokinase, urokinase, tPA</b>: dissolve clots in MI and stroke</li><li><b>Asparaginase</b>: treats childhood leukaemia (ALL)</li><li><b>Pancreatic enzymes</b>: for pancreatic failure</li><li><b>Hyaluronidase</b>: helps injected drugs spread</li><li><b>DNase</b>: thins mucus in cystic fibrosis</li></ul></div>
+      <div class="mini"><h4>Immobilized enzymes</h4><p>Enzymes fixed onto a solid support (beads, strips, electrodes). They can be reused and are used in <b>glucometer strips</b>, biosensors and auto-analysers.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PART 8 ============ -->
+<section class="part" id="p8">
+  <div class="parthead">
+    <div class="eyebrow">Part 8 · Chapter 24 · pp. 274–291 · BI 3.9–3.10</div>
+    <h2>Blood glucose, GTT and diabetes mellitus</h2>
+    <p class="sub">How the body keeps blood glucose steady, how we test it, and what goes wrong in diabetes.</p>
+  </div>
+
+  <div class="topic">
+    <h3><span class="num">#109</span> Blood glucose regulation</h3>
+    <p>Normal fasting plasma glucose is about <b>70–110 mg/dL</b> (book value). The body keeps it in this range by balancing what enters and leaves the blood.</p>
+    <figure>
+      <svg viewBox="0 0 620 220" role="img" aria-label="Sources and fates of blood glucose">
+        <rect x="235" y="80" width="150" height="56" rx="28" class="sv-boxa"/>
+        <text x="310" y="105" text-anchor="middle" class="sv-a">Blood glucose</text>
+        <text x="310" y="122" text-anchor="middle" class="sv-s">70–110 mg/dL fasting</text>
+        <text x="100" y="24" text-anchor="middle" class="sv-b">IN (raise glucose)</text>
+        <rect x="20" y="40" width="160" height="30" rx="6" class="sv-boxg"/><text x="100" y="60" text-anchor="middle" class="sv-g">Food (absorption)</text>
+        <rect x="20" y="93" width="160" height="30" rx="6" class="sv-boxg"/><text x="100" y="113" text-anchor="middle" class="sv-g">Glycogenolysis (liver)</text>
+        <rect x="20" y="146" width="160" height="30" rx="6" class="sv-boxg"/><text x="100" y="166" text-anchor="middle" class="sv-g">Gluconeogenesis</text>
+        <path d="M180,55 L233,95 M180,108 L233,108 M180,161 L233,122" class="sv-lg" marker-end="url(#ahG)"/>
+        <text x="520" y="24" text-anchor="middle" class="sv-b">OUT (lower glucose)</text>
+        <rect x="440" y="40" width="160" height="30" rx="6" class="sv-boxr"/><text x="520" y="60" text-anchor="middle" class="sv-r">Used by tissues</text>
+        <rect x="440" y="93" width="160" height="30" rx="6" class="sv-boxr"/><text x="520" y="113" text-anchor="middle" class="sv-r">Stored as glycogen</text>
+        <rect x="440" y="146" width="160" height="30" rx="6" class="sv-boxr"/><text x="520" y="166" text-anchor="middle" class="sv-r">Turned into fat</text>
+        <path d="M387,95 L438,55 M387,108 L438,108 M387,122 L438,161" class="sv-lr" marker-end="url(#ahR)"/>
+        <text x="310" y="200" text-anchor="middle" class="sv-s">Above ~180 mg/dL, glucose also spills into urine (renal threshold)</text>
+      </svg>
+    </figure>
+    <div class="two">
+      <div class="mini"><h4>Fed state (after a meal)</h4><p>Glucose high → <b>insulin ↑</b> → tissues take up glucose, liver stores glycogen and makes fat.</p></div>
+      <div class="mini"><h4>Fasting state</h4><p>Glucose low → <b>glucagon ↑</b> → glycogen breakdown (first 12–18 h), then gluconeogenesis.</p></div>
+    </div>
+  </div>
+
+  <div class="topic">
+    <h3><span class="num">#110</span> Insulin <span class="pg">pp. 280–284</span></h3>
+    <p>Made by <b>β-cells</b> of the pancreatic islets. Made as preproinsulin → proinsulin → insulin + <b>C-peptide</b> (C-peptide shows how much insulin the body itself makes). The <b>only hormone that lowers</b> blood glucose.</p>
+    <div class="two">
+      <div class="mini"><h4>Promotes (↑)</h4><ul class="k"><li>Glucose uptake (GLUT4 to cell surface)</li><li>Glycolysis</li><li>Glycogen synthesis</li><li>Fat synthesis (lipogenesis)</li><li>Protein synthesis</li></ul></div>
+      <div class="mini"><h4>Inhibits (↓)</h4><ul class="k"><li>Gluconeogenesis</li><li>Glycogenolysis</li><li>Lipolysis</li><li>Ketogenesis</li><li>Protein breakdown</li></ul></div>
+    </div>
+    <p>Works through a <b>tyrosine kinase receptor</b>. Insulin = the <b>fed-state, building</b> hormone.</p>
+  </div>
+
+  <div class="topic">
+    <h3><span class="num">#111</span> Glucagon</h3>
+    <p>Made by <b>α-cells</b>. Acts mainly on <b>liver</b> (not muscle) via <b>cAMP</b>. Raises blood glucose.</p>
+    <div class="two">
+      <div class="mini"><h4>Promotes (↑)</h4><ul class="k"><li>Glycogenolysis</li><li>Gluconeogenesis</li><li>Lipolysis</li><li>Ketogenesis</li></ul></div>
+      <div class="mini"><h4>Inhibits (↓)</h4><ul class="k"><li>Glycogen synthesis</li><li>Glycolysis</li><li>Fat synthesis</li></ul></div>
+    </div>
+    <div class="box mem"><strong>Remember</strong>Insulin and glucagon do exactly opposite things. The <b>insulin/glucagon ratio</b> decides whether the liver stores or releases fuel.</div>
+  </div>
+
+  <div class="topic">
+    <h3><span class="num">#112</span> Other hormones that raise glucose (anti-insulin hormones)</h3>
+    <div class="tbl"><table>
+      <thead><tr><th>Hormone</th><th>How it raises glucose</th></tr></thead>
+      <tbody>
+        <tr><td>Glucagon</td><td>Glycogenolysis + gluconeogenesis (liver)</td></tr>
+        <tr><td>Epinephrine</td><td>Glycogenolysis in liver and muscle; blocks insulin release (stress, "fight or flight")</td></tr>
+        <tr><td>Glucocorticoids (cortisol)</td><td>Gluconeogenesis ↑ (from protein breakdown); insulin resistance</td></tr>
+        <tr><td>ACTH</td><td>Increases cortisol</td></tr>
+        <tr><td>Growth hormone</td><td>Reduces glucose uptake; insulin resistance</td></tr>
+        <tr><td>Thyroxine</td><td>Faster glucose absorption and glycogen breakdown</td></tr>
+      </tbody></table></div>
+    <p>This is why stress, steroid treatment, Cushing syndrome, acromegaly and hyperthyroidism can all raise blood glucose.</p>
+  </div>
+
+  <div class="topic">
+    <h3><span class="num">#113</span> Glucose estimation <span class="pg">pp. 276–277</span></h3>
+    <ul class="k"><li><b>Fasting plasma glucose (FPG)</b>: after 8–10 h (overnight) fasting</li><li><b>Post-prandial (PPBS)</b>: 2 h after a meal</li><li><b>Random plasma glucose (RBS)</b>: any time</li><li><b>Glucometer</b>: capillary blood, finger prick; uses glucose oxidase or dehydrogenase strips</li><li>Sample: <b>sodium fluoride</b> tube (grey top). Fluoride stops glycolysis by inhibiting <b>enolase</b>; otherwise glucose falls ~7% per hour</li><li>Plasma glucose is about 10–15% higher than whole blood glucose</li></ul>
+  </div>
+
+  <div class="topic">
+    <h3><span class="num">#114</span> Glucose oxidase–peroxidase (GOD–POD) method</h3>
+    <div class="flow v">
+      <span>β-D-Glucose + O₂ —(glucose oxidase)→ Gluconic acid + <b>H₂O₂</b></span><i>↓</i>
+      <span>H₂O₂ + chromogen (4-aminoantipyrine + phenol) —(peroxidase)→ <b>coloured (pink) product</b> + H₂O</span>
+    </div>
+    <p>More glucose → more H₂O₂ → darker colour. Measured with a colorimeter. The method is <b>specific for glucose</b> (unlike Benedict's). The kit contains mutarotase or waits for α-glucose to become β, because glucose oxidase acts only on the β form.</p>
+  </div>
+
+  <div class="topic">
+    <h3><span class="num">#115</span> Oral glucose tolerance test (OGTT) <span class="pg">pp. 276–278</span></h3>
+    <div class="flow v">
+      <span>3 days of normal diet (at least 150 g carbohydrate/day), normal activity</span><i>↓</i>
+      <span>Overnight fast (8–14 h). Take <b>fasting (0 h) sample</b></span><i>↓</i>
+      <span>Drink <b>75 g anhydrous glucose</b> in <b>250–300 mL water</b> over 5 minutes (children: 1.75 g/kg, max 75 g)</span><i>↓</i>
+      <span>Sit quietly, no smoking, no food</span><i>↓</i>
+      <span>Take <b>2 h sample</b> (older method: every 30 min, plus urine samples)</span>
+    </div>
+  </div>
+
+  <div class="topic">
+    <h3><span class="num">#116</span> OGTT curves and the book's normal values</h3>
+    <figure>
+      <svg viewBox="0 0 440 260" role="img" aria-label="OGTT curves for normal, impaired glucose tolerance and diabetes">
+        <path d="M60,30 L60,220 L390,220" class="sv-ax"/>
+        <g class="sv-s" text-anchor="end"><text x="54" y="189">100</text><text x="54" y="154">150</text><text x="54" y="119">200</text><text x="54" y="84">250</text><text x="54" y="49">300</text></g>
+        <path d="M60,185 L390,185 M60,150 L390,150 M60,115 L390,115 M60,80 L390,80 M60,45 L390,45" class="sv-grid"/>
+        <path d="M60,157 L390,157" class="sv-l dash"/><text x="386" y="152" text-anchor="end" class="sv-s">140</text>
+        <path d="M60,115 L390,115" class="sv-lr dash"/><text x="386" y="110" text-anchor="end" class="sv-r">200 (diabetes)</text>
+        <g class="sv-s" text-anchor="middle"><text x="60" y="236">0</text><text x="138" y="236">30</text><text x="216" y="236">60</text><text x="294" y="236">90</text><text x="372" y="236">120</text></g>
+        <text x="220" y="254" text-anchor="middle" class="sv-s">Minutes after 75 g glucose</text>
+        <text x="18" y="130" transform="rotate(-90 18 130)" text-anchor="middle" class="sv-s">Plasma glucose (mg/dL)</text>
+        <polyline points="60,192 138,150 216,157 294,171 372,185" class="sv-lg"/>
+        <polyline points="60,181.5 138,129 216,122 294,132.5 372,143" class="sv-la dash"/>
+        <polyline points="60,157 138,101 216,66 294,73 372,87" class="sv-lr"/>
+        <circle cx="372" cy="185" r="3.5" class="sv-fill-g"/><circle cx="372" cy="143" r="3.5" class="sv-fill-a"/><circle cx="372" cy="87" r="3.5" class="sv-fill-r"/>
+        <text x="300" y="198" class="sv-g">Normal</text>
+        <text x="230" y="140" class="sv-a">IGT</text>
+        <text x="150" y="80" class="sv-r">Diabetes</text>
+      </svg>
+      <figcaption>Normal: rises, peaks within 30–60 min, back near fasting by 2 h. Diabetes: starts high, rises higher, stays high.</figcaption>
+    </figure>
+    <div class="tbl"><table>
+      <thead><tr><th>Time</th><th>Normal (book table)</th></tr></thead>
+      <tbody><tr><td>Fasting</td><td class="n">&lt; 110 mg/dL</td></tr><tr><td>1 hour</td><td class="n">&lt; 160 mg/dL</td></tr><tr><td>2 hours</td><td class="n">&lt; 140 mg/dL</td></tr></tbody></table></div>
+    <p>No urine glucose should appear at any time in a normal person.</p>
+  </div>
+
+  <div class="topic">
+    <h3><span class="num">#117–119</span> Diagnosis: diabetes, IGT, IFG</h3>
+    <div class="tbl"><table>
+      <thead><tr><th>Category</th><th>Fasting (mg/dL)</th><th>2 h OGTT (mg/dL)</th><th>HbA1c</th></tr></thead>
+      <tbody>
+        <tr><td><b>Normal</b></td><td class="n">&lt; 110 (book) · &lt; 100 (ADA)</td><td class="n">&lt; 140</td><td class="n">&lt; 5.7%</td></tr>
+        <tr><td><b>#119 Impaired fasting glucose (IFG)</b></td><td class="n">110–125 (book, WHO) · 100–125 (ADA)</td><td class="n">&lt; 140</td><td class="n" rowspan="2">5.7–6.4% (ADA)</td></tr>
+        <tr><td><b>#118 Impaired glucose tolerance (IGT)</b></td><td class="n">&lt; 126</td><td class="n">140–199</td></tr>
+        <tr><td><b>#117 Diabetes mellitus</b></td><td class="n">≥ 126</td><td class="n">≥ 200</td><td class="n">≥ 6.5%</td></tr>
+      </tbody></table></div>
+    <p>Diabetes is also diagnosed if <b>random plasma glucose ≥ 200 mg/dL</b> with classic symptoms. Without symptoms, a high value should be <b>repeated on another day</b>. IFG and IGT together = <b>prediabetes</b> (high risk of future diabetes and heart disease).</p>
+    <div class="box caut"><strong>Book vs today</strong>The book (2011) writes the cut-offs as "&gt; 126" and "&gt; 200"; current WHO/ADA criteria use "≥" (126 and 200 themselves count). The book calls HbA1c mainly a monitoring test; since 2010–2011, ADA and WHO also accept <b>HbA1c ≥ 6.5%</b> for diagnosis. For the exam, write what your college teaches; mention both if unsure.</div>
+  </div>
+
+  <div class="topic">
+    <h3><span class="num">#120</span> Gestational diabetes mellitus (GDM)</h3>
+    <p>High blood glucose <b>first found during pregnancy</b> (usually 24–28 weeks), caused by placental anti-insulin hormones (human placental lactogen, progesterone, cortisol).</p>
+    <ul class="k"><li>Screening: glucose challenge test or OGTT. In India, the <b>DIPSI</b> method is common: 75 g glucose without fasting, <b>2 h value ≥ 140 mg/dL</b> = GDM</li><li>IADPSG/ADA 75 g OGTT: fasting ≥ 92, 1 h ≥ 180, or 2 h ≥ 153 mg/dL (any one)</li><li>Risks: big baby (macrosomia), birth injury, neonatal hypoglycaemia, pre-eclampsia</li><li>Usually goes away after delivery, but <b>recheck 6–12 weeks after delivery</b>; high lifetime risk of type 2 diabetes</li></ul>
+  </div>
+
+  <div class="topic">
+    <h3><span class="num">#121</span> Glucosuria: renal and alimentary</h3>
+    <p><b>Renal threshold</b> for glucose ≈ <b>175–180 mg/dL</b>: above this blood level, the kidney tubules cannot take back all the glucose, so it appears in urine.</p>
+    <div class="two">
+      <div class="mini"><h4>Renal glucosuria</h4><p>Tubules are weak at reabsorbing glucose (low threshold). <b>Glucose in urine</b> but <b>blood glucose and OGTT normal</b>. Harmless. Also seen in pregnancy (threshold falls) and with SGLT2-blocker drugs.</p></div>
+      <div class="mini"><h4>Alimentary (lag-storage) glucosuria</h4><p>After a meal, glucose is absorbed very fast (e.g. after gastrectomy or in hyperthyroidism). Blood glucose shoots up briefly above 180 at 30–60 min, then falls back normally by 2 h. Fasting and 2 h values normal.</p></div>
+    </div>
+  </div>
+
+  <div class="topic">
+    <h3><span class="num">#122</span> Benedict's test <span class="pg">p. 279</span></h3>
+    <p>Benedict's reagent: copper sulphate + sodium carbonate + sodium citrate. Heat with urine. Reducing substances turn blue Cu²⁺ into <b>red Cu₂O</b>.</p>
+    <div class="tbl"><table>
+      <thead><tr><th>Colour</th><th>Approx. sugar</th><th>Grade</th></tr></thead>
+      <tbody><tr><td>Blue (no change)</td><td>Nil</td><td>—</td></tr><tr><td>Green</td><td>0.1–0.5 g/dL</td><td>+</td></tr><tr><td>Yellow</td><td>0.5–1 g/dL</td><td>++</td></tr><tr><td>Orange</td><td>1–2 g/dL</td><td>+++</td></tr><tr><td>Brick red</td><td>&gt; 2 g/dL</td><td>++++</td></tr></tbody></table></div>
+    <div class="box caut"><strong>Not specific for glucose</strong>Any reducing substance gives a positive result: glucose, <b>fructose, galactose, lactose</b> (pregnancy, lactation), <b>pentoses</b>, and non-sugars such as <b>ascorbic acid</b>, salicylates, homogentisic acid (alkaptonuria), some antibiotics. Sucrose is negative. Use glucose oxidase strips to confirm glucose.</div>
+  </div>
+
+  <div class="topic">
+    <h3><span class="num">#123</span> Diabetes mellitus: types</h3>
+    <div class="tbl"><table>
+      <thead><tr><th>Feature</th><th>Type 1</th><th>Type 2</th></tr></thead>
+      <tbody>
+        <tr><td>Cause</td><td><b>Autoimmune</b> destruction of β-cells → absolute insulin lack</td><td><b>Insulin resistance</b> + relative insulin lack</td></tr>
+        <tr><td>How common</td><td>~5–10%</td><td>~90% (<b>most common</b>)</td></tr>
+        <tr><td>Age of onset</td><td>Usually young (&lt; 20 years)</td><td>Usually adults (&gt; 40), now younger</td></tr>
+        <tr><td>Body build</td><td>Thin</td><td>Often obese</td></tr>
+        <tr><td>Insulin / C-peptide</td><td>Very low / absent</td><td>Normal or high early, low later</td></tr>
+        <tr><td>Ketoacidosis</td><td><b>Prone</b></td><td>Rare; more prone to hyperosmolar state</td></tr>
+        <tr><td>Antibodies</td><td>Present (anti-GAD, islet cell)</td><td>Absent</td></tr>
+        <tr><td>Genetics</td><td>HLA-DR3/DR4</td><td>Strong family history</td></tr>
+        <tr><td>Treatment</td><td><b>Insulin essential</b></td><td>Diet, exercise, tablets; insulin later if needed</td></tr>
+      </tbody></table></div>
+    <p><b>Secondary diabetes</b>: from pancreatic disease (pancreatitis, cancer, haemochromatosis), hormone excess (Cushing, acromegaly, pheochromocytoma, glucagonoma) or drugs (steroids, thiazides).</p>
+  </div>
+
+  <div class="topic">
+    <h3><span class="num">#124</span> Metabolic changes in diabetes <span class="pg">pp. 287–289</span></h3>
+    <p>With no insulin effect, the body behaves as if it is <b>starving in the middle of plenty</b>.</p>
+    <div class="tbl"><table>
+      <thead><tr><th>Area</th><th>What happens</th><th>Result</th></tr></thead>
+      <tbody>
+        <tr><td><b>Carbohydrate</b></td><td>Glucose uptake ↓, glycolysis ↓, glycogen synthesis ↓, gluconeogenesis ↑, glycogenolysis ↑</td><td><b>Hyperglycaemia</b>, glucosuria</td></tr>
+        <tr><td><b>Lipid</b></td><td>Lipolysis ↑ → free fatty acids ↑ → acetyl-CoA ↑ → ketone bodies ↑; VLDL ↑</td><td><b>Ketosis</b>, high triglycerides</td></tr>
+        <tr><td><b>Protein</b></td><td>Protein breakdown ↑; amino acids go to gluconeogenesis</td><td>Muscle wasting, negative nitrogen balance, weight loss</td></tr>
+      </tbody></table></div>
+  </div>
+
+  <div class="topic">
+    <h3><span class="num">#125</span> Cardinal symptoms</h3>
+    <div class="two">
+      <div class="mini"><h4>Polyuria (passing a lot of urine)</h4><p>Glucose above the renal threshold spills into urine and drags water with it (<b>osmotic diuresis</b>).</p></div>
+      <div class="mini"><h4>Polydipsia (great thirst)</h4><p>Water loss in urine → dehydration → thirst.</p></div>
+      <div class="mini"><h4>Polyphagia (great hunger)</h4><p>Cells cannot use glucose, so the brain senses "starvation".</p></div>
+      <div class="mini"><h4>Weight loss</h4><p>Fat and muscle are broken down for fuel (mainly type 1).</p></div>
+    </div>
+  </div>
+
+  <div class="topic">
+    <h3><span class="num">#126</span> Diabetic ketoacidosis (DKA)</h3>
+    <div class="flow v">
+      <span class="bad">Severe insulin deficiency (+ glucagon excess)</span><i>↓</i>
+      <span>Lipolysis ↑ → free fatty acids flood the liver</span><i>↓</i>
+      <span>β-oxidation → acetyl-CoA ↑ (oxaloacetate used for gluconeogenesis, so TCA cannot use it)</span><i>↓</i>
+      <span><b>Ketone bodies ↑</b>: acetoacetate, β-hydroxybutyrate, acetone</span><i>↓</i>
+      <span class="bad">Ketoacidosis: blood pH &lt; 7.3, HCO₃⁻ &lt; 18, high anion gap</span>
+    </div>
+    <ul class="k cols"><li><b>Ketonemia</b> (ketones in blood)</li><li><b>Ketonuria</b> (Rothera's test positive)</li><li><b>Acetone (fruity) breath</b></li><li><b>Kussmaul breathing</b>: deep, fast; blows off CO₂ to fight acidosis</li><li>Severe dehydration</li><li>Potassium: high in blood at first, but total body K⁺ is low; falls dangerously once insulin is given</li><li>Abdominal pain, vomiting, confusion, coma</li></ul>
+    <div class="box okb"><strong>Treatment</strong>IV fluids, insulin, potassium replacement, treat the trigger (infection, missed insulin).</div>
+  </div>
+
+  <div class="topic">
+    <h3><span class="num">#127</span> Hyperosmolar hyperglycaemic non-ketotic state (HHS)</h3>
+    <div class="flow"><span class="bad">Very high glucose (often &gt; 600 mg/dL)</span><i>→</i><span>Plasma osmolality ↑ (&gt; 320 mOsm/kg)</span><i>→</i><span>Massive osmotic diuresis</span><i>→</i><span>Severe dehydration</span><i>→</i><span class="bad">Confusion, coma</span></div>
+    <p>Usually in <b>elderly type 2</b> patients. Little or no ketosis, because enough insulin remains to stop lipolysis. Death rate is higher than DKA.</p>
+  </div>
+
+  <div class="topic">
+    <h3><span class="num">#128</span> Lactic acidosis</h3>
+    <p>Lactate builds up in blood (&gt; 5 mmol/L) with low pH and low bicarbonate. Causes: poor oxygen supply (shock, heart failure) → more anaerobic glycolysis; liver cannot clear lactate; <b>metformin</b> (rare, in kidney failure); thiamine deficiency; alcohol.</p>
+  </div>
+
+  <div class="topic">
+    <h3><span class="num">#129</span> Chronic complications</h3>
+    <div class="tbl"><table>
+      <thead><tr><th>System</th><th>Complication</th><th>Main cause</th></tr></thead>
+      <tbody>
+        <tr><td>Large vessels</td><td>Atherosclerosis → heart attack, stroke, gangrene; thrombosis</td><td>High lipids, glycation, oxidative stress</td></tr>
+        <tr><td>Eye</td><td><b>Cataract</b>, <b>retinopathy</b> (leading cause of blindness)</td><td>Sorbitol (polyol pathway), glycation</td></tr>
+        <tr><td>Kidney</td><td><b>Diabetic nephropathy</b>; <b>Kimmelstiel–Wilson</b> nodules; microalbuminuria is the earliest sign</td><td>Glycation of basement membrane</td></tr>
+        <tr><td>Nerves</td><td><b>Peripheral neuropathy</b> (glove and stocking), foot ulcers</td><td>Sorbitol, glycation</td></tr>
+      </tbody></table></div>
+  </div>
+
+  <div class="topic">
+    <h3><span class="num">#130</span> HbA1c (glycated haemoglobin) <span class="pg">pp. 290–291</span></h3>
+    <div class="flow"><span>Glucose</span><i>+</i><span>N-terminal valine of Hb β-chain</span><i>→ no enzyme (glycation) →</i><span class="hi">HbA1c</span></div>
+    <p>The higher the average blood glucose, the more HbA1c forms. Because RBCs live about <b>120 days</b>, HbA1c shows the <b>average glucose over the last 8–12 weeks</b>. A single fasting value only shows one moment.</p>
+    <div class="tbl"><table>
+      <thead><tr><th>HbA1c</th><th>Meaning</th></tr></thead>
+      <tbody><tr><td class="n">&lt; 5.7%</td><td>Normal</td></tr><tr><td class="n">5.7–6.4%</td><td>Prediabetes (ADA)</td></tr><tr><td class="n">≥ 6.5%</td><td>Diabetes (ADA/WHO)</td></tr><tr><td class="n">&lt; 7%</td><td>Usual treatment target (good control)</td></tr></tbody></table></div>
+    <p>Falsely low in haemolytic anaemia and after blood loss (young RBCs); falsely high in iron deficiency. Long-term glycation of other proteins forms <b>AGEs</b> (advanced glycation end products), which stiffen vessels and damage kidneys, eyes and nerves. <b>Fructosamine</b> (glycated albumin) shows control over the last <b>2–3 weeks</b>.</p>
+  </div>
+</section>
+
+<!-- ============ CHECKLIST ============ -->
+<section class="part" id="check">
+  <div class="parthead">
+    <div class="eyebrow">Revision</div>
+    <h2>Complete Exam 1 checklist</h2>
+    <p class="sub">Tick each item once you can explain it without looking. Ticks are saved in this browser only.</p>
+  </div>
+  <div style="display:grid;gap:10px;margin-bottom:16px">
+    <div style="display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap">
+      <b id="ck-total">0 of 0 done</b>
+      <button class="btn" id="ck-reset" type="button">Clear all ticks</button>
+    </div>
+    <div class="bar" aria-hidden="true"><i id="ck-bar"></i></div>
+    <p id="ck-confirm" hidden class="box caut" style="display:flex;gap:10px;align-items:center;flex-wrap:wrap">Clear every tick? <button class="btn" id="ck-yes" type="button">Yes, clear</button><button class="btn" id="ck-no" type="button">Keep them</button></p>
+  </div>
+  <div id="ck-root" style="display:grid;gap:14px"></div>
+  <div class="box caut" style="margin-top:20px"><strong>One caution</strong>The textbook is the 2011 6th edition. For current diagnostic cut-offs and reference ranges, your college's teaching material and current clinical guidelines take priority. For concepts and the SRM syllabus, the page map above is from the book itself.</div>
+</section>
+</div>
+
+<script>
+(function(){
+  var G=[
+    ["A","Cell biology · Ch 2 · pp. 7–18",["Prokaryotic vs eukaryotic","Nucleus","Nucleolus","RER","SER","Golgi","Lysosomes","Peroxisomes","Mitochondria","Plasma membrane","Fluid mosaic model","Membrane proteins","Cholesterol and membrane fluidity","Cytoskeleton","Simple diffusion","Facilitated diffusion","Ion channels","Ligand-gated channels","Voltage-gated channels","Ionophores","Active transport","Na⁺/K⁺ pump","Calcium pump","Uniport","Symport","Antiport","Exocytosis","Endocytosis","Pinocytosis","Phagocytosis","Receptor-mediated endocytosis"]],
+    ["B","Enzymes · Ch 5 · pp. 40–59",["Definition of enzyme","Characteristics","IUBMB classification","Six enzyme classes","Apoenzyme","Coenzyme","Cofactor","Holoenzyme","Important coenzymes","Active site","Activation energy","Lock-and-key theory","Induced-fit theory","Michaelis–Menten equation","Km","Vmax","Lineweaver–Burk plot","Factors affecting enzyme activity","Enzyme activation","Competitive inhibition","Noncompetitive inhibition","Uncompetitive inhibition","Suicide inhibition","Allosteric regulation","Key enzymes","Feedback inhibition","Induction","Repression","Covalent modification","Specificity","Enzyme assays","Enzyme units","Isoenzymes","Alloenzymes"]],
+    ["C","Carbohydrate chemistry · Ch 6 · pp. 60–72",["Functions","Classification","Aldoses","Ketoses","Triose/tetrose/pentose/hexose","Glucose","Fructose","Galactose","Mannose","D/L configuration","Optical activity","Diastereoisomers","Epimers","Anomers","Mutarotation","Pyranose/furanose","Enediol formation","Benedict's reaction","Osazone","Oxidation","Reduction","Glycosides","Amino sugars","Deoxy sugars","Pentoses","Sucrose","Lactose","Maltose","Isomaltose","Starch","Glycogen","Cellulose","Inulin","Dextran","Chitin","GAGs","Hyaluronic acid","Heparin","Chondroitin sulfate","Keratan sulfate","Dermatan sulfate","Glycoproteins","Glycocalyx"]],
+    ["D","Carbohydrate metabolism · Ch 9 · pp. 90–112",["Digestion","Absorption","SGLT1","GLUT1","GLUT2","GLUT3","GLUT4","GLUT5","Glycolysis","All 10 glycolytic reactions","Key enzymes","Irreversible steps","ATP yield","Regulation","Anaerobic glycolysis","Lactate","Cori cycle","BPG shunt","Pyruvate","PDH complex","PDH cofactors","Gluconeogenesis","Four bypass enzymes","Malate shuttle","Glucose–alanine cycle","Glycerol as substrate","Propionyl-CoA","Regulation of gluconeogenesis","Glycogen structure","Glycogenolysis","Glycogen phosphorylase","Debranching enzyme","Glycogenesis","UDP-glucose","Glycogen synthase","Branching enzyme","cAMP pathway","Insulin","Glucagon","Epinephrine","Glycogen storage diseases"]],
+    ["E","Minor pathways · Ch 10 · pp. 113–126",["HMP/PPP","Oxidative phase","Non-oxidative phase","NADPH","Ribose-5-P","Transketolase","Transaldolase","G6PD deficiency","Hemolysis","Glucuronic acid pathway","Essential pentosuria","Polyol pathway","Sorbitol","Fructose metabolism","Fructokinase","Aldolase B","Hereditary fructose intolerance","Fructosuria","Galactose metabolism","Galactokinase","Gal-1-P uridyltransferase","Epimerase","Galactosemia","Galactokinase deficiency","Alcohol metabolism","Amino sugars","Glycoproteins","Blood group substances","Proteoglycans","Mucopolysaccharidoses"]],
+    ["F","TCA cycle · Ch 18 · pp. 216–222",["Site","8 reactions","Enzymes","NADH production","FADH₂ production","GTP production","ATP yield","Regulation","Inhibitors","Amphibolic role","Anaplerotic role","Integration with carbohydrate metabolism"]],
+    ["G","Clinical enzymology · Ch 23 · pp. 266–273",["CK","CK-MB","CK-MM","CK-BB","Cardiac troponins","LDH","LDH isoenzymes","Flipped LDH pattern","AST","ALT","ALP","5′-nucleotidase","GGT","Acid phosphatase","PSA","Cholinesterase","G6PD","Amylase","Lipase","Aldolase","Enzyme profiles in diseases","Therapeutic enzymes","Enzyme-based diagnostic assays","Immobilized enzymes"]],
+    ["H","Blood glucose / diabetes · Ch 24 · pp. 274–291",["Blood glucose regulation","Fasting state","Fed state","Insulin","Glucagon","Hyperglycemic hormones","Glucose estimation","Glucose oxidase method","Fasting glucose","Random glucose","Post-prandial glucose","OGTT","OGTT procedure","OGTT interpretation","IGT","IFG","GDM","Alimentary glucosuria","Renal glucosuria","Benedict's test","Diabetes mellitus","Type 1","Type 2","Secondary diabetes","Metabolic derangements","Polyuria","Polydipsia","Polyphagia","DKA","Hyperosmolar state","Lactic acidosis","Chronic complications","HbA1c","Glycation","AGEs"]]
+  ];
+  var KEY="bio-exam1-checks-v1", state={};
+  try{ state=JSON.parse(localStorage.getItem(KEY)||"{}")||{}; }catch(e){ state={}; }
+  function save(){ try{ localStorage.setItem(KEY,JSON.stringify(state)); }catch(e){} }
+  var root=document.getElementById("ck-root"), total=0;
+  G.forEach(function(g){
+    var box=document.createElement("div"); box.className="ckgroup";
+    var h=document.createElement("h4"); h.innerHTML="<b>"+g[0]+". "+g[1]+"</b>"; var c=document.createElement("span"); h.appendChild(c); box.appendChild(h);
+    var list=document.createElement("div"); list.className="cklist";
+    g[2].forEach(function(t,i){
+      total++; var id="ck-"+g[0]+"-"+i;
+      var lab=document.createElement("label"); lab.setAttribute("for",id);
+      var inp=document.createElement("input"); inp.type="checkbox"; inp.id=id; inp.checked=!!state[id];
+      inp.addEventListener("change",function(){ if(inp.checked) state[id]=1; else delete state[id]; save(); update(); });
+      var sp=document.createElement("span"); sp.textContent=t;
+      lab.appendChild(inp); lab.appendChild(sp); list.appendChild(lab);
+    });
+    box.appendChild(list); box._count=c; box._n=g[2].length; box._k=g[0]; root.appendChild(box);
+  });
+  function update(){
+    var done=0;
+    Array.prototype.forEach.call(root.children,function(b){
+      var d=b.querySelectorAll("input:checked").length; done+=d; b._count.textContent=d+" / "+b._n;
+    });
+    document.getElementById("ck-total").textContent=done+" of "+total+" done";
+    document.getElementById("ck-bar").style.width=(total?Math.round(done*100/total):0)+"%";
+  }
+  update();
+  var conf=document.getElementById("ck-confirm");
+  document.getElementById("ck-reset").addEventListener("click",function(){ conf.hidden=false; });
+  document.getElementById("ck-no").addEventListener("click",function(){ conf.hidden=true; });
+  document.getElementById("ck-yes").addEventListener("click",function(){
+    state={}; save(); root.querySelectorAll("input").forEach(function(i){ i.checked=false; }); conf.hidden=true; update();
+  });
+})();
+</script>
+
+</body>
+</html>
