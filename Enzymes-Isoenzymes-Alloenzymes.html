@@ -1,0 +1,1491 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Enzymes, Isoenzymes &amp; Allozymes</title>
+<style>body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+</head>
+<body>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=JetBrains+Mono:wght@400;500;600&display=swap">
+<style>
+/* Week 1 palette: the same "bench sheet" family as the Enzymes lesson, shifted
+   toward a water-and-bond teal, with the plotting-pen gold kept as the second ink. */
+:root{
+  --ground:#F5F8F8; --surface:#FFFFFF; --surface-2:#EAF1F1;
+  --ink:#122628; --ink-2:#3C5558; --ink-3:#6C8386;
+  --rule:#D6E2E2; --rule-strong:#B5C8C9;
+  --ind:#3F4AB8; --ind-soft:#E7E9F8;
+  --gold:#8F5E00; --gold-soft:#FBF1DD;
+  --c1:#3F5FC0; --c2:#2E8B5A; --c3:#B57500; --c4:#C0407E; --c5:#16707A;
+  --good:#1F6B4A; --good-soft:#E3F1E9;
+  --deep:#EFE9FA; --deep-ink:#5B3FA8;
+  --shadow:0 1px 2px rgba(18,38,40,.05), 0 10px 26px -14px rgba(18,38,40,.26);
+  --maxw:68ch;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    color-scheme:dark;
+    --ground:#0B1516; --surface:#122022; --surface-2:#1A2C2E;
+    --ink:#E6F0F0; --ink-2:#B8CBCC; --ink-3:#86A0A2;
+    --rule:#243A3D; --rule-strong:#375457;
+    --ind:#8C96F0; --ind-soft:#1B2043;
+    --gold:#D9A94A; --gold-soft:#2A2113;
+    --c1:#7C95E8; --c2:#3FA876; --c3:#C9952F; --c4:#D96895; --c5:#5CC3CC;
+    --good:#5FBE93; --good-soft:#122720;
+    --deep:#221B36; --deep-ink:#B8A3F0;
+    --shadow:0 1px 2px rgba(0,0,0,.45), 0 10px 30px -16px rgba(0,0,0,.8);
+  }
+}
+:root[data-theme="dark"]{
+  color-scheme:dark;
+  --ground:#0B1516; --surface:#122022; --surface-2:#1A2C2E;
+  --ink:#E6F0F0; --ink-2:#B8CBCC; --ink-3:#86A0A2;
+  --rule:#243A3D; --rule-strong:#375457;
+  --ind:#8C96F0; --ind-soft:#1B2043;
+  --gold:#D9A94A; --gold-soft:#2A2113;
+  --c1:#7C95E8; --c2:#3FA876; --c3:#C9952F; --c4:#D96895; --c5:#5CC3CC;
+  --good:#5FBE93; --good-soft:#122720;
+  --deep:#221B36; --deep-ink:#B8A3F0;
+  --shadow:0 1px 2px rgba(0,0,0,.45), 0 10px 30px -16px rgba(0,0,0,.8);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0; background:var(--ground); color:var(--ink);
+  font-family:Newsreader, Georgia, serif; font-size:18px; line-height:1.62; -webkit-font-smoothing:antialiased; overflow-x:hidden}
+h1,h2,h3,h4{font-family:Archivo, system-ui, sans-serif; margin:0; text-wrap:balance; letter-spacing:-.015em}
+p{margin:0}
+button,input,select{font-family:Archivo, system-ui, sans-serif}
+:focus-visible{outline:2.5px solid var(--gold); outline-offset:3px; border-radius:4px}
+@media (prefers-reduced-motion: reduce){*{animation:none !important; transition:none !important} html{scroll-behavior:auto}}
+.mono{font-family:"JetBrains Mono", ui-monospace, monospace}
+sub,sup{line-height:0}
+
+.wrap{max-width:1160px; margin:0 auto; padding-inline:16px}
+@media (min-width:640px){.wrap{padding-inline:22px}}
+.layout{display:grid; grid-template-columns:minmax(0,1fr); gap:0}
+@media (min-width:1010px){.layout{grid-template-columns:214px minmax(0,1fr); gap:48px; align-items:start}}
+
+/* progress strip */
+.strip{position:sticky; top:env(safe-area-inset-top,0px); z-index:40; background:var(--surface); border-bottom:1px solid var(--rule)}
+.strip-in{max-width:1160px; margin:0 auto; padding:8px 16px; display:flex; align-items:center; gap:12px}
+@media (min-width:640px){.strip-in{padding:9px 22px}}
+.strip .label{font-family:"JetBrains Mono",monospace; font-size:10.5px; letter-spacing:.12em; text-transform:uppercase; color:var(--ink-3); white-space:nowrap}
+.strip .track{flex:1; min-width:40px; height:6px; border-radius:100px; background:var(--surface-2); overflow:hidden; border:1px solid var(--rule)}
+.strip .bar{height:100%; width:0; background:linear-gradient(90deg,var(--ind),var(--gold)); transition:width .45s}
+.strip .pct{font-family:"JetBrains Mono",monospace; font-size:12px; font-weight:600; font-variant-numeric:tabular-nums; color:var(--ind); min-width:36px; text-align:right}
+.jump{max-width:46vw; border:1px solid var(--rule-strong); background:var(--surface-2); color:var(--ink); border-radius:8px; padding:5px 8px; font-size:13px}
+@media (min-width:1010px){.jump{display:none}}
+@media (max-width:420px){.strip .label{display:none}}
+
+/* masthead */
+.mast{background:var(--surface); border-bottom:1px solid var(--rule)}
+.mast-in{max-width:1160px; margin:0 auto; padding:34px 16px 30px}
+@media (min-width:640px){.mast-in{padding:40px 22px 34px}}
+.eyebrow{font-family:"JetBrains Mono",monospace; font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:var(--ink-3); display:flex; flex-wrap:wrap; gap:6px 9px; align-items:center}
+.eyebrow .dot{width:3.5px;height:3.5px;border-radius:50%;background:var(--rule-strong)}
+h1{font-size:clamp(31px,5.2vw,52px); line-height:1.04; font-weight:800; margin-top:14px}
+h1 span{color:var(--ind)}
+.stand{margin-top:15px; max-width:62ch; font-size:19px; color:var(--ink-2)}
+.howto{margin-top:22px; padding:14px 16px; border-radius:10px; background:var(--gold-soft); border:1px solid var(--rule); max-width:64ch; font-size:16.5px; color:var(--ink-2)}
+.howto b{color:var(--gold)}
+.keys{display:flex; flex-wrap:wrap; gap:8px; margin-top:14px}
+.key{font-family:Archivo,sans-serif; font-size:12.5px; font-weight:600; padding:4px 10px; border-radius:100px; border:1px solid var(--rule-strong); color:var(--ink-2); background:var(--surface)}
+.key.must{border-color:var(--ind); color:var(--ind)}
+.key.deep{border-color:var(--deep-ink); color:var(--deep-ink)}
+
+/* rail */
+nav.rail{display:none}
+@media (min-width:1010px){nav.rail{display:block; position:sticky; top:56px; padding:36px 0 0; max-height:calc(100vh - 70px); overflow-y:auto}}
+.rail h4{font-family:"JetBrains Mono",monospace; font-size:10px; letter-spacing:.15em; text-transform:uppercase; color:var(--ink-3); font-weight:500; margin-bottom:11px}
+.rail ol{list-style:none; margin:0; padding:0; border-left:1px solid var(--rule)}
+.rail a{display:flex; gap:9px; padding:6px 0 6px 13px; margin-left:-1px; border-left:2px solid transparent; color:var(--ink-2); text-decoration:none; font-family:Archivo,sans-serif; font-size:13.5px; line-height:1.3}
+.rail a .n{font-family:"JetBrains Mono",monospace; font-size:11px; color:var(--ink-3); padding-top:1px}
+.rail a:hover{color:var(--ink); border-left-color:var(--rule-strong)}
+.rail a.on{color:var(--ind); border-left-color:var(--ind); font-weight:600}
+.rail a.on .n{color:var(--ind)}
+
+/* stations */
+main{padding:36px 0 90px; min-width:0}
+.station{margin-bottom:64px; scroll-margin-top:60px}
+.st-head{border-top:2px solid var(--ink); padding-top:13px; margin-bottom:22px}
+.st-num{font-family:"JetBrains Mono",monospace; font-size:11.5px; letter-spacing:.13em; text-transform:uppercase; color:var(--gold); font-weight:600; display:flex; gap:10px; flex-wrap:wrap}
+.st-num .pg{color:var(--ink-3); font-weight:500}
+.st-head h2{font-size:clamp(24px,3.3vw,34px); line-height:1.12; margin-top:5px; font-weight:700}
+.st-head .sub{font-size:16.5px; color:var(--ink-3); margin-top:7px; max-width:60ch}
+h3{font-size:21px; margin:34px 0 10px; font-weight:700; scroll-margin-top:60px}
+h3 .bk{font-family:"JetBrains Mono",monospace; font-size:11px; font-weight:500; color:var(--ink-3); letter-spacing:.04em; margin-left:6px; white-space:nowrap}
+h4{font-size:16.5px; margin:20px 0 7px; font-weight:600}
+.prose{max-width:var(--maxw)}
+.prose p + p{margin-top:13px}
+.prose ul,.prose ol{max-width:var(--maxw); margin:13px 0; padding-left:21px}
+.prose li{margin:6px 0}
+.prose li::marker{color:var(--ink-3)}
+strong{font-weight:600; color:var(--ink)}
+.term{font-weight:600; color:var(--ind)}
+.eq{font-family:"JetBrains Mono",monospace; font-size:15px; background:var(--surface-2); padding:12px 15px; border-radius:9px; border-left:3px solid var(--ind); margin:14px 0; max-width:var(--maxw); overflow-x:auto; color:var(--ink); white-space:nowrap}
+.eq small{font-family:Newsreader,serif; font-size:14px; color:var(--ink-3); white-space:normal; display:block; margin-top:4px}
+
+/* the five-step teaching card: what / why / how / clinic / remember */
+.five{display:grid; gap:0; max-width:var(--maxw); margin:18px 0; border:1px solid var(--rule); border-radius:12px; overflow:hidden; background:var(--surface); box-shadow:var(--shadow)}
+.five > div{display:grid; grid-template-columns:92px minmax(0,1fr); gap:12px; padding:12px 15px; border-bottom:1px solid var(--rule); font-size:16.5px; color:var(--ink-2)}
+.five > div:last-child{border-bottom:none}
+.five .lb{font-family:"JetBrains Mono",monospace; font-size:10px; letter-spacing:.11em; text-transform:uppercase; color:var(--ink-3); padding-top:4px}
+.five .clin{background:var(--ind-soft)}
+.five .clin .lb{color:var(--ind)}
+.five .rem{background:var(--gold-soft)}
+.five .rem .lb{color:var(--gold)}
+.five .rem > span:last-child{font-family:Archivo,sans-serif; font-weight:600; color:var(--ink); font-size:15.5px}
+@media (max-width:480px){.five > div{grid-template-columns:minmax(0,1fr); gap:3px}}
+
+/* panels */
+.panel{background:var(--surface); border:1px solid var(--rule); border-radius:14px; box-shadow:var(--shadow); padding:18px; margin:22px 0}
+.panel > .ptitle{font-family:"JetBrains Mono",monospace; font-size:10.5px; letter-spacing:.12em; text-transform:uppercase; color:var(--ink-3); margin-bottom:14px; display:flex; align-items:center; gap:9px}
+.panel > .ptitle::after{content:""; flex:1; height:1px; background:var(--rule)}
+.hint{font-family:Archivo,sans-serif; font-size:13px; color:var(--ink-3); margin-top:12px; line-height:1.5}
+.svgbox{overflow-x:auto; -webkit-overflow-scrolling:touch}
+.svgbox svg{min-width:520px}
+.svgbox svg#bsvg{min-width:0}
+.svgbox.fit svg{min-width:0}
+.svgbox.fit::after{content:none !important}
+@media (max-width:560px){.svgbox::after{content:"Swipe sideways to see the whole diagram"; display:block; font-family:Archivo,sans-serif; font-size:11.5px; color:var(--ink-3); margin-top:4px; position:sticky; left:0}}
+.bondgrid .svgbox::after{content:none}
+svg{display:block; max-width:100%; height:auto}
+.sl{font-family:Archivo,sans-serif; font-size:13px; fill:var(--ink-2)}
+.sl.sm{font-size:11.5px; fill:var(--ink-3)}
+.sl.b{font-weight:700; fill:var(--ink)}
+.sm-mono{font-family:"JetBrains Mono",monospace; font-size:11px; fill:var(--ink-3)}
+
+.switch{display:inline-flex; border:1px solid var(--rule-strong); border-radius:18px; padding:3px; background:var(--surface-2); flex-wrap:wrap; gap:2px}
+.switch button{border:none; background:none; cursor:pointer; padding:7px 13px; border-radius:100px; font-size:13.5px; font-weight:600; color:var(--ink-3); transition:background .18s, color .18s}
+.switch button.on{background:var(--ind); color:var(--surface)}
+.btn{font-size:13px; background:var(--surface); border:1px solid var(--rule-strong); border-radius:7px; padding:6px 13px; color:var(--ink-2); cursor:pointer; font-weight:600}
+.btn:hover:not(:disabled){border-color:var(--ind); color:var(--ind)}
+.btn:disabled{opacity:.45; cursor:default}
+.btn.pri{background:var(--ind); border-color:var(--ind); color:var(--surface)}
+.btnrow{display:flex; gap:8px; flex-wrap:wrap; align-items:center; margin-top:14px}
+.stepno{font-family:"JetBrains Mono",monospace; font-size:12px; color:var(--ink-3)}
+.caption{margin-top:14px; padding:13px 15px; border-radius:10px; background:var(--ind-soft); border-left:3px solid var(--ind); font-size:16.5px; color:var(--ink-2); min-height:64px}
+.caption b{color:var(--ind)}
+
+.ctl label{display:flex; justify-content:space-between; align-items:baseline; font-family:Archivo,sans-serif; font-size:13.5px; font-weight:600; color:var(--ink-2); margin-bottom:5px; gap:8px}
+.ctl label b{font-family:"JetBrains Mono",monospace; font-size:13px; color:var(--ind); font-variant-numeric:tabular-nums}
+.ctls{display:grid; gap:14px; grid-template-columns:minmax(0,1fr)}
+@media (min-width:640px){.ctls{grid-template-columns:repeat(3,minmax(0,1fr))}}
+.ctls.two{grid-template-columns:minmax(0,1fr)}
+@media (min-width:640px){.ctls.two{grid-template-columns:repeat(2,minmax(0,1fr))}}
+input[type=range]{width:100%; accent-color:var(--ind); height:22px}
+.readout{display:grid; grid-template-columns:repeat(auto-fit,minmax(120px,1fr)); gap:9px; margin-top:16px}
+.ro{background:var(--surface-2); border:1px solid var(--rule); border-radius:9px; padding:10px 12px}
+.ro .k{font-family:"JetBrains Mono",monospace; font-size:9.5px; letter-spacing:.1em; text-transform:uppercase; color:var(--ink-3)}
+.ro .v{font-family:"JetBrains Mono",monospace; font-size:17px; font-weight:600; color:var(--ink); font-variant-numeric:tabular-nums; margin-top:2px}
+.ro .v small{font-size:11px; color:var(--ink-3); font-weight:400}
+.legend{display:flex; flex-wrap:wrap; gap:8px 18px; margin-top:12px}
+.lg{display:flex; align-items:center; gap:7px; font-family:Archivo,sans-serif; font-size:13px; color:var(--ink-2)}
+.lg .sw{width:16px;height:4px;border-radius:2px;flex:none}
+
+/* tables */
+.tablewrap{overflow-x:auto; margin:20px 0; border:1px solid var(--rule); border-radius:12px; background:var(--surface); box-shadow:var(--shadow)}
+table{border-collapse:collapse; width:100%; font-size:14.5px}
+caption{text-align:left; padding:14px 15px 4px; font-size:14px; color:var(--ink-3); font-family:Archivo,sans-serif}
+th,td{padding:9px 13px; text-align:left; border-bottom:1px solid var(--rule); vertical-align:top}
+thead th{font-family:"JetBrains Mono",monospace; font-size:10px; letter-spacing:.1em; text-transform:uppercase; color:var(--ink-3); font-weight:500; white-space:nowrap; border-bottom:1px solid var(--rule-strong)}
+tbody tr:last-child td{border-bottom:none}
+td.num{font-family:"JetBrains Mono",monospace; font-variant-numeric:tabular-nums; white-space:nowrap}
+td:first-child{font-weight:600}
+
+/* callouts */
+.plain,.deeper{max-width:var(--maxw); margin:18px 0; background:var(--surface); border:1px solid var(--rule); border-radius:11px; box-shadow:var(--shadow); overflow:hidden}
+.plain > summary,.deeper > summary{cursor:pointer; list-style:none; padding:12px 15px; display:flex; gap:10px; align-items:center; font-weight:700; font-size:15.5px; font-family:Archivo,sans-serif}
+.plain > summary{color:var(--gold); background:var(--gold-soft)}
+.deeper > summary{color:var(--deep-ink); background:var(--deep)}
+.plain > summary::-webkit-details-marker,.deeper > summary::-webkit-details-marker{display:none}
+.plain > summary::after,.deeper > summary::after{content:"+"; margin-left:auto; font-family:"JetBrains Mono",monospace; font-size:17px; font-weight:400}
+.plain[open] > summary::after,.deeper[open] > summary::after{content:"\2212"}
+.plain .body,.deeper .body{padding:15px; font-size:16.5px; color:var(--ink-2)}
+.plain .body p + p,.deeper .body p + p{margin-top:11px}
+.deeper .body ul{padding-left:20px; margin:10px 0}
+.tagx{font-family:"JetBrains Mono",monospace; font-size:9.5px; letter-spacing:.1em; text-transform:uppercase; padding:3px 7px; border-radius:5px; background:var(--surface); border:1px solid currentColor; flex:none}
+.note{max-width:var(--maxw); margin:16px 0; padding:11px 14px; border-radius:9px; border:1px dashed var(--rule-strong); font-size:15px; color:var(--ink-2); font-family:Archivo,sans-serif; line-height:1.5}
+.note b{color:var(--gold)}
+.exam{max-width:var(--maxw); margin:22px 0; padding:16px 18px; border-radius:11px; background:var(--surface); border:1px solid var(--rule); border-left:3px solid var(--gold); box-shadow:var(--shadow)}
+.exam h4{margin:0 0 9px; font-family:"JetBrains Mono",monospace; font-size:10.5px; letter-spacing:.13em; text-transform:uppercase; color:var(--gold)}
+.exam ul,.exam ol{margin:0; padding-left:19px; font-size:16px; color:var(--ink-2)}
+.exam li{margin:6px 0}
+
+/* timeline */
+.tl{display:flex; gap:6px; overflow-x:auto; padding:4px 2px 10px; scroll-snap-type:x mandatory}
+.tl button{flex:none; scroll-snap-align:start; border:1px solid var(--rule); background:var(--surface-2); border-radius:8px; padding:6px 9px; cursor:pointer; font-family:"JetBrains Mono",monospace; font-size:12px; color:var(--ink-2)}
+.tl button.on{background:var(--ind); color:var(--surface); border-color:var(--ind)}
+
+/* bond explorer */
+.bondgrid{display:grid; gap:16px; grid-template-columns:minmax(0,1fr)}
+@media (min-width:820px){.bondgrid{grid-template-columns:minmax(0,1.15fr) minmax(0,1fr)}}
+.bondcard{background:var(--surface-2); border-radius:10px; padding:14px; font-size:16px; color:var(--ink-2)}
+.bondcard h4{margin:0 0 6px; color:var(--ind)}
+.bondcard p + p{margin-top:8px}
+.meter{display:grid; grid-template-columns:110px minmax(0,1fr); gap:6px 10px; align-items:center; font-family:Archivo,sans-serif; font-size:13px; color:var(--ink-2); margin-top:10px}
+.meter .mb{height:10px; border-radius:6px; background:var(--rule)}
+.meter .mb i{display:block; height:100%; border-radius:6px; background:var(--ind)}
+.meter .cur{font-weight:700; color:var(--ind)}
+
+/* match game */
+.game{display:grid; gap:14px; grid-template-columns:minmax(0,1fr)}
+@media (min-width:760px){.game{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}}
+.pile{display:flex; flex-direction:column; gap:8px}
+.pile .ph{font-family:"JetBrains Mono",monospace; font-size:10.5px; letter-spacing:.12em; text-transform:uppercase; color:var(--ink-3); margin-bottom:2px}
+.tok{border:1px solid var(--rule); border-radius:9px; background:var(--surface); cursor:pointer; padding:10px 12px; text-align:left; color:var(--ink); font-size:15px; font-family:Archivo,sans-serif; transition:border-color .14s, background .14s, opacity .2s}
+.tok:hover:not(:disabled){border-color:var(--ind)}
+.tok.sel{border-color:var(--gold); background:var(--gold-soft); box-shadow:inset 0 0 0 1px var(--gold)}
+.tok.matched{opacity:.5; border-style:dashed; cursor:default; background:var(--good-soft)}
+.tok.shake{animation:shake .3s}
+@keyframes shake{25%{transform:translateX(-4px)}75%{transform:translateX(4px)}}
+.gamebar{display:flex; align-items:center; gap:12px; margin-bottom:14px; font-family:"JetBrains Mono",monospace; font-size:12.5px; color:var(--ink-2); flex-wrap:wrap}
+.gamebar .ok{color:var(--good); font-weight:600}
+.gamebar .no{color:var(--gold); font-weight:600}
+
+/* quiz */
+.qi{background:var(--surface); border:1px solid var(--rule); border-radius:12px; padding:16px; margin-bottom:12px; box-shadow:var(--shadow)}
+.qi .stem{font-weight:600; font-size:16.5px; line-height:1.42; display:flex; gap:10px; font-family:Archivo,sans-serif}
+.qi .stem .n{font-family:"JetBrains Mono",monospace; color:var(--gold); font-size:13px; flex:none; padding-top:2px}
+.opts{display:grid; gap:6px; margin-top:12px}
+.opt{text-align:left; font-size:15.5px; color:var(--ink); background:var(--surface-2); border:1px solid var(--rule); border-radius:8px; padding:9px 12px; cursor:pointer; display:flex; gap:9px; align-items:flex-start; font-family:Newsreader,serif; line-height:1.4}
+.opt:hover:not(:disabled){border-color:var(--rule-strong)}
+.opt:disabled{cursor:default}
+.opt .k{font-family:"JetBrains Mono",monospace; font-size:12.5px; color:var(--ink-3); flex:none; padding-top:2px}
+.opt.right{background:var(--good-soft); border-color:var(--good)}
+.opt.right .k{color:var(--good); font-weight:700}
+.opt.wrong{background:var(--gold-soft); border-color:var(--gold)}
+.opt.wrong .k{color:var(--gold); font-weight:700}
+.why2{margin-top:10px; padding:10px 13px; border-radius:8px; background:var(--surface-2); font-size:15.5px; color:var(--ink-2); border-left:3px solid var(--ind)}
+.why2 b{color:var(--ind)}
+.score{position:sticky; top:52px; z-index:5; display:flex; justify-content:space-between; align-items:center; gap:10px; flex-wrap:wrap; background:var(--surface); border:1px solid var(--rule); border-radius:10px; padding:9px 14px; margin-bottom:14px; font-family:"JetBrains Mono",monospace; font-size:13px; color:var(--ink-2); box-shadow:var(--shadow)}
+.score b{color:var(--ind); font-variant-numeric:tabular-nums}
+
+/* viva + cases */
+.viva{border:1px solid var(--rule); border-radius:12px; background:var(--surface); box-shadow:var(--shadow); overflow:hidden; max-width:var(--maxw)}
+.viva details{border-bottom:1px solid var(--rule)}
+.viva details:last-child{border-bottom:none}
+.viva summary{cursor:pointer; list-style:none; padding:12px 15px; font-weight:600; font-size:15.5px; font-family:Archivo,sans-serif; display:flex; gap:10px; align-items:baseline}
+.viva summary::-webkit-details-marker{display:none}
+.viva summary::before{content:"Q"; font-family:"JetBrains Mono",monospace; font-size:12px; color:var(--gold); flex:none}
+.viva summary:hover{background:var(--surface-2)}
+.viva .ans{padding:0 15px 13px 36px; font-size:16px; color:var(--ink-2)}
+.case{max-width:var(--maxw); background:var(--surface); border:1px solid var(--rule); border-radius:12px; box-shadow:var(--shadow); padding:16px; margin:14px 0}
+.case .ch{font-family:"JetBrains Mono",monospace; font-size:10.5px; letter-spacing:.12em; text-transform:uppercase; color:var(--c4)}
+.case p{margin-top:8px; font-size:16.5px; color:var(--ink-2)}
+.case details{margin-top:10px}
+.case summary{cursor:pointer; font-family:Archivo,sans-serif; font-weight:600; font-size:14.5px; color:var(--ind)}
+.case .ans{margin-top:8px; font-size:16px; color:var(--ink-2); padding:10px 13px; background:var(--surface-2); border-radius:8px}
+
+/* quick revision */
+.rev{display:grid; gap:12px; grid-template-columns:minmax(0,1fr)}
+@media (min-width:720px){.rev{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.rev > div{background:var(--surface); border:1px solid var(--rule); border-radius:11px; padding:14px 15px; font-size:15.5px; color:var(--ink-2)}
+.rev h4{margin:0 0 6px; font-size:14.5px; color:var(--ind)}
+.rev ul{margin:0; padding-left:18px}
+.rev li{margin:3px 0}
+
+footer{border-top:1px solid var(--rule); padding:24px 0 56px; font-size:15px; color:var(--ink-3); max-width:var(--maxw)}
+footer p + p{margin-top:7px}
+
+/* class explorer + classifier */
+.classgrid{display:grid; gap:8px; grid-template-columns:repeat(auto-fit,minmax(150px,1fr))}
+.ccard{border:1px solid var(--rule); border-radius:10px; background:var(--surface-2); padding:11px 12px; text-align:left; cursor:pointer; color:var(--ink); font-family:Archivo,sans-serif}
+.ccard .d{font-family:"JetBrains Mono",monospace; font-size:22px; font-weight:600; color:var(--ind); line-height:1}
+.ccard .t{font-weight:700; font-size:14.5px; margin-top:5px}
+.ccard .s{font-size:12.5px; color:var(--ink-3); margin-top:2px}
+.ccard.on{border-color:var(--ind); background:var(--surface); box-shadow:inset 0 0 0 1px var(--ind)}
+.cdetail{margin-top:14px; padding:14px 15px; border-radius:10px; background:var(--surface-2); border-left:3px solid var(--gold); font-size:16px; color:var(--ink-2)}
+.cdetail h4{margin:0 0 6px; color:var(--ink)}
+.cdetail .mono{font-size:14px; color:var(--ind)}
+.cls-q{font-size:17px; font-family:Archivo,sans-serif; font-weight:600; margin-bottom:4px}
+.cls-r{font-family:"JetBrains Mono",monospace; font-size:14px; color:var(--ind); margin-bottom:12px; overflow-wrap:anywhere}
+.cls-opts{display:grid; grid-template-columns:repeat(auto-fit,minmax(130px,1fr)); gap:7px}
+.cls-opts button{border:1px solid var(--rule); border-radius:9px; background:var(--surface-2); padding:10px; cursor:pointer; font-size:14px; font-weight:600; color:var(--ink)}
+.cls-opts button:hover:not(:disabled){border-color:var(--ind)}
+.cls-opts button.right{background:var(--good-soft); border-color:var(--good)}
+.cls-opts button.wrong{background:var(--gold-soft); border-color:var(--gold)}
+.cls-fb{margin-top:12px; font-size:16px; color:var(--ink-2)}
+.cls-fb b{color:var(--ind)}
+.twocol{display:grid; gap:14px; grid-template-columns:minmax(0,1fr)}
+@media (min-width:760px){.twocol{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}}
+.src{font-family:"JetBrains Mono",monospace; font-size:11px; color:var(--ink-3); white-space:nowrap}
+</style>
+
+<div class="strip">
+  <div class="strip-in">
+    <span class="label">Lesson progress</span>
+    <div class="track"><div class="bar" id="pbar"></div></div>
+    <span class="pct" id="ppct">0%</span>
+    <select class="jump" id="jump" aria-label="Jump to a section">
+      <option value="">Jump to…</option>
+      <option value="s1">1 · What an enzyme is</option>
+      <option value="s2">2 · Coenzymes &amp; cofactors</option>
+      <option value="s3">3 · IUBMB nomenclature</option>
+      <option value="s4">4 · Six classes, with examples</option>
+      <option value="s5">5 · Specificity</option>
+      <option value="s6">6 · Factors affecting activity</option>
+      <option value="s7">7 · Isoenzymes</option>
+      <option value="s8">8 · Alloenzymes</option>
+      <option value="s9">9 · Clinical enzyme patterns</option>
+      <option value="s10">10 · Revision &amp; exam corner</option>
+      <option value="s11">11 · Match &amp; test</option>
+    </select>
+  </div>
+</div>
+
+<header class="mast">
+  <div class="mast-in">
+    <div class="eyebrow">
+      <span>MBBS Year 1 · Biochemistry</span><span class="dot"></span>
+      <span>Enzymology</span><span class="dot"></span>
+      <span>Vasudevan 6e Ch 5 &amp; 23 · Satyanarayana Ch 6</span>
+    </div>
+    <h1>Enzymes, <span>Isoenzymes</span> &amp; Allozymes</h1>
+    <p class="stand">Your body digests a plate of biryani in a few hours at 37 °C. In a lab, the same proteins need strong acid at 100 °C for a couple of days. The difference is enzymes. This lesson answers five exam questions on them, using both of your textbooks.</p>
+    <div class="howto"><b>What this lesson answers.</b>
+      <ol style="margin:8px 0 0; padding-left:20px">
+        <li>Fundamental concepts: enzyme, isoenzyme, alloenzyme, coenzyme and cofactor (Stations 1, 2, 7, 8)</li>
+        <li>The main classes of IUBMB nomenclature (Station 3)</li>
+        <li>IUBMB classification with suitable examples (Station 4)</li>
+        <li>Specificity of enzymes, and the factors that affect enzyme activity (Stations 5, 6)</li>
+        <li>Isoenzymes and alloenzymes, with clinical significance and examples (Stations 7, 8, 9)</li>
+      </ol>
+      <div class="keys"><span class="key must">"Vas p." = Vasudevan printed page</span><span class="key must">"Sat p." = Satyanarayana printed page</span><span class="key deep">Go deeper = extra detail for PG entrance</span></div>
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+<div class="layout">
+
+<nav class="rail" aria-label="Contents">
+  <h4>Stations</h4>
+  <ol id="toc">
+    <li><a href="#s1"><span class="n">01</span><span>What an enzyme is</span></a></li>
+    <li><a href="#s2"><span class="n">02</span><span>Coenzymes &amp; cofactors</span></a></li>
+    <li><a href="#s3"><span class="n">03</span><span>IUBMB nomenclature</span></a></li>
+    <li><a href="#s4"><span class="n">04</span><span>Six classes + examples</span></a></li>
+    <li><a href="#s5"><span class="n">05</span><span>Specificity</span></a></li>
+    <li><a href="#s6"><span class="n">06</span><span>Factors affecting activity</span></a></li>
+    <li><a href="#s7"><span class="n">07</span><span>Isoenzymes</span></a></li>
+    <li><a href="#s8"><span class="n">08</span><span>Alloenzymes</span></a></li>
+    <li><a href="#s9"><span class="n">09</span><span>Clinical patterns</span></a></li>
+    <li><a href="#s10"><span class="n">10</span><span>Revision &amp; exam</span></a></li>
+    <li><a href="#s11"><span class="n">11</span><span>Match &amp; test</span></a></li>
+  </ol>
+</nav>
+
+<main id="main">
+
+<!-- ══════════ 1 ══════════ -->
+<section class="station" id="s1">
+  <div class="st-head">
+    <div class="st-num"><span>Station 01</span><span class="pg">Sat p. 85–87 · Vas p. 40–44</span></div>
+    <h2>What an enzyme is</h2>
+    <div class="sub">A catalyst made by living cells, almost always a protein.</div>
+  </div>
+
+  <div class="prose">
+    <p>A <span class="term">catalyst</span> is a substance that speeds up a chemical reaction without being changed itself at the end. Think of a good teacher: the student learns a hard chapter in an hour instead of a week, and the teacher walks out of class unchanged. Satyanarayana uses exactly this picture.</p>
+    <p><strong>Definition to write in the exam:</strong> <span class="term">Enzymes are biocatalysts synthesised by living cells.</span> They are <strong>protein in nature</strong> (exception: RNA enzymes called ribozymes), <strong>colloidal</strong>, <strong>thermolabile</strong> (destroyed by heat) and <strong>specific</strong> in action.</p>
+  </div>
+
+  <div class="panel">
+    <div class="ptitle">How an enzyme speeds a reaction · press the button</div>
+    <div class="svgbox">
+    <svg viewBox="0 0 620 280" role="img" aria-label="Energy diagram. Without enzyme the activation energy barrier is tall. With enzyme the barrier is much lower. Substrate and product energy levels are unchanged, so the equilibrium does not change.">
+      <g font-family="Archivo, sans-serif">
+        <line x1="60" y1="20" x2="60" y2="230" stroke="var(--rule-strong)"/>
+        <line x1="60" y1="230" x2="600" y2="230" stroke="var(--rule-strong)"/>
+        <text class="sl sm" x="22" y="130" text-anchor="middle" transform="rotate(-90 22 130)">Free energy</text>
+        <text class="sl sm" x="330" y="256" text-anchor="middle">Progress of reaction →</text>
+        <line x1="60" y1="185" x2="150" y2="185" stroke="var(--ink-2)" stroke-width="2.4"/>
+        <text class="sl b" x="104" y="206" text-anchor="middle">Substrate</text>
+        <line x1="510" y1="212" x2="600" y2="212" stroke="var(--ink-2)" stroke-width="2.4"/>
+        <text class="sl b" x="555" y="203" text-anchor="middle">Product</text>
+        <path d="M150 185 C 250 185, 275 36, 330 36 C 385 36, 410 212, 510 212" fill="none" stroke="var(--c4)" stroke-width="2.6"/>
+        <path id="ea2" d="M150 185 C 250 185, 283 118, 330 118 C 377 118, 410 212, 510 212" fill="none" stroke="var(--c2)" stroke-width="2.6" stroke-dasharray="700" stroke-dashoffset="700" style="transition:stroke-dashoffset 1s ease"/>
+        <line x1="330" y1="42" x2="330" y2="180" stroke="var(--c4)" stroke-dasharray="4 4"/>
+        <text class="sl" x="340" y="70" style="fill:var(--c4);font-weight:700">Activation energy, no enzyme</text>
+        <g id="ea2l" style="opacity:0;transition:opacity .4s .6s">
+          <text class="sl" x="70" y="118" style="fill:var(--c2);font-weight:700">With enzyme:</text>
+          <text class="sl sm" x="70" y="134">a much lower hill</text>
+        </g>
+      </g>
+    </svg>
+    </div>
+    <div class="btnrow"><button class="btn pri" id="ea-btn">Add the enzyme</button></div>
+    <div class="hint">Enzymes lower the activation energy. They do not change the energy of substrate or product, so they never change the equilibrium constant; they only help the reaction reach equilibrium faster. Example from Vasudevan: acid hydrolysis of sucrose needs 26,000 cal/mol of activation energy; with the enzyme sucrase it needs only 9,000 cal/mol (Vas p. 44).</div>
+  </div>
+
+  <div class="five">
+    <div><span class="lb">What</span><span>A protein biocatalyst made by living cells.</span></div>
+    <div><span class="lb">Why</span><span>Life's reactions would be far too slow at 37 °C without them. Protein digestion in the gut takes a couple of hours; in the lab it needs strong acid at 100 °C for about two days (Sat p. 85).</span></div>
+    <div><span class="lb">How</span><span>The substrate binds a small pocket on the enzyme, the <strong>active site</strong>, forming an enzyme–substrate (ES) complex. The reaction happens there and the product is released; the enzyme is free to work again.</span></div>
+    <div class="clin"><span class="lb">Clinic</span><span>Enzymes leak into blood when cells die. Measuring them (CK-MB, ALT, amylase) tells us which organ is damaged. Enzymes are also drugs: streptokinase dissolves clots, asparaginase treats leukaemia.</span></div>
+    <div class="rem"><span class="lb">Remember</span><span>Protein · Colloidal · Thermolabile · Specific: "PCTS".</span></div>
+  </div>
+
+  <h3>Key words that go with "enzyme"</h3>
+  <div class="tablewrap">
+    <table>
+      <thead><tr><th>Term</th><th>Meaning</th><th>Example</th></tr></thead>
+      <tbody>
+        <tr><td>Intracellular enzyme</td><td>Works inside the cell that made it</td><td>Glycolysis enzymes</td></tr>
+        <tr><td>Extracellular enzyme</td><td>Works outside the cell</td><td>All digestive enzymes</td></tr>
+        <tr><td>Monomeric enzyme</td><td>One polypeptide chain</td><td>Ribonuclease, trypsin</td></tr>
+        <tr><td>Oligomeric enzyme</td><td>More than one subunit</td><td>LDH (4 subunits), CK (2)</td></tr>
+        <tr><td>Multienzyme complex</td><td>Several enzymes held together; works only when intact</td><td>Pyruvate dehydrogenase, fatty acid synthase</td></tr>
+        <tr><td>Proenzyme (zymogen)</td><td>Inactive precursor, switched on by cutting a peptide</td><td>Trypsinogen → trypsin</td></tr>
+        <tr><td>Ribozyme</td><td>RNA that acts as an enzyme</td><td>Ribonuclease P, peptidyl transferase</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <details class="deeper">
+    <summary><span class="tagx">Go deeper · optional</span> History and the active site (Sat p. 85–86, 91–92)</summary>
+    <div class="body">
+      <p><strong>Berzelius (1836)</strong> coined "catalysis". <strong>Kuhne (1878)</strong> coined "enzyme" (Greek: in yeast). <strong>Buchner (1883</strong>, as given in Satyanarayana) extracted "zymase" from yeast. <strong>James Sumner (1926)</strong> crystallised urease from jack bean and showed it is a protein.</p>
+      <p><strong>Active site facts:</strong> it is a small cleft made by the 3-D (tertiary) folding, so its amino acids can be far apart in the chain (lysozyme's active site uses residues 35, 52, 62, 63 and 101). It is flexible, has a binding site and a catalytic site, holds substrates by weak non-covalent bonds, and the commonest active-site amino acid is <strong>serine</strong>.</p>
+    </div>
+  </details>
+</section>
+
+<!-- ══════════ 2 ══════════ -->
+<section class="station" id="s2">
+  <div class="st-head">
+    <div class="st-num"><span>Station 02</span><span class="pg">Sat p. 87, 91, 96–98 · Vas p. 42–44</span></div>
+    <h2>Coenzymes and cofactors</h2>
+    <div class="sub">Many enzymes need a small helper before they can work.</div>
+  </div>
+
+  <div class="prose">
+    <p>Think of a <strong>pressure cooker</strong>. The cooker body is the protein; without the small whistle-and-weight on top it cannot do its job. The body is the <span class="term">apoenzyme</span>, the small helper is the <span class="term">cofactor</span>, and the complete working cooker is the <span class="term">holoenzyme</span>.</p>
+  </div>
+  <div class="eq">Holoenzyme (active) = Apoenzyme (protein, heat-labile) + Cofactor (non-protein, heat-stable)</div>
+
+  <div class="panel">
+    <div class="ptitle">The family of "helpers" · tap a box</div>
+    <div class="svgbox">
+    <svg viewBox="0 0 620 250" role="img" aria-label="Tree diagram. Cofactor is the umbrella term. It splits into organic cofactors, called coenzymes, and inorganic cofactors, which are metal ions. A coenzyme bound tightly is called a prosthetic group. Metal ions split into metalloenzymes where the metal is tightly bound and metal-activated enzymes where it is loosely bound.">
+      <g font-family="Archivo, sans-serif">
+        <g stroke="var(--rule-strong)" stroke-width="1.6" fill="none">
+          <path d="M310 58 L310 78 L160 78 L160 98"/><path d="M310 78 L460 78 L460 98"/>
+          <path d="M160 142 L160 160 L85 160 L85 178"/><path d="M160 160 L235 160 L235 178"/>
+          <path d="M460 142 L460 160 L385 160 L385 178"/><path d="M460 160 L535 160 L535 178"/>
+        </g>
+        <g class="tnode" data-k="cof"><rect x="230" y="14" width="160" height="44" rx="10" fill="var(--ind-soft)" stroke="var(--ind)"/><text class="sl b" x="310" y="41" text-anchor="middle">Cofactor</text></g>
+        <g class="tnode" data-k="coe"><rect x="80" y="98" width="160" height="44" rx="10" fill="var(--surface-2)" stroke="var(--c2)"/><text class="sl b" x="160" y="118" text-anchor="middle">Coenzyme</text><text class="sl sm" x="160" y="134" text-anchor="middle">organic</text></g>
+        <g class="tnode" data-k="met"><rect x="380" y="98" width="160" height="44" rx="10" fill="var(--surface-2)" stroke="var(--c3)"/><text class="sl b" x="460" y="118" text-anchor="middle">Metal ion</text><text class="sl sm" x="460" y="134" text-anchor="middle">inorganic (activator)</text></g>
+        <g class="tnode" data-k="loose"><rect x="20" y="178" width="130" height="50" rx="10" fill="var(--surface-2)" stroke="var(--rule-strong)"/><text class="sl" x="85" y="199" text-anchor="middle">Loosely bound</text><text class="sl sm" x="85" y="216" text-anchor="middle">NAD⁺ (co-substrate)</text></g>
+        <g class="tnode" data-k="pros"><rect x="170" y="178" width="130" height="50" rx="10" fill="var(--surface-2)" stroke="var(--rule-strong)"/><text class="sl" x="235" y="199" text-anchor="middle">Prosthetic group</text><text class="sl sm" x="235" y="216" text-anchor="middle">tightly bound: FAD, heme</text></g>
+        <g class="tnode" data-k="mact"><rect x="320" y="178" width="130" height="50" rx="10" fill="var(--surface-2)" stroke="var(--rule-strong)"/><text class="sl" x="385" y="199" text-anchor="middle">Metal-activated</text><text class="sl sm" x="385" y="216" text-anchor="middle">loose: enolase–Mg²⁺</text></g>
+        <g class="tnode" data-k="mets"><rect x="470" y="178" width="130" height="50" rx="10" fill="var(--surface-2)" stroke="var(--rule-strong)"/><text class="sl" x="535" y="199" text-anchor="middle">Metalloenzyme</text><text class="sl sm" x="535" y="216" text-anchor="middle">tight: carbonic anhydrase–Zn</text></g>
+      </g>
+    </svg>
+    </div>
+    <div class="caption" id="tcap" aria-live="polite"><b>Cofactor</b> is the umbrella word: any non-protein helper an enzyme needs. It can be organic (a coenzyme) or inorganic (a metal ion). Tap any box.</div>
+    <div class="hint">Some authors use cofactor, coenzyme and prosthetic group interchangeably (Sat p. 96). Vasudevan calls the prosthetic group "the co-enzyme" in general (Vas p. 42). For the exam, give the distinctions shown here.</div>
+  </div>
+
+  <h3>Coenzyme <span class="bk">Sat p. 96–98 · Vas p. 42–43 Box 5.3</span></h3>
+  <div class="five">
+    <div><span class="lb">What</span><span>A <strong>non-protein, organic, low molecular weight, dialysable, heat-stable</strong> substance needed for enzyme action.</span></div>
+    <div><span class="lb">Why</span><span>The apoenzyme provides the 3-D framework, but the actual group (hydrogen, amino, acyl, CO₂, one-carbon) is carried by the coenzyme.</span></div>
+    <div><span class="lb">How</span><span>It binds loosely, gets changed during the reaction (e.g. NAD⁺ → NADH), then is regenerated by another reaction. So it behaves like a <strong>second substrate (co-substrate)</strong>. One coenzyme molecule can serve many cycles and many different enzymes.</span></div>
+    <div class="clin"><span class="lb">Clinic</span><span>Most coenzymes come from <strong>B-complex vitamins</strong>. Thiamine deficiency cripples pyruvate dehydrogenase (TPP) and causes beriberi and Wernicke's encephalopathy. AST and ALT need pyridoxal phosphate (vitamin B6).</span></div>
+    <div class="rem"><span class="lb">Remember</span><span>The coenzyme carries the group; the apoenzyme decides specificity.</span></div>
+  </div>
+
+  <div class="twocol">
+  <div class="tablewrap" style="margin:0">
+    <table>
+      <caption>Vitamin-derived coenzymes (Sat Table 6.3; Vas Table 5.1)</caption>
+      <thead><tr><th>Coenzyme</th><th>Vitamin</th><th>Carries</th><th>Example enzyme</th></tr></thead>
+      <tbody>
+        <tr><td>TPP</td><td>B1 thiamine</td><td>Aldehyde / keto</td><td>Transketolase, PDH</td></tr>
+        <tr><td>FMN, FAD</td><td>B2 riboflavin</td><td>H and electrons</td><td>Amino acid oxidases, succinate DH</td></tr>
+        <tr><td>NAD⁺, NADP⁺</td><td>B3 niacin</td><td>H and electrons</td><td>LDH, G6PD</td></tr>
+        <tr><td>Coenzyme A</td><td>B5 pantothenic acid</td><td>Acyl</td><td>Thiokinase</td></tr>
+        <tr><td>PLP</td><td>B6 pyridoxine</td><td>Amino</td><td>ALT, AST</td></tr>
+        <tr><td>Biotin</td><td>B7 biotin</td><td>CO₂</td><td>Pyruvate carboxylase</td></tr>
+        <tr><td>THF</td><td>B9 folic acid</td><td>One carbon</td><td>Formyl transferase</td></tr>
+        <tr><td>Methyl-B12</td><td>B12 cobalamin</td><td>Methyl / isomerisation</td><td>Methylmalonyl CoA mutase</td></tr>
+        <tr><td>Lipoic acid</td><td>(not a vitamin)</td><td>Acyl, H</td><td>PDH complex</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="tablewrap" style="margin:0">
+    <table>
+      <caption>Non-vitamin coenzymes (Sat Table 6.4)</caption>
+      <thead><tr><th>Coenzyme</th><th>Role</th></tr></thead>
+      <tbody>
+        <tr><td>ATP</td><td>Donates phosphate, AMP or adenosine</td></tr>
+        <tr><td>CDP</td><td>Carries choline and ethanolamine for phospholipids</td></tr>
+        <tr><td>UDP</td><td>Carries sugars (UDP-glucose for glycogen)</td></tr>
+        <tr><td>SAM</td><td>Active methionine; donates methyl groups</td></tr>
+        <tr><td>PAPS</td><td>Active sulphate for mucopolysaccharides</td></tr>
+      </tbody>
+    </table>
+  </div>
+  </div>
+
+  <h3>Two groups of coenzymes <span class="bk">Vas p. 42–43</span></h3>
+  <div class="prose">
+    <ol>
+      <li><strong>Hydrogen/electron carriers</strong>, used by oxidoreductases: NAD⁺/NADH, NADP⁺/NADPH, FAD/FADH₂, FMN/FMNH₂. The change in the substrate is balanced by an opposite change in the coenzyme, so they are true co-substrates.</li>
+      <li><strong>Group-transfer coenzymes</strong>, which carry groups other than hydrogen: TPP, PLP, biotin, CoA, THF, ATP.</li>
+    </ol>
+    <p><strong>Coenzymes do not decide specificity</strong> (Sat p. 98). NAD⁺ works with both lactate dehydrogenase and alcohol dehydrogenase; which substrate is used depends on the apoenzyme.</p>
+  </div>
+
+  <h3>Cofactor: metal ions <span class="bk">Sat p. 91 · Vas p. 43–44 Table 5.2</span></h3>
+  <div class="prose"><p>A <span class="term">cofactor</span> in the narrow sense is an <strong>inorganic ion</strong> needed for activity; Satyanarayana also calls it an <strong>activator</strong>. Metals help by binding the substrate, forming an enzyme–substrate–metal complex, taking part directly, or changing the enzyme's shape.</p></div>
+  <div class="tablewrap">
+    <table>
+      <thead><tr><th>Type</th><th>Metal binding</th><th>Examples</th></tr></thead>
+      <tbody>
+        <tr><td>Metal-activated enzymes</td><td>Loose; exchangeable with other ions</td><td>ATPase (Mg²⁺, Ca²⁺), enolase (Mg²⁺), salivary amylase (Cl⁻), pancreatic lipase (Ca²⁺)</td></tr>
+        <tr><td>Metalloenzymes</td><td>Tight; not readily exchanged</td><td>Zn: carbonic anhydrase, carboxypeptidase, alcohol dehydrogenase, ALP · Cu: tyrosinase, cytochrome oxidase, lysyl oxidase, SOD · Fe: catalase, peroxidase, cytochrome oxidase · Mo: xanthine oxidase · Mn: arginase; pyruvate oxidase (Sat)</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="five">
+    <div class="clin"><span class="lb">Clinic</span><span><strong>Zinc deficiency</strong> impairs Zn enzymes (poor wound healing, loss of taste). <strong>Copper deficiency</strong> weakens lysyl oxidase, so collagen and elastin cross-links fail. Enzymes needing Mg²⁺ (hexokinase, enolase) slow down in severe magnesium deficiency.</span></div>
+    <div class="rem"><span class="lb">Remember</span><span>Cofactor = any helper. Coenzyme = organic helper. Prosthetic group = helper that never leaves.</span></div>
+  </div>
+</section>
+
+<!-- ══════════ 3 ══════════ -->
+<section class="station" id="s3">
+  <div class="st-head">
+    <div class="st-num"><span>Station 03</span><span class="pg">Sat p. 86–87 · Vas p. 40–41</span></div>
+    <h2>Naming enzymes: IUBMB nomenclature</h2>
+    <div class="sub">From "pepsin" (a name that tells you nothing) to "EC 1.1.1.27" (a name that tells you everything).</div>
+  </div>
+
+  <h3>Three ways enzymes got their names</h3>
+  <div class="tablewrap">
+    <table>
+      <thead><tr><th>Type of name</th><th>How it is made</th><th>Examples</th><th>Problem</th></tr></thead>
+      <tbody>
+        <tr><td>Old arbitrary names</td><td>Chosen by the discoverer</td><td>Pepsin, trypsin, chymotrypsin</td><td>Say nothing about substrate or reaction</td></tr>
+        <tr><td>Trivial (recommended) names</td><td>Substrate + "-ase", or reaction + "-ase"</td><td>Lactase (on lactose), lipase, urease, dehydrogenase</td><td>No detail of reaction type or coenzyme</td></tr>
+        <tr><td>Systematic (IUBMB) names</td><td>Substrate(s) : reaction type, plus a code number</td><td>Alcohol : NAD⁺ oxidoreductase, EC 1.1.1.1</td><td>Exact but long, so trivial names are still used daily</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="prose">
+    <p>The <strong>International Union of Biochemistry (IUB)</strong>, now the <strong>IUBMB</strong> (International Union of Biochemistry and Molecular Biology), set up an <strong>Enzyme Commission in 1961</strong>. Its system has been in force since <strong>1964</strong> (Vasudevan adds that it was modified in 1972 and 1978). Every enzyme gets:</p>
+    <ol>
+      <li>A <strong>systematic name</strong> that states the substrate(s), the coenzyme if any, and the type of reaction.</li>
+      <li>A four-part <strong>EC number</strong> (Enzyme Commission number).</li>
+    </ol>
+  </div>
+
+  <div class="panel">
+    <div class="ptitle">Reading an EC number · lactate dehydrogenase</div>
+    <div class="svgbox">
+    <svg viewBox="0 0 620 220" role="img" aria-label="EC 1.1.1.27 decoded. First digit 1 is the class, oxidoreductase. Second digit 1 is the subclass, acting on a CH-OH group. Third digit 1 is the sub-subclass, with NAD or NADP as acceptor. Fourth digit 27 is the serial number of L-lactate dehydrogenase.">
+      <g font-family="Archivo, sans-serif">
+        <text x="310" y="58" text-anchor="middle" style="font-family:'JetBrains Mono',monospace;font-size:40px;font-weight:600;fill:var(--ink)">EC 1 . 1 . 1 . 27</text>
+        <g stroke="var(--rule-strong)" stroke-width="1.5" fill="none">
+          <path d="M254 70 L254 100 L90 100 L90 118"/>
+          <path d="M318 70 L318 106 L240 106 L240 118"/>
+          <path d="M382 70 L382 106 L390 106 L390 118"/>
+          <path d="M458 70 L458 100 L540 100 L540 118"/>
+        </g>
+        <rect x="20" y="118" width="140" height="84" rx="10" fill="var(--ind-soft)" stroke="var(--ind)"/>
+        <text class="sl" x="90" y="140" text-anchor="middle" style="fill:var(--ind);font-weight:700">1st: Class</text>
+        <text class="sl sm" x="90" y="160" text-anchor="middle">1 = Oxidoreductase</text>
+        <text class="sl sm" x="90" y="178" text-anchor="middle">type of reaction</text>
+        <rect x="170" y="118" width="140" height="84" rx="10" fill="var(--surface-2)" stroke="var(--rule-strong)"/>
+        <text class="sl b" x="240" y="140" text-anchor="middle">2nd: Subclass</text>
+        <text class="sl sm" x="240" y="160" text-anchor="middle">1 = acts on a</text>
+        <text class="sl sm" x="240" y="178" text-anchor="middle">CH–OH group</text>
+        <rect x="320" y="118" width="140" height="84" rx="10" fill="var(--surface-2)" stroke="var(--rule-strong)"/>
+        <text class="sl b" x="390" y="140" text-anchor="middle">3rd: Sub-subclass</text>
+        <text class="sl sm" x="390" y="160" text-anchor="middle">1 = NAD⁺ or NADP⁺</text>
+        <text class="sl sm" x="390" y="178" text-anchor="middle">is the acceptor</text>
+        <rect x="470" y="118" width="140" height="84" rx="10" fill="var(--gold-soft)" stroke="var(--gold)"/>
+        <text class="sl" x="540" y="140" text-anchor="middle" style="fill:var(--gold);font-weight:700">4th: Serial no.</text>
+        <text class="sl sm" x="540" y="160" text-anchor="middle">27 = L-lactate</text>
+        <text class="sl sm" x="540" y="178" text-anchor="middle">dehydrogenase</text>
+      </g>
+    </svg>
+    </div>
+    <div class="hint">Systematic name: L-lactate : NAD⁺ oxidoreductase, EC 1.1.1.27 (Sat p. 109). Alcohol dehydrogenase, EC 1.1.1.1, sits right next to it in the list because it does the same kind of chemistry.</div>
+  </div>
+
+  <h3>The main classes of IUBMB nomenclature</h3>
+  <div class="tablewrap">
+    <table>
+      <caption>Six classes, always in this order (Sat Table 6.1 · Vas Box 5.1)</caption>
+      <thead><tr><th>EC</th><th>Class</th><th>Reaction type</th><th>General form</th></tr></thead>
+      <tbody>
+        <tr><td class="num">1</td><td>Oxidoreductases</td><td>Oxidation–reduction (transfer of H or electrons, or addition of O)</td><td class="num">AH₂ + B → A + BH₂</td></tr>
+        <tr><td class="num">2</td><td>Transferases</td><td>Transfer of a group other than hydrogen</td><td class="num">A–X + B → A + B–X</td></tr>
+        <tr><td class="num">3</td><td>Hydrolases</td><td>Break a bond by adding water</td><td class="num">A–B + H₂O → AH + BOH</td></tr>
+        <tr><td class="num">4</td><td>Lyases</td><td>Remove or add groups (H₂O, NH₃, CO₂) without hydrolysis; make or break double bonds</td><td class="num">A–B ⇌ A=B + X–Y</td></tr>
+        <tr><td class="num">5</td><td>Isomerases</td><td>Rearrange a molecule into its isomer</td><td class="num">A → A′</td></tr>
+        <tr><td class="num">6</td><td>Ligases</td><td>Join two molecules using ATP</td><td class="num">A + B + ATP → A–B + ADP + Pi</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="five">
+    <div class="rem"><span class="lb">Mnemonic</span><span><strong>OTHLIL</strong> (Satyanarayana): Oxidoreductase, Transferase, Hydrolase, Lyase, Isomerase, Ligase. Or the sentence "<strong>O</strong>ver <strong>T</strong>he <strong>H</strong>ill <strong>L</strong>ives <strong>I</strong>ndian <strong>L</strong>ions".</span></div>
+  </div>
+  <div class="note"><b>Book vs current IUBMB list.</b> Both your textbooks give six classes, and that is what university exams expect. In 2018 the IUBMB added a <strong>7th class, Translocases</strong> (EC 7), for enzymes that move ions or molecules across membranes using energy, e.g. the Na⁺/K⁺-ATPase that was earlier listed under hydrolases. Mention it as an extra line if the question asks for the "current" classification.</div>
+
+  <details class="plain">
+    <summary><span class="tagx">Watch out</span> Synthetase vs synthase (Vas Box 5.2)</summary>
+    <div class="body">
+      <p><strong>Synthetases</strong> use ATP directly and are ligases (class 6): carbamoyl phosphate synthetase, argininosuccinate synthetase, glutamine synthetase, PRPP synthetase.</p>
+      <p><strong>Synthases</strong> make something but do not use ATP directly, so they belong to other classes: glycogen synthase (a transferase), ALA synthase.</p>
+    </div>
+  </details>
+</section>
+
+<!-- ══════════ 4 ══════════ -->
+<section class="station" id="s4">
+  <div class="st-head">
+    <div class="st-num"><span>Station 04</span><span class="pg">Sat p. 86–87 · Vas p. 41–42</span></div>
+    <h2>IUBMB classification with examples</h2>
+    <div class="sub">Tap a class to see its reaction, a worked example with EC number, and where it matters in medicine.</div>
+  </div>
+
+  <div class="panel">
+    <div class="ptitle">Class explorer</div>
+    <div class="classgrid" id="cgrid"></div>
+    <div class="cdetail" id="cdet" aria-live="polite"></div>
+  </div>
+
+  <div class="tablewrap">
+    <table>
+      <caption>Suitable examples for each class (both books)</caption>
+      <thead><tr><th>Class</th><th>Worked example (reaction)</th><th>More examples</th></tr></thead>
+      <tbody>
+        <tr><td>1 Oxidoreductases</td><td>Alcohol dehydrogenase, EC 1.1.1.1: alcohol + NAD⁺ → aldehyde + NADH + H⁺</td><td>LDH (NAD), G6PD (NADP), succinate dehydrogenase (FAD), cytochrome oxidase, L- and D-amino acid oxidases, catalase</td></tr>
+        <tr><td>2 Transferases</td><td>Hexokinase, EC 2.7.1.1 (ATP : D-hexose 6-phosphotransferase): glucose + ATP → glucose-6-P + ADP</td><td>Transaminases (ALT, AST), transmethylases, phosphorylase, kinases</td></tr>
+        <tr><td>3 Hydrolases</td><td>Lipase, EC 3.1.1.3 (triacylglycerol acylhydrolase); acetylcholinesterase: ACh + H₂O → choline + acetate</td><td>All digestive enzymes: pepsin, trypsin, amylase; urease; acid and alkaline phosphatase</td></tr>
+        <tr><td>4 Lyases</td><td>Aldolase, EC 4.1.2.13 (Sat lists 4.1.2.7): fructose-1,6-bisP → glyceraldehyde-3-P + DHAP</td><td>Fumarase, histidase, HMG-CoA lyase, ATP-citrate lyase, carbonic anhydrase</td></tr>
+        <tr><td>5 Isomerases</td><td>Triose phosphate isomerase, EC 5.3.1.1: glyceraldehyde-3-P ⇌ DHAP</td><td>Phosphohexose isomerase, retinol isomerase, racemases, epimerases, mutases</td></tr>
+        <tr><td>6 Ligases</td><td>Glutamine synthetase, EC 6.3.1.2: glutamate + NH₃ + ATP → glutamine + ADP + Pi</td><td>Acetyl-CoA carboxylase, pyruvate carboxylase, succinate thiokinase, PRPP synthetase</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="note"><b>A small EC correction.</b> Satyanarayana gives aldolase as EC 4.1.2.7 (Sat p. 86). The current EC list numbers fructose-bisphosphate aldolase, the glycolytic aldolase, as <strong>EC 4.1.2.13</strong>; the older entry 4.1.2.7 (ketose-1-phosphate aldolase) has been merged into it. Either shows the class correctly; in an essay, just the class and name is enough.</div>
+
+  <h3>Quick check: which class?</h3>
+  <div class="panel">
+    <div class="ptitle">Classify the reaction · <span id="clsScore">0 / 0</span></div>
+    <div class="cls-q" id="clsName"></div>
+    <div class="cls-r" id="clsRx"></div>
+    <div class="cls-opts" id="clsOpts"></div>
+    <div class="cls-fb" id="clsFb" hidden></div>
+    <div class="btnrow"><button class="btn pri" id="clsNext" hidden>Next reaction</button></div>
+  </div>
+</section>
+
+<!-- ══════════ 5 ══════════ -->
+<section class="station" id="s5">
+  <div class="st-head">
+    <div class="st-num"><span>Station 05</span><span class="pg">Sat p. 95–96 · Vas p. 57–58</span></div>
+    <h2>Specificity of enzymes</h2>
+    <div class="sub">One key, one lock. The active site decides what fits.</div>
+  </div>
+
+  <div class="prose">
+    <p>A chemical catalyst like platinum speeds up many unrelated reactions. An enzyme is choosy: it acts on one substrate, or one kind of bond, or one type of reaction. This choosiness is <span class="term">enzyme specificity</span>, and it is a property of the <strong>active site</strong>, whose shape and charges fit only certain molecules. That is why the body needs thousands of different enzymes.</p>
+    <p>Two classic models explain the fit: <strong>lock and key</strong> (Emil Fischer: the active site is a rigid, pre-shaped pocket) and <strong>induced fit</strong> (Koshland: the active site is flexible and moulds itself around the substrate, like a glove around a hand). Satyanarayana notes the active site is flexible, which matches induced fit.</p>
+  </div>
+
+  <div class="panel">
+    <div class="ptitle">Types of specificity · combined from both books</div>
+    <div class="svgbox">
+    <svg viewBox="0 0 620 250" role="img" aria-label="Tree of enzyme specificity. Three main types: stereospecificity, reaction specificity and substrate specificity. Substrate specificity is absolute, relative (group or bond) or broad.">
+      <g font-family="Archivo, sans-serif">
+        <g stroke="var(--rule-strong)" stroke-width="1.6" fill="none">
+          <path d="M310 54 L310 72 L105 72 L105 90"/><path d="M310 72 L310 90"/><path d="M310 72 L515 72 L515 90"/>
+          <path d="M515 136 L515 154 L425 154 L425 170"/><path d="M515 154 L515 170"/><path d="M515 154 L589 154 L589 170"/>
+        </g>
+        <rect x="210" y="12" width="200" height="42" rx="10" fill="var(--ind-soft)" stroke="var(--ind)"/>
+        <text class="sl b" x="310" y="38" text-anchor="middle">Enzyme specificity</text>
+        <rect x="20" y="90" width="170" height="46" rx="10" fill="var(--surface-2)" stroke="var(--c1)"/>
+        <text class="sl b" x="105" y="110" text-anchor="middle">1 · Stereospecificity</text>
+        <text class="sl sm" x="105" y="127" text-anchor="middle">only one isomer</text>
+        <rect x="225" y="90" width="170" height="46" rx="10" fill="var(--surface-2)" stroke="var(--c2)"/>
+        <text class="sl b" x="310" y="110" text-anchor="middle">2 · Reaction</text>
+        <text class="sl sm" x="310" y="127" text-anchor="middle">one reaction per enzyme</text>
+        <rect x="430" y="90" width="170" height="46" rx="10" fill="var(--surface-2)" stroke="var(--c3)"/>
+        <text class="sl b" x="515" y="110" text-anchor="middle">3 · Substrate</text>
+        <text class="sl sm" x="515" y="127" text-anchor="middle">which molecules fit</text>
+        <rect x="380" y="170" width="90" height="56" rx="9" fill="var(--surface-2)" stroke="var(--rule-strong)"/>
+        <text class="sl" x="425" y="192" text-anchor="middle">Absolute</text>
+        <text class="sl sm" x="425" y="210" text-anchor="middle">urease</text>
+        <rect x="474" y="170" width="84" height="56" rx="9" fill="var(--surface-2)" stroke="var(--rule-strong)"/>
+        <text class="sl" x="516" y="188" text-anchor="middle">Relative</text>
+        <text class="sl sm" x="516" y="204" text-anchor="middle">group /</text>
+        <text class="sl sm" x="516" y="218" text-anchor="middle">bond</text>
+        <rect x="562" y="170" width="54" height="56" rx="9" fill="var(--surface-2)" stroke="var(--rule-strong)"/>
+        <text class="sl" x="589" y="192" text-anchor="middle">Broad</text>
+        <text class="sl sm" x="589" y="210" text-anchor="middle">HK</text>
+      </g>
+    </svg>
+    </div>
+  </div>
+
+  <h3>1. Stereospecificity (optical specificity)</h3>
+  <div class="five">
+    <div><span class="lb">What</span><span>The enzyme acts on only <strong>one stereoisomer</strong> (same formula, different 3-D arrangement).</span></div>
+    <div><span class="lb">How</span><span>The substrate touches the enzyme at <strong>three points</strong>. Its mirror image can match two points but never all three, like a right hand in a left glove (three-point attachment, Sat Fig 6.10).</span></div>
+    <div><span class="lb">Examples</span><span>L-amino acid oxidase acts only on L-amino acids, D-amino acid oxidase only on D. Hexokinase acts on D-hexoses. Amylase cuts α-glycosidic bonds; cellulase cuts β bonds (so we cannot digest cellulose). Fumarase hydrates fumarate (trans) but not maleate (cis). LDH makes only L-lactate. Human enzymes are specific for <strong>L-amino acids and D-sugars</strong>.</span></div>
+    <div class="clin"><span class="lb">Clinic</span><span>Drugs are designed as the right isomer: <strong>L-dopa</strong> (levodopa) is given in Parkinson's disease because the body's decarboxylase acts on the L form.</span></div>
+    <div class="rem"><span class="lb">Remember</span><span>Isomerases are the one class that is <em>not</em> stereospecific, because their job is to swap isomers.</span></div>
+  </div>
+
+  <div class="panel">
+    <div class="ptitle">Three-point attachment · flip the substrate</div>
+    <div class="svgbox fit">
+    <svg viewBox="0 0 440 230" role="img" aria-label="Three-point attachment. The enzyme surface has three sites a, b and c. The correct isomer places groups A, B and C on all three sites. The mirror-image isomer can match only two.">
+      <g font-family="Archivo, sans-serif">
+        <path d="M30 190 L410 190 L410 215 L30 215 Z" fill="var(--ind-soft)" stroke="var(--ind)"/>
+        <text class="sl sm" x="220" y="208" text-anchor="middle">enzyme surface</text>
+        <g><rect x="90" y="176" width="44" height="14" rx="3" fill="var(--c1)"/><text class="sl b" x="112" y="172" text-anchor="middle">a</text></g>
+        <g><rect x="198" y="176" width="44" height="14" rx="3" fill="var(--c2)"/><text class="sl b" x="220" y="172" text-anchor="middle">b</text></g>
+        <g><rect x="306" y="176" width="44" height="14" rx="3" fill="var(--c3)"/><text class="sl b" x="328" y="172" text-anchor="middle">c</text></g>
+        <g id="tp-mol">
+          <circle cx="220" cy="80" r="16" fill="var(--surface-2)" stroke="var(--ink-2)"/><text class="sl b" x="220" y="85" text-anchor="middle">C</text>
+          <line x1="208" y1="92" x2="118" y2="146" stroke="var(--ink-2)" stroke-width="2"/>
+          <line x1="220" y1="96" x2="220" y2="146" stroke="var(--ink-2)" stroke-width="2"/>
+          <line x1="232" y1="92" x2="322" y2="146" stroke="var(--ink-2)" stroke-width="2"/>
+          <line x1="220" y1="64" x2="220" y2="30" stroke="var(--ink-2)" stroke-width="2"/>
+          <circle cx="220" cy="22" r="10" fill="var(--surface)" stroke="var(--ink-3)"/><text class="sl sm" x="220" y="26" text-anchor="middle">D</text>
+          <circle id="tp-L" cx="112" cy="156" r="14" fill="var(--c1)"/><text id="tp-Lt" class="sl b" x="112" y="161" text-anchor="middle" style="fill:var(--surface)">A</text>
+          <circle cx="220" cy="156" r="14" fill="var(--c2)"/><text class="sl b" x="220" y="161" text-anchor="middle" style="fill:var(--surface)">B</text>
+          <circle id="tp-R" cx="328" cy="156" r="14" fill="var(--c3)"/><text id="tp-Rt" class="sl b" x="328" y="161" text-anchor="middle" style="fill:var(--surface)">C</text>
+        </g>
+      </g>
+    </svg>
+    </div>
+    <div class="btnrow"><button class="btn pri" id="tp-btn">Show the mirror image</button></div>
+    <div class="caption" id="tp-cap"><b>Correct isomer.</b> A sits on a, B on b, C on c: all three points match, so the enzyme acts.</div>
+  </div>
+
+  <h3>2. Reaction specificity</h3>
+  <div class="five">
+    <div><span class="lb">What</span><span>One substrate can undergo several reactions, but each reaction has its <strong>own enzyme</strong>.</span></div>
+    <div><span class="lb">Example</span><span>An amino acid can be transaminated (transaminase), oxidatively deaminated (amino acid oxidase), decarboxylated (decarboxylase) or racemised (racemase). Four reactions, four enzymes (Sat p. 96).</span></div>
+    <div class="clin"><span class="lb">Clinic</span><span>Pyruvate has several fates: LDH (to lactate), ALT (to alanine), pyruvate carboxylase (to oxaloacetate), PDH (to acetyl-CoA). Which enzyme is active decides what happens in hypoxia, fasting or feeding.</span></div>
+  </div>
+
+  <h3>3. Substrate specificity</h3>
+  <div class="tablewrap">
+    <table>
+      <thead><tr><th>Type</th><th>Meaning</th><th>Examples</th></tr></thead>
+      <tbody>
+        <tr><td>Absolute</td><td>Acts on only one substrate</td><td><strong>Urease</strong> acts only on urea (not even thiourea). Glucose oxidase acts only on β-D-glucose. Satyanarayana also lists glucokinase (glucose only).</td></tr>
+        <tr><td>Relative: group</td><td>Acts on a particular chemical group next to the bond</td><td><strong>Trypsin</strong> cuts peptide bonds on the carboxyl side of arginine and lysine. <strong>Chymotrypsin</strong> cuts after aromatic amino acids (Phe, Tyr, Trp).</td></tr>
+        <tr><td>Relative: bond</td><td>Acts on one type of bond, whatever the molecule</td><td>Glycosidases (glycosidic bonds), lipases (ester bonds), peptidases (peptide bonds)</td></tr>
+        <tr><td>Broad</td><td>Acts on several closely related substrates</td><td><strong>Hexokinase</strong>: glucose, fructose, mannose, glucosamine (not galactose). Alcohol dehydrogenase: ethanol and methanol.</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="note"><b>The books use slightly different labels.</b> Vasudevan lists four types (absolute, bond, group, stereospecificity), calls trypsin "bond specificity" and says hexokinase acts on glucose, galactose and mannose (Vas p. 57). Satyanarayana calls trypsin "group specificity" and says hexokinase does <strong>not</strong> act on galactose (Sat p. 96). Standard biochemistry agrees with Satyanarayana on galactose: galactose is phosphorylated by a separate enzyme, galactokinase. Either set of labels is accepted if you give the examples.</div>
+  <div class="five">
+    <div class="clin"><span class="lb">Clinic</span><span><strong>Methanol poisoning</strong> (hooch tragedies): ADH's broad specificity turns methanol into toxic formaldehyde and formic acid, causing blindness. Treatment gives <strong>ethanol</strong> or <strong>fomepizole</strong>, which compete for the same enzyme so methanol is excreted unchanged.</span></div>
+    <div class="rem"><span class="lb">Remember</span><span>Stereo, Reaction, Substrate: "<strong>SRS</strong>". Substrate specificity = Absolute, Relative, Broad: "<strong>ARB</strong>".</span></div>
+  </div>
+</section>
+
+<!-- ══════════ 6 ══════════ -->
+<section class="station" id="s6">
+  <div class="st-head">
+    <div class="st-num"><span>Station 06</span><span class="pg">Sat p. 88–91 · Vas p. 48–52 Box 5.7</span></div>
+    <h2>Factors that affect enzyme activity</h2>
+    <div class="sub">Change any one of these and the speed of the reaction changes.</div>
+  </div>
+
+  <div class="tablewrap">
+    <table>
+      <caption>The list to write first in any answer (Vas Box 5.7, with Satyanarayana's extras)</caption>
+      <thead><tr><th>#</th><th>Factor</th><th>Effect in one line</th></tr></thead>
+      <tbody>
+        <tr><td class="num">1</td><td>Enzyme concentration</td><td>Velocity rises in direct proportion (straight line) when substrate is in excess</td></tr>
+        <tr><td class="num">2</td><td>Substrate concentration</td><td>Velocity rises, then levels off at V<sub>max</sub> (rectangular hyperbola); K<sub>m</sub> = [S] at ½V<sub>max</sub></td></tr>
+        <tr><td class="num">3</td><td>Product concentration</td><td>Build-up of product slows, stops or reverses the reaction</td></tr>
+        <tr><td class="num">4</td><td>Temperature</td><td>Bell-shaped curve; optimum about 37 °C (Sat: 40–45 °C in the lab); denaturation above ~50 °C</td></tr>
+        <tr><td class="num">5</td><td>pH</td><td>Bell-shaped curve; each enzyme has an optimum pH</td></tr>
+        <tr><td class="num">6</td><td>Activators</td><td>Metal ions (Mg²⁺, Zn²⁺, Ca²⁺, Cl⁻) and zymogen activation raise activity</td></tr>
+        <tr><td class="num">7</td><td>Inhibitors</td><td>Competitive, non-competitive, irreversible and allosteric inhibitors lower activity</td></tr>
+        <tr><td class="num">8</td><td>Repressors / derepressors</td><td>Change the amount of enzyme made (induction, repression)</td></tr>
+        <tr><td class="num">9</td><td>Covalent modification</td><td>Phosphorylation or dephosphorylation switches enzymes on or off</td></tr>
+        <tr><td class="num">10</td><td>Time</td><td>Under optimal conditions the reaction takes less time (Sat)</td></tr>
+        <tr><td class="num">11</td><td>Light and radiation</td><td>UV, β, γ and X-rays inactivate some enzymes by forming peroxides; UV inhibits salivary amylase (Sat)</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="panel">
+    <div class="ptitle">Factor lab · pick a factor</div>
+    <div class="switch" id="fsw" role="tablist" aria-label="Choose a factor">
+      <button class="on" data-f="enz">Enzyme conc.</button><button data-f="sub">Substrate conc.</button><button data-f="temp">Temperature</button><button data-f="ph">pH</button>
+    </div>
+    <div class="svgbox" style="margin-top:14px">
+      <svg viewBox="0 0 600 300" id="fsvg" role="img" aria-label="Graph of reaction velocity against the selected factor"></svg>
+    </div>
+    <div class="ctl" id="fctl" style="margin-top:12px"></div>
+    <div class="caption" id="fcap" aria-live="polite"></div>
+  </div>
+
+  <h3>1. Enzyme concentration</h3>
+  <div class="five">
+    <div><span class="lb">How</span><span>More enzyme molecules means more active sites working at once. With plenty of substrate, doubling the enzyme doubles the velocity.</span></div>
+    <div class="clin"><span class="lb">Clinic</span><span>This is how serum enzymes are measured. Keep substrate, pH and temperature optimal, add a fixed volume of serum, and the rate you measure is proportional to the amount of enzyme in the sample.</span></div>
+  </div>
+
+  <h3>2. Substrate concentration, K<sub>m</sub> and V<sub>max</sub></h3>
+  <div class="prose">
+    <p>With a fixed amount of enzyme, adding substrate first raises velocity almost in a straight line (<strong>first order</strong>), then the curve bends, and finally it flattens at <strong>V<sub>max</sub></strong> when every enzyme molecule is busy (<strong>zero order</strong>). Think of an auto-rickshaw stand: once every auto is carrying a passenger, extra people in the queue do not make the trips faster.</p>
+  </div>
+  <div class="eq">v = V<sub>max</sub>[S] / (K<sub>m</sub> + [S])     and when [S] = K<sub>m</sub>, v = ½V<sub>max</sub><small>Michaelis–Menten equation. K<sub>m</sub> = (k₂ + k₃)/k₁.</small></div>
+  <div class="five">
+    <div><span class="lb">K<sub>m</sub></span><span>The <strong>substrate concentration at which velocity is half of V<sub>max</sub></strong>. At this point 50% of enzyme molecules hold substrate. It is a constant for each enzyme–substrate pair, "the signature of the enzyme", and does not depend on enzyme concentration.</span></div>
+    <div><span class="lb">Meaning</span><span><strong>Low K<sub>m</sub> = high affinity</strong>; high K<sub>m</sub> = low affinity. Hexokinase K<sub>m</sub> ≈ 0.05 mmol/L; glucokinase ≈ 10 mmol/L (Vas p. 50).</span></div>
+    <div><span class="lb">Plot</span><span>The <strong>Lineweaver–Burk (double reciprocal) plot</strong> of 1/v against 1/[S] gives a straight line: y-intercept = 1/V<sub>max</sub>, x-intercept = −1/K<sub>m</sub>. It is also used to tell types of inhibition apart.</span></div>
+    <div class="clin"><span class="lb">Clinic</span><span>Hexokinase (low K<sub>m</sub>) keeps glucose flowing into brain and RBCs even when blood sugar is low. Liver glucokinase (high K<sub>m</sub>) works mainly after a meal, storing the extra. Mutations in glucokinase cause a form of monogenic diabetes (MODY 2; standard knowledge).</span></div>
+  </div>
+
+  <h3>3. Product concentration</h3>
+  <div class="prose"><p>By mass action, as product piles up the reaction slows, stops or even runs backwards. Some products bind the active site and inhibit directly. In an inborn error where step C → D is blocked, C accumulates and inhibits the step before it, so the whole pathway slowly jams (Vas p. 51). The body normally avoids this by removing products quickly.</p></div>
+
+  <h3>4. Temperature</h3>
+  <div class="five">
+    <div><span class="lb">How</span><span>Warming gives molecules more energy and more collisions, so velocity rises. The <strong>temperature coefficient Q<sub>10</sub></strong> (rise in rate for a 10 °C rise) is about <strong>2</strong> for most enzymes between 0 and 40 °C. Above about 50 °C the protein unfolds (heat denaturation) and activity falls; most enzymes are inactive above 70 °C.</span></div>
+    <div><span class="lb">Optimum</span><span>Most human enzymes: about 37 °C (Vasudevan). Satyanarayana gives 40–45 °C as the lab optimum and notes it may not reflect body conditions. Exceptions: some enzymes of hot-spring bacteria work near 100 °C; plant urease is best near 60 °C.</span></div>
+    <div class="clin"><span class="lb">Clinic</span><span><strong>Hypothermia</strong> lowers enzyme activity, which is used to cut metabolic demand during open-heart surgery and to preserve organs for transplant (Sat p. 111). Heat-stability tests separate isoenzymes (bone ALP is heat-labile).</span></div>
+  </div>
+
+  <h3>5. pH</h3>
+  <div class="five">
+    <div><span class="lb">How</span><span>H⁺ changes the charges on amino acids at the active site and on the substrate, so binding and catalysis change. Extreme pH denatures the enzyme. The result is a bell-shaped curve around the <strong>optimum pH</strong>.</span></div>
+    <div><span class="lb">Values</span><span>Most enzymes: 6–8. <strong>Pepsin 1–2</strong>, <strong>acid phosphatase 4–5</strong>, <strong>alkaline phosphatase 9–10</strong> (Vasudevan; Satyanarayana gives 10–11). Plant and fungal enzymes: acidic.</span></div>
+    <div class="clin"><span class="lb">Clinic</span><span>Pepsin stops working when food reaches the duodenum, because pancreatic bicarbonate raises the pH. Lab kits run each enzyme at its optimum pH, e.g. ALP assays in alkaline buffer.</span></div>
+  </div>
+
+  <h3>6. Activators</h3>
+  <div class="prose"><p>(a) <strong>Inorganic ions</strong>: Cl⁻ activates salivary amylase, Ca²⁺ activates lipase, Mg²⁺ activates kinases (Station 02). (b) <strong>Zymogen activation</strong>: inactive proenzymes are switched on by cutting a peptide, e.g. trypsinogen → trypsin by enteropeptidase, then trypsin activates chymotrypsinogen. Digestive enzymes are made as zymogens so they do not digest the cells that make them; clotting factors and complement work as zymogen cascades.</p></div>
+  <div class="five"><div class="clin"><span class="lb">Clinic</span><span>In <strong>acute pancreatitis</strong>, trypsin is activated too early inside the pancreas and digests it; amylase and lipase leak into blood.</span></div></div>
+
+  <h3>7. Inhibitors (brief)</h3>
+  <div class="tablewrap">
+    <table>
+      <thead><tr><th>Type</th><th>Mechanism</th><th>K<sub>m</sub> / V<sub>max</sub></th><th>Example</th></tr></thead>
+      <tbody>
+        <tr><td>Competitive</td><td>Substrate look-alike binds the active site; excess substrate reverses it</td><td>K<sub>m</sub> ↑, V<sub>max</sub> same</td><td>Malonate on succinate DH; statins on HMG-CoA reductase; methotrexate on DHFR</td></tr>
+        <tr><td>Non-competitive</td><td>Binds elsewhere; excess substrate does not help</td><td>K<sub>m</sub> same, V<sub>max</sub> ↓</td><td>Heavy metals (Pb, Hg), iodoacetate, cyanide on cytochrome oxidase</td></tr>
+        <tr><td>Irreversible / suicide</td><td>Covalent, permanent damage</td><td>—</td><td>Organophosphates on acetylcholinesterase; aspirin on cyclo-oxygenase; 5-FU on thymidylate synthase</td></tr>
+        <tr><td>Allosteric / feedback</td><td>End product binds a regulatory site</td><td>Sigmoid curve</td><td>CTP on aspartate transcarbamoylase; cholesterol on HMG-CoA reductase</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>8 and 9. Amount of enzyme and covalent modification</h3>
+  <div class="prose">
+    <p><strong>Induction and repression</strong> change how much enzyme the cell makes: insulin induces glucokinase; heme represses ALA synthase; alcohol and phenobarbitone induce microsomal enzymes. <strong>Covalent modification</strong> is a fast on/off switch: phosphorylation <em>inactivates</em> glycogen synthase, acetyl-CoA carboxylase and pyruvate dehydrogenase, but <em>activates</em> glycogen phosphorylase (Vas Table 5.8).</p>
+  </div>
+  <div class="five">
+    <div class="rem"><span class="lb">Remember</span><span><strong>"E S P T pH — A I R C"</strong>: Enzyme, Substrate, Product, Temperature, pH, Activators, Inhibitors, Repressors, Covalent modification. Add Time and Light for Satyanarayana.</span></div>
+  </div>
+</section>
+
+<!-- ══════════ 7 ══════════ -->
+<section class="station" id="s7">
+  <div class="st-head">
+    <div class="st-num"><span>Station 07</span><span class="pg">Sat p. 104, 109–112 · Vas p. 59, 266–272</span></div>
+    <h2>Isoenzymes</h2>
+    <div class="sub">Same job, different make. And the "make" tells you which organ is damaged.</div>
+  </div>
+
+  <div class="prose">
+    <p>Vasudevan's picture: look closely at a handful of 50-paise coins. They all have the same value in the market, but tiny differences in the rim tell an expert which mint made each one. <span class="term">Isoenzymes (isozymes)</span> are like that: <strong>multiple molecular forms of the same enzyme that catalyse the same reaction</strong> but differ in their physical, chemical and immunological properties, and often come from different tissues.</p>
+  </div>
+
+  <div class="five">
+    <div><span class="lb">What</span><span>Physically distinct forms of the same enzyme activity (Vas p. 59; Sat p. 109).</span></div>
+    <div><span class="lb">They differ in</span><span>Amino acid structure, <strong>electrophoretic mobility</strong>, immunological properties, <strong>K<sub>m</sub> and V<sub>max</sub></strong>, pH optimum, sensitivity to <strong>inhibitors</strong>, and <strong>heat stability</strong>.</span></div>
+    <div><span class="lb">Why useful</span><span>Each tissue can tune the same reaction to its own needs, and doctors can tell which tissue an enzyme in the blood came from.</span></div>
+    <div class="rem"><span class="lb">Remember</span><span>Same reaction, different molecule, different tissue.</span></div>
+  </div>
+
+  <h3>Why isoenzymes exist (how they are formed)</h3>
+  <div class="tablewrap">
+    <table>
+      <thead><tr><th>Mechanism</th><th>Example</th><th>Source</th></tr></thead>
+      <tbody>
+        <tr><td>Products of <strong>different genes</strong> (different loci): "true isoenzymes"</td><td>Salivary vs pancreatic amylase; cytosolic vs mitochondrial malate dehydrogenase</td><td>Vas p. 59; Sat p. 109</td></tr>
+        <tr><td><strong>Oligomers</strong> built from different subunits in different mixes</td><td>LDH (H and M subunits, 5 forms), CK (M and B, 3 forms), aldolase (A and B)</td><td>Sat p. 109; Vas p. 272</td></tr>
+        <tr><td>Same enzyme active as <strong>monomer or oligomer</strong></td><td>Glutamate dehydrogenase</td><td>Sat p. 109</td></tr>
+        <tr><td><strong>Post-translational</strong> change, e.g. different sugar (sialic acid) content; Vasudevan calls these "isoforms"</td><td>Alkaline phosphatase</td><td>Sat p. 109; Vas p. 59</td></tr>
+        <tr><td><strong>Different alleles</strong> at the same locus: allozymes / alloenzymes</td><td>G6PD variants (Station 08)</td><td>Vas p. 59</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>How isoenzymes are identified in the lab <span class="bk">Vas p. 59</span></h3>
+  <div class="tablewrap">
+    <table>
+      <thead><tr><th>Method</th><th>Example</th></tr></thead>
+      <tbody>
+        <tr><td>1. Electrophoresis (agar, cellulose acetate, polyacrylamide)</td><td>LDH, CK and ALP bands separate</td></tr>
+        <tr><td>2. Heat stability</td><td>Bone ALP is heat-labile; placental ALP is heat-stable</td></tr>
+        <tr><td>3. Inhibitors</td><td>Prostatic acid phosphatase is inhibited by tartrate (tartrate-labile ACP)</td></tr>
+        <tr><td>4. K<sub>m</sub> / substrate specificity</td><td>Glucokinase (high K<sub>m</sub>) vs hexokinase (low K<sub>m</sub>)</td></tr>
+        <tr><td>5. Cofactor requirement</td><td>Mitochondrial isocitrate DH uses NAD⁺; cytoplasmic uses NADP⁺</td></tr>
+        <tr><td>6. Tissue location</td><td>LDH H₄ in heart, M₄ in skeletal muscle</td></tr>
+        <tr><td>7. Specific antibodies</td><td>CK isoenzymes by immunoassay</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>Lactate dehydrogenase (LDH): the textbook example</h3>
+  <div class="prose">
+    <p>LDH (L-lactate : NAD⁺ oxidoreductase, EC 1.1.1.27) converts pyruvate ⇌ lactate. It is a <strong>tetramer</strong> made of two kinds of subunit coded by different genes: <strong>H</strong> (heart; acidic, more negative) and <strong>M</strong> (muscle; basic). Four subunits in all possible mixes give <strong>five isoenzymes</strong>, all present in every person.</p>
+  </div>
+  <div class="tablewrap">
+    <table>
+      <caption>LDH isoenzymes (Vas Table 23.3 · Sat Table 6.11)</caption>
+      <thead><tr><th>Isoenzyme</th><th>Subunits</th><th>Main tissue</th><th>Mobility (pH 8.6)</th><th>Heat 60 °C</th><th>% in serum (Vas / Sat)</th></tr></thead>
+      <tbody>
+        <tr><td>LDH-1</td><td class="num">H₄</td><td>Heart, RBC</td><td>Fastest</td><td>Stable</td><td class="num">30 / 25</td></tr>
+        <tr><td>LDH-2</td><td class="num">H₃M</td><td>RBC, heart</td><td>Faster</td><td>Stable</td><td class="num">35 / 35</td></tr>
+        <tr><td>LDH-3</td><td class="num">H₂M₂</td><td>Brain (Sat: brain, kidney)</td><td>Fast</td><td>Partly destroyed</td><td class="num">20 / 27</td></tr>
+        <tr><td>LDH-4</td><td class="num">HM₃</td><td>Liver</td><td>Slow</td><td>Destroyed</td><td class="num">10 / 8</td></tr>
+        <tr><td>LDH-5</td><td class="num">M₄</td><td>Skeletal muscle, liver</td><td>Slowest</td><td>Destroyed</td><td class="num">5 / 5</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="panel">
+    <div class="ptitle">LDH electrophoresis strip · choose a patient</div>
+    <div class="switch" id="lsw">
+      <button class="on" data-p="0">Normal</button><button data-p="1">Myocardial infarction</button><button data-p="2">Liver disease</button>
+    </div>
+    <div class="svgbox" style="margin-top:14px">
+      <svg viewBox="0 0 600 230" id="lsvg" role="img" aria-label="Densitometer scan of LDH isoenzymes on electrophoresis for the chosen patient"></svg>
+    </div>
+    <div class="caption" id="lcap" aria-live="polite"></div>
+    <div class="hint">Bar heights are illustrative percentages based on the book's normal values, not a real patient's scan. The anode (+) is on the left: LDH-1, the most negative, runs fastest.</div>
+  </div>
+
+  <div class="five">
+    <div><span class="lb">Why two kinds</span><span><strong>Heart (H₄)</strong> has a high K<sub>m</sub> for pyruvate and is inhibited by excess pyruvate, so heart muscle sends pyruvate to acetyl-CoA and the TCA cycle (aerobic). <strong>Skeletal muscle (M₄)</strong> has a low K<sub>m</sub> and is hardly inhibited, so it turns pyruvate into lactate during a sprint (anaerobic) (Sat p. 110).</span></div>
+    <div class="clin"><span class="lb">Clinic</span><span>Normally LDH-2 &gt; LDH-1. In <strong>myocardial infarction</strong> LDH-1 rises above LDH-2 within 12–24 h: the <strong>"flipped pattern"</strong>. LDH-5 rises in <strong>liver disease</strong> and muscle injury. RBCs contain 80–100 times more LDH than serum, so a <strong>haemolysed sample</strong> gives a falsely high result.</span></div>
+    <div class="rem"><span class="lb">Remember</span><span>H for Heart runs fast (LDH-1); M for Muscle runs slow (LDH-5). Heart attack flips 1 above 2.</span></div>
+  </div>
+
+  <h3>Creatine kinase (CK, CPK)</h3>
+  <div class="prose"><p>CK converts creatine phosphate + ADP ⇌ creatine + ATP. It is a <strong>dimer</strong> of <strong>M</strong> (muscle) and <strong>B</strong> (brain) subunits, giving three isoenzymes.</p></div>
+  <div class="tablewrap">
+    <table>
+      <caption>CK isoenzymes (Vas Table 23.2 · Sat p. 111)</caption>
+      <thead><tr><th>Isoenzyme</th><th>Subunits</th><th>Tissue</th><th>Mobility</th><th>Share of serum CK (Vas)</th></tr></thead>
+      <tbody>
+        <tr><td>CK-1</td><td class="num">BB</td><td>Brain</td><td>Fastest</td><td class="num">~1%</td></tr>
+        <tr><td>CK-2</td><td class="num">MB</td><td>Heart</td><td>Intermediate</td><td class="num">~5% (Sat: &lt;2%)</td></tr>
+        <tr><td>CK-3</td><td class="num">MM</td><td>Skeletal muscle</td><td>Slowest</td><td class="num">~80%</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="five">
+    <div class="clin"><span class="lb">Clinic</span><span><strong>CK-MB</strong> rises within 3–6 h of MI (Sat: 6–18 h), peaks around 24 h and is back to normal in 2–3 days; a second rise suggests re-infarction. Its rise is roughly proportional to infarct size. Total CK and <strong>CK-MM</strong> rise hugely in muscular dystrophy (500–1500 IU/L), crush injury and intramuscular injections; female carriers of Duchenne dystrophy show a moderate rise. CK is not raised by haemolysis, an advantage over LDH.</span></div>
+    <div class="rem"><span class="lb">Remember</span><span>MB = My Beating heart. MM = Muscles Moving. BB = Brain Box.</span></div>
+  </div>
+
+  <h3>Alkaline phosphatase (ALP): isoenzymes from sugar differences</h3>
+  <div class="prose"><p>ALP is a zinc-containing <strong>monomer</strong>; its isoenzymes differ in <strong>sialic acid</strong> content. Optimum pH 9–10. Normal serum level 40–125 U/L (higher in growing children).</p></div>
+  <div class="tablewrap">
+    <table>
+      <caption>ALP isoenzymes (Vas p. 270 · Sat p. 111)</caption>
+      <thead><tr><th>Isoenzyme</th><th>Origin</th><th>Key property</th><th>Raised in</th></tr></thead>
+      <tbody>
+        <tr><td>α₁-ALP</td><td>Biliary canaliculi (~10%)</td><td>Moves in α₁ band</td><td>Obstructive jaundice</td></tr>
+        <tr><td>α₂ heat-labile</td><td>Liver cells (~25%)</td><td>Lost at 65 °C in 30 min</td><td>Hepatitis</td></tr>
+        <tr><td>α₂ heat-stable</td><td>Placenta (~1%)</td><td>Survives 65 °C; inhibited by phenylalanine</td><td>Normal pregnancy; <strong>Regan isoenzyme</strong> in ~15% of lung, liver, gut cancers</td></tr>
+        <tr><td>Pre-β ALP</td><td>Bone, osteoblasts (~50%)</td><td>Most heat-labile (56 °C, 10 min)</td><td>Rickets, Paget's disease, osteomalacia, bone metastases, hyperparathyroidism</td></tr>
+        <tr><td>γ-ALP</td><td>Intestine (~10%)</td><td>Inhibited by phenylalanine</td><td>Ulcerative colitis</td></tr>
+        <tr><td>Leukocyte ALP (LAP)</td><td>Neutrophils</td><td>—</td><td>Low in chronic myeloid leukaemia; high in lymphoma</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="five">
+    <div class="rem"><span class="lb">Remember</span><span>"<strong>Bone Burns</strong>" (heat-labile); "<strong>Placenta Persists</strong>" (heat-stable).</span></div>
+  </div>
+
+  <h3>Other clinically useful isoenzymes</h3>
+  <div class="tablewrap">
+    <table>
+      <thead><tr><th>Enzyme</th><th>Isoenzymes</th><th>Clinical significance</th></tr></thead>
+      <tbody>
+        <tr><td>Acid phosphatase (ACP)</td><td>Prostatic form is <strong>tartrate-labile</strong>; RBC, platelet forms are not</td><td>Raised in prostate cancer, very high with bone metastases; avoid haemolysis and draw blood before rectal examination (Vas p. 270–271)</td></tr>
+        <tr><td>Amylase</td><td>Salivary (S) and pancreatic (P): different genes</td><td>P-type up in acute pancreatitis; S-type in mumps (Vas p. 272)</td></tr>
+        <tr><td>Enolase</td><td>Neuron-specific enolase (NSE)</td><td>Tumour marker: small-cell lung cancer, neuroblastoma (Vas p. 272)</td></tr>
+        <tr><td>Aldolase</td><td>A and B subunits, tetramer, 5 forms</td><td>Early, sensitive marker of muscle wasting (Vas p. 272)</td></tr>
+        <tr><td>Hexokinase / glucokinase</td><td>Low vs high K<sub>m</sub> for glucose</td><td>Brain and RBC keep taking glucose; liver stores excess after meals</td></tr>
+        <tr><td>Isocitrate dehydrogenase</td><td>Mitochondrial (NAD⁺) vs cytosolic (NADP⁺)</td><td>Different cofactor, different job</td></tr>
+        <tr><td>GGT</td><td>11 isoenzymes</td><td>Sensitive marker of alcohol intake and cholestasis</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ══════════ 8 ══════════ -->
+<section class="station" id="s8">
+  <div class="st-head">
+    <div class="st-num"><span>Station 08</span><span class="pg">Vas p. 59, 271–272 · Sat p. 112</span></div>
+    <h2>Alloenzymes (allozymes)</h2>
+    <div class="sub">Different versions of one gene, so different people carry slightly different enzymes.</div>
+  </div>
+
+  <div class="prose">
+    <p>Every gene sits at a fixed spot (locus) on a chromosome. That spot can carry slightly different versions of the gene, called <strong>alleles</strong>, just as the same mango tree variety can give slightly different fruit in different gardens. When the different alleles of <strong>one locus</strong> produce slightly different enzyme molecules, these are called <span class="term">allozymes</span> or <span class="term">alloenzymes</span> ("allelic isoenzymes").</p>
+  </div>
+
+  <div class="five">
+    <div><span class="lb">What</span><span>Variant forms of an enzyme produced by <strong>different alleles at the same gene locus</strong> (Vas p. 59).</span></div>
+    <div><span class="lb">Key feature</span><span>A person carries only their own form (or two, if heterozygous), but <strong>all the forms are seen across the population</strong>. By contrast, all five LDH isoenzymes are present in every person.</span></div>
+    <div><span class="lb">Polymorphism</span><span>When a variant at a single locus occurs in <strong>more than 1%</strong> of the population, it is called a genetic <strong>polymorphism</strong>.</span></div>
+    <div class="clin"><span class="lb">Clinic</span><span>Allozymes explain why the same drug is safe for one patient and dangerous for another (pharmacogenetics), and why some enzyme deficiencies are common in particular regions.</span></div>
+    <div class="rem"><span class="lb">Remember</span><span>Iso = different genes (or subunit mixes), present in everyone. Allo = different alleles of one gene, differs between people.</span></div>
+  </div>
+
+  <div class="tablewrap">
+    <table>
+      <caption>Isoenzyme vs alloenzyme vs isoform (Vas p. 59)</caption>
+      <thead><tr><th>Feature</th><th>True isoenzyme</th><th>Alloenzyme (allozyme)</th><th>Isoform</th></tr></thead>
+      <tbody>
+        <tr><td>Genetic basis</td><td>Different genes (loci), or different subunit combinations</td><td>Different alleles at the same locus</td><td>Same gene; change after translation</td></tr>
+        <tr><td>In one person</td><td>All forms present</td><td>One form (two if heterozygous)</td><td>Several forms</td></tr>
+        <tr><td>In population</td><td>Same pattern in everyone</td><td>Many variants</td><td>Same pattern</td></tr>
+        <tr><td>Example</td><td>LDH-1 to 5; CK; salivary vs pancreatic amylase</td><td>G6PD variants (&gt;400); pseudocholinesterase variants</td><td>ALP (sialic acid)</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>Clinical significance of alloenzymes, with examples</h3>
+  <div class="five">
+    <div><span class="lb">G6PD</span><span>More than <strong>400 variants</strong> of glucose-6-phosphate dehydrogenase, all from one locus on the <strong>X chromosome</strong>, are known; some have low activity (Vas p. 59, 272). G6PD makes NADPH, which keeps glutathione reduced and protects RBCs from peroxides.</span></div>
+    <div class="clin"><span class="lb">Disease</span><span>Low-activity variants cause <strong>drug-induced haemolytic anaemia</strong> after primaquine, sulpha drugs, aspirin (high dose) or mepacrine, and <strong>favism</strong> after fava beans. Hemizygous males and homozygous females show disease; heterozygous females are carriers with about half the normal activity. Deficiency gives some <strong>protection against falciparum malaria</strong>, which is why it is common in malaria belts, including parts of India.</span></div>
+    <div><span class="lb">Pseudo­cholinesterase</span><span>Liver (type II) cholinesterase normally destroys the muscle relaxant <strong>succinylcholine</strong> in 2–4 minutes. In people who inherit an atypical or silent variant, the drug lasts for hours: prolonged <strong>"scoline apnoea"</strong>, the "anaesthetist's nightmare" (Vas p. 271).</span></div>
+    <div><span class="lb">Alcohol dehydrogenase</span><span>Satyanarayana describes two ADH forms: α β₁ in most Europeans and α β₂ in many East Asians. The β₂ form turns alcohol into acetaldehyde faster, causing facial flushing and palpitations (Sat p. 112). Satyanarayana calls these isoenzymes; genetically, β₁ and β₂ are products of different alleles of one gene, so they are also good examples of allozymes.</span></div>
+    <div class="rem"><span class="lb">Remember</span><span>G6PD, "scoline" and ADH: three allozyme stories that end in a clinic.</span></div>
+  </div>
+
+  <details class="deeper">
+    <summary><span class="tagx">Go deeper · optional</span> More pharmacogenetic allozymes (standard knowledge, not in your books)</summary>
+    <div class="body">
+      <ul>
+        <li><strong>N-acetyltransferase 2 (NAT2):</strong> "slow acetylators" clear isoniazid slowly and are more prone to peripheral neuropathy (prevented with pyridoxine) and drug-induced lupus with hydralazine.</li>
+        <li><strong>Thiopurine methyltransferase (TPMT):</strong> low-activity alleles make azathioprine and 6-mercaptopurine toxic to bone marrow; doses are reduced after testing.</li>
+        <li><strong>Aldehyde dehydrogenase 2 (ALDH2*2):</strong> an inactive allele common in East Asia causes acetaldehyde build-up and flushing after alcohol.</li>
+        <li><strong>Cytochrome P450 2D6, 2C19:</strong> poor and ultra-rapid metaboliser alleles change the effect of codeine and clopidogrel.</li>
+      </ul>
+    </div>
+  </details>
+</section>
+
+<!-- ══════════ 9 ══════════ -->
+<section class="station" id="s9">
+  <div class="st-head">
+    <div class="st-num"><span>Station 09</span><span class="pg">Sat p. 112–113 · Vas p. 266–272</span></div>
+    <h2>Clinical enzyme patterns</h2>
+    <div class="sub">One enzyme rarely clinches a diagnosis. A pattern of three or more usually does.</div>
+  </div>
+
+  <div class="prose">
+    <p>Plasma has a few <strong>functional enzymes</strong> secreted on purpose (clotting factors, lipoprotein lipase). Most enzymes measured in the lab are <strong>non-functional</strong>: they normally stay inside cells and leak out in small amounts from wear and tear. When cells die, their enzymes flood the blood. Isoenzymes then tell us <em>which</em> cells died.</p>
+  </div>
+
+  <div class="panel">
+    <div class="ptitle">Markers after a heart attack · time from chest pain</div>
+    <div class="svgbox">
+      <svg viewBox="0 0 620 300" id="misvg" role="img" aria-label="Timeline chart of cardiac markers after myocardial infarction. Myoglobin rises within 1 to 4 hours and is gone by 24 hours. CK-MB rises at 3 to 6 hours, peaks at about 24 hours and normalises by 2 to 3 days. Troponin rises at about 4 hours, peaks at 12 to 24 hours and stays up for 7 to 14 days. AST rises after CK, peaks at 48 hours and normalises in 4 to 5 days. LDH rises on day 2, peaks on day 3 to 4 and normalises in 10 to 15 days."></svg>
+    </div>
+    <div class="legend">
+      <span class="lg"><span class="sw" style="background:var(--c5)"></span>Elevated</span>
+      <span class="lg"><span class="sw" style="background:var(--gold);width:9px;height:9px;border-radius:50%"></span>Peak</span>
+      <span class="lg"><span class="sw" style="background:var(--c5);opacity:.3"></span>May stay up to 14 days (troponin T)</span>
+    </div>
+    <div class="hint">Drawn to scale in days, using the typical times in Satyanarayana (p. 112) and Vasudevan (Table 23.1, p. 267). The two books differ slightly; Vasudevan's table gives AST and LDH as lasting longer. Today, <strong>cardiac troponins</strong> are the preferred marker, and Vasudevan notes LDH and AST are no longer used for MI in practice.</div>
+  </div>
+
+  <div class="tablewrap">
+    <table>
+      <caption>Enzyme profiles in disease (Vas Box 23.4 · Sat p. 112–113)</caption>
+      <thead><tr><th>Condition</th><th>Enzymes that rise</th><th>Isoenzyme / pattern clue</th></tr></thead>
+      <tbody>
+        <tr><td>Myocardial infarction</td><td>CK-MB, troponin I/T, AST, LDH</td><td>CK-MB first; LDH-1 &gt; LDH-2 (flipped)</td></tr>
+        <tr><td>Hepatitis (liver cell damage)</td><td>ALT &gt; AST, LDH</td><td>LDH-5 ↑; α₂ heat-labile ALP</td></tr>
+        <tr><td>Obstructive jaundice</td><td>ALP (10–12×), GGT, 5′-nucleotidase</td><td>α₁-ALP ↑</td></tr>
+        <tr><td>Muscle disease</td><td>CK (huge), aldolase, AST</td><td>CK-MM ↑</td></tr>
+        <tr><td>Bone disease (rickets, Paget's)</td><td>ALP (10–25×)</td><td>Bone (heat-labile) ALP ↑</td></tr>
+        <tr><td>Prostate cancer</td><td>PSA, acid phosphatase</td><td>Tartrate-labile ACP ↑</td></tr>
+        <tr><td>Acute pancreatitis</td><td>Amylase (peaks 5–12 h), lipase (stays up 7–14 days)</td><td>Pancreatic (P) amylase</td></tr>
+        <tr><td>Alcohol abuse</td><td>GGT</td><td>Falls within days of stopping</td></tr>
+        <tr><td>Organophosphate poisoning</td><td>RBC cholinesterase ↓</td><td>Enzyme falls, not rises</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>Normal lab values <span class="bk">Vas Ch 23</span></h3>
+  <div class="tablewrap">
+    <table>
+      <caption>Adult serum reference values as given in Vasudevan (ranges vary with the lab method)</caption>
+      <thead><tr><th>Enzyme</th><th>Normal range</th><th>Main use</th></tr></thead>
+      <tbody>
+        <tr><td>Creatine kinase (CK)</td><td class="num">M 15–100, F 10–80 U/L</td><td>MI (CK-MB), muscle disease</td></tr>
+        <tr><td>Lactate dehydrogenase (LDH)</td><td class="num">100–200 U/L</td><td>Haemolysis, MI, liver, tumours</td></tr>
+        <tr><td>Alanine transaminase (ALT)</td><td class="num">M 13–35, F 10–30 U/L</td><td>Liver cell damage</td></tr>
+        <tr><td>Aspartate transaminase (AST)</td><td class="num">8–20 U/L</td><td>Liver, heart, muscle</td></tr>
+        <tr><td>Alkaline phosphatase (ALP)</td><td class="num">40–125 U/L</td><td>Bone and biliary obstruction</td></tr>
+        <tr><td>Acid phosphatase (ACP)</td><td class="num">2.5–12 U/L</td><td>Prostate cancer</td></tr>
+        <tr><td>Gamma-glutamyl transferase (GGT)</td><td class="num">10–30 U/L</td><td>Alcohol, cholestasis</td></tr>
+        <tr><td>5′-Nucleotidase</td><td class="num">2–10 U/L</td><td>Cholestasis (not bone)</td></tr>
+        <tr><td>Amylase</td><td class="num">50–120 U/L</td><td>Acute pancreatitis</td></tr>
+        <tr><td>G6PD (in RBC)</td><td class="num">6–12 U/g Hb</td><td>Drug-induced haemolysis</td></tr>
+        <tr><td>PSA (not an enzyme test)</td><td class="num">1–5 µg/L</td><td>&gt;10 µg/L suggests prostate cancer</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ══════════ 10 ══════════ -->
+<section class="station" id="s10">
+  <div class="st-head">
+    <div class="st-num"><span>Station 10</span><span class="pg">Whole topic</span></div>
+    <h2>Quick revision and exam corner</h2>
+    <div class="sub">One page to read the night before, then the questions examiners like.</div>
+  </div>
+  <div class="rev">
+    <div><h4>Enzyme</h4><ul><li>Biocatalyst made by living cells</li><li>Protein (except ribozymes), colloidal, thermolabile, specific</li><li>Lowers activation energy; equilibrium unchanged</li></ul></div>
+    <div><h4>Helpers</h4><ul><li>Holoenzyme = apoenzyme + cofactor</li><li>Coenzyme: organic, dialysable, heat-stable, co-substrate, mostly B-vitamins</li><li>Prosthetic group: tightly bound (FAD, heme)</li><li>Metalloenzyme (tight) vs metal-activated (loose)</li></ul></div>
+    <div><h4>IUBMB</h4><ul><li>Enzyme Commission 1961; in force since 1964</li><li>EC a.b.c.d = class.subclass.sub-subclass.serial</li><li>6 classes: OTHLIL (7th, translocases, added 2018)</li></ul></div>
+    <div><h4>Classes with one example each</h4><ul><li>1 Alcohol DH, LDH · 2 Hexokinase, ALT · 3 Lipase, pepsin, urease</li><li>4 Aldolase, fumarase · 5 Triose-P isomerase · 6 Glutamine synthetase, acetyl-CoA carboxylase</li></ul></div>
+    <div><h4>Specificity</h4><ul><li>Stereo (L-AA oxidase, fumarase), Reaction (4 fates of an amino acid), Substrate</li><li>Substrate: absolute (urease), relative – group (trypsin) / bond (lipase), broad (hexokinase)</li></ul></div>
+    <div><h4>Factors</h4><ul><li>Enzyme conc: linear · Substrate: hyperbola, K<sub>m</sub> = [S] at ½V<sub>max</sub></li><li>Temperature: bell, Q<sub>10</sub> ≈ 2 · pH: bell (pepsin 1–2, ALP 9–10)</li><li>Product, activators, inhibitors, repressors, covalent modification, time, light</li></ul></div>
+    <div><h4>Isoenzymes</h4><ul><li>Multiple forms, same reaction, different properties</li><li>LDH: H/M tetramer, 5 forms; MI → LDH-1 &gt; LDH-2</li><li>CK: M/B dimer; MB for MI, MM for muscle</li><li>ALP: sialic acid; bone heat-labile, placenta heat-stable (Regan)</li></ul></div>
+    <div><h4>Alloenzymes</h4><ul><li>Different alleles, same locus; varies person to person</li><li>&gt;1% frequency = polymorphism</li><li>G6PD (&gt;400 variants, X-linked, drug haemolysis, favism, malaria protection)</li><li>Pseudocholinesterase → scoline apnoea; ADH β₂ flushing</li></ul></div>
+  </div>
+
+  <div class="exam">
+    <h4>Long essays (10 marks)</h4>
+    <ol>
+      <li>Define enzymes. Describe the IUBMB classification of enzymes with suitable examples. (Sat Q1)</li>
+      <li>What are isoenzymes? Describe the isoenzymes of LDH and CK and their clinical significance.</li>
+      <li>Describe the factors affecting enzyme activity. Add a note on K<sub>m</sub> and its significance.</li>
+    </ol>
+  </div>
+  <div class="exam">
+    <h4>Short notes (5 marks)</h4>
+    <ul>
+      <li>Coenzymes / cofactors / holoenzyme</li>
+      <li>Enzyme specificity (Sat Q5a)</li>
+      <li>Isoenzymes of alkaline phosphatase</li>
+      <li>Allozymes; G6PD deficiency</li>
+      <li>Michaelis constant (K<sub>m</sub>); Lineweaver–Burk plot</li>
+      <li>Enzymes in myocardial infarction; flipped LDH pattern</li>
+      <li>Metalloenzymes; zymogen activation</li>
+    </ul>
+  </div>
+  <h3>Viva questions</h3>
+  <div class="viva" id="viva"></div>
+</section>
+
+<!-- ══════════ 11 ══════════ -->
+<section class="station" id="s11">
+  <div class="st-head">
+    <div class="st-num"><span>Station 11</span><span class="pg">Self-test</span></div>
+    <h2>Match and test</h2>
+    <div class="sub">A matching game, 25 MCQs with instant feedback, and four clinical cases.</div>
+  </div>
+
+  <h3>Match the pairs</h3>
+  <div class="panel">
+    <div class="gamebar"><span>Tap a term, then its match.</span><span class="ok" id="mOk">0 matched</span><span class="no" id="mNo">0 misses</span><button class="btn" id="mReset">Shuffle again</button></div>
+    <div class="game">
+      <div class="pile" id="mL"><div class="ph">Term</div></div>
+      <div class="pile" id="mR"><div class="ph">Match</div></div>
+    </div>
+    <div class="caption" id="mCap" hidden></div>
+  </div>
+
+  <h3>MCQs</h3>
+  <div class="score"><span>Score <b id="qs">0</b> / <b id="qt">0</b> answered · <b id="qn">25</b> questions</span><button class="btn" id="qReset">Reset all</button></div>
+  <div id="quiz"></div>
+
+  <h3>Clinical cases</h3>
+  <div id="cases"></div>
+
+  <footer>
+    <p>Built from Vasudevan, Sreekumari &amp; Kannan, <em>Textbook of Biochemistry for Medical Students</em>, 6th ed., Chapters 5 and 23 (printed p. 40–59, 266–273), and U. Satyanarayana, <em>Biochemistry</em>, Chapter 6 (printed p. 85–115). Explanations are written fresh; page numbers let you check every point in the books.</p>
+    <p>This topic is also Week 3 in the weekly plan (Enzymology + Clinical Enzymology).</p>
+  </footer>
+</section>
+
+</main>
+</div>
+</div>
+
+<script>
+(function(){
+const $=s=>document.querySelector(s), $$=s=>Array.from(document.querySelectorAll(s));
+const f1=v=>(Math.round(v*10)/10).toString();
+
+/* progress + contents */
+const bar=$('#pbar'), pct=$('#ppct'), links=$$('#toc a'), secs=$$('.station');
+function onScroll(){
+  const h=document.documentElement, max=h.scrollHeight-h.clientHeight;
+  const p=max>0?Math.min(100,Math.round(h.scrollTop/max*100)):0;
+  bar.style.width=p+'%'; pct.textContent=p+'%';
+  let cur=secs[0].id; for(const s of secs){ if(s.getBoundingClientRect().top<140) cur=s.id; }
+  links.forEach(a=>a.classList.toggle('on',a.getAttribute('href')==='#'+cur));
+}
+addEventListener('scroll',onScroll,{passive:true}); onScroll();
+$('#jump').addEventListener('change',e=>{const v=e.target.value; if(v){document.getElementById(v).scrollIntoView(); e.target.value='';}});
+
+/* activation energy */
+let eaOn=false;
+$('#ea-btn').onclick=()=>{eaOn=!eaOn; $('#ea2').style.strokeDashoffset=eaOn?0:700; $('#ea2l').style.opacity=eaOn?1:0; $('#ea-btn').textContent=eaOn?'Remove the enzyme':'Add the enzyme';};
+
+/* cofactor tree */
+const TN={
+ cof:'<b>Cofactor</b> is the umbrella word: any non-protein helper an enzyme needs. It can be organic (a coenzyme) or inorganic (a metal ion).',
+ coe:'<b>Coenzyme</b>: an organic, low molecular weight, heat-stable, dialysable cofactor. Most are made from B-complex vitamins (NAD⁺ from niacin, TPP from thiamine).',
+ met:'<b>Metal ion (inorganic cofactor, "activator")</b>: Mg²⁺, Zn²⁺, Mn²⁺, Cu²⁺, Fe²⁺, Ca²⁺, even Cl⁻. It helps bind substrate or takes part in catalysis.',
+ loose:'<b>Loosely bound coenzyme</b>: leaves the enzyme after each reaction, like NAD⁺/NADH moving between lactate dehydrogenase and other dehydrogenases. It acts as a co-substrate and is removed by dialysis.',
+ pros:'<b>Prosthetic group</b>: a non-protein part bound tightly (often covalently) that is not removed by dialysis, e.g. FAD in succinate dehydrogenase, heme in catalase, biotin in carboxylases.',
+ mact:'<b>Metal-activated enzyme</b>: the metal is held loosely and can be swapped, e.g. enolase (Mg²⁺), ATPase (Mg²⁺, Ca²⁺), pancreatic lipase (Ca²⁺), amylase (Cl⁻).',
+ mets:'<b>Metalloenzyme</b>: the metal is tightly bound as part of the enzyme, e.g. carbonic anhydrase and alcohol dehydrogenase (Zn), cytochrome oxidase (Fe, Cu), xanthine oxidase (Mo).'
+};
+$$('.tnode').forEach(g=>{g.style.cursor='pointer'; g.setAttribute('tabindex','0');
+  const go=()=>{$$('.tnode rect').forEach(r=>r.style.strokeWidth=1); g.querySelector('rect').style.strokeWidth=3; $('#tcap').innerHTML=TN[g.dataset.k];};
+  g.addEventListener('click',go); g.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();go();}});});
+
+/* class explorer */
+const CL=[
+ {d:1,t:'Oxidoreductases',s:'oxidation–reduction',rx:'AH₂ + B → A + BH₂',ex:'Alcohol dehydrogenase (alcohol : NAD⁺ oxidoreductase), EC 1.1.1.1',eq:'Ethanol + NAD⁺ → acetaldehyde + NADH + H⁺',more:'LDH (NAD⁺), G6PD (NADP⁺), succinate dehydrogenase (FAD), cytochrome oxidase, catalase, amino acid oxidases. Subtypes: dehydrogenases, oxidases, oxygenases, peroxidases.',clin:'G6PD deficiency (drug-induced haemolysis); LDH isoenzymes in MI; ADH and methanol poisoning.'},
+ {d:2,t:'Transferases',s:'move a group',rx:'A–X + B → A + B–X',ex:'Hexokinase (ATP : D-hexose 6-phosphotransferase), EC 2.7.1.1',eq:'Glucose + ATP → glucose-6-phosphate + ADP',more:'Transaminases (ALT, AST), transmethylases, glycogen phosphorylase, kinases, glycogen synthase, GGT.',clin:'ALT and AST in liver disease; GGT in alcohol use.'},
+ {d:3,t:'Hydrolases',s:'split with water',rx:'A–B + H₂O → AH + BOH',ex:'Lipase (triacylglycerol acylhydrolase), EC 3.1.1.3; acetylcholinesterase',eq:'Acetylcholine + H₂O → choline + acetate',more:'All digestive enzymes: pepsin, trypsin, chymotrypsin, amylase; urease; acid and alkaline phosphatases; cholinesterase.',clin:'Amylase and lipase in pancreatitis; ALP in bone and biliary disease; organophosphates inhibit cholinesterase.'},
+ {d:4,t:'Lyases',s:'add or remove groups',rx:'A–B ⇌ A=B + X–Y (no water used to split)',ex:'Aldolase, EC 4.1.2.13',eq:'Fructose-1,6-bisphosphate → glyceraldehyde-3-P + dihydroxyacetone-P',more:'Fumarase, histidase, carbonic anhydrase, HMG-CoA lyase, ATP-citrate lyase, decarboxylases. Subclass hydratases add water across a double bond.',clin:'Carbonic anhydrase inhibitor acetazolamide treats glaucoma; histidase deficiency causes histidinaemia.'},
+ {d:5,t:'Isomerases',s:'rearrange',rx:'A → A′',ex:'Triose phosphate isomerase, EC 5.3.1.1',eq:'Glyceraldehyde-3-phosphate ⇌ dihydroxyacetone phosphate',more:'Phosphohexose isomerase, retinol isomerase, racemases, epimerases, mutases (methylmalonyl-CoA mutase), cis–trans isomerases.',clin:'Methylmalonyl-CoA mutase needs vitamin B12; deficiency causes methylmalonic aciduria.'},
+ {d:6,t:'Ligases',s:'join using ATP',rx:'A + B + ATP → A–B + ADP + Pi',ex:'Glutamine synthetase (L-glutamate : ammonia ligase), EC 6.3.1.2',eq:'Glutamate + NH₃ + ATP → glutamine + ADP + Pi',more:'Acetyl-CoA carboxylase, pyruvate carboxylase, succinate thiokinase, carbamoyl phosphate synthetase, PRPP synthetase, DNA ligase. Many "synthetases".',clin:'Carboxylases need biotin; raw egg white (avidin) can cause biotin deficiency.'}
+];
+const cg=$('#cgrid');
+CL.forEach((c,i)=>{const b=document.createElement('button'); b.className='ccard'; b.innerHTML=`<div class="d">${c.d}</div><div class="t">${c.t}</div><div class="s">${c.s}</div>`; b.onclick=()=>showClass(i); cg.appendChild(b);});
+function showClass(i){ cg.querySelectorAll('.ccard').forEach((b,j)=>b.classList.toggle('on',i===j)); const c=CL[i];
+  $('#cdet').innerHTML=`<h4>EC ${c.d} · ${c.t}</h4><div class="mono">${c.rx}</div><p style="margin-top:8px"><b>Example:</b> ${c.ex}<br><span class="mono">${c.eq}</span></p><p style="margin-top:8px"><b>More examples:</b> ${c.more}</p><p style="margin-top:8px"><b>Clinic:</b> ${c.clin}</p>`;}
+showClass(0);
+
+/* classifier */
+const RX=[
+ ['Lactate dehydrogenase','Pyruvate + NADH + H⁺ → lactate + NAD⁺',0,'Hydrogen moves between substrate and NAD: oxidoreductase.'],
+ ['Alanine transaminase (ALT)','Alanine + α-ketoglutarate → pyruvate + glutamate',1,'An amino group is transferred: transferase.'],
+ ['Pepsin','Protein + H₂O → peptides',2,'Water is used to break peptide bonds: hydrolase.'],
+ ['Fumarase','Fumarate + H₂O ⇌ malate',3,'Water is added across a double bond, not used to split a bond: lyase (hydratase).'],
+ ['Phosphohexose isomerase','Glucose-6-P ⇌ fructose-6-P',4,'The molecule is rearranged into its isomer: isomerase.'],
+ ['Pyruvate carboxylase','Pyruvate + CO₂ + ATP → oxaloacetate + ADP + Pi',5,'Two molecules joined using ATP: ligase.'],
+ ['Urease','Urea + H₂O → 2 NH₃ + CO₂',2,'Water breaks the bond: hydrolase.'],
+ ['Glycogen synthase','UDP-glucose + glycogen(n) → glycogen(n+1) + UDP',1,'A glucose unit is transferred; no ATP used directly, so it is a synthase and a transferase, not a ligase.'],
+ ['Carbonic anhydrase','CO₂ + H₂O ⇌ H₂CO₃',3,'Adds water to CO₂ without splitting a bond: lyase.'],
+ ['Succinate dehydrogenase','Succinate + FAD → fumarate + FADH₂',0,'Hydrogen removed onto FAD: oxidoreductase.'],
+ ['Hexokinase','Glucose + ATP → glucose-6-P + ADP',1,'A phosphate group moves from ATP to glucose: transferase (kinase). ATP is not used to join two molecules, so it is not a ligase.'],
+ ['Acetyl-CoA carboxylase','Acetyl-CoA + CO₂ + ATP → malonyl-CoA + ADP + Pi',5,'Joins acetyl-CoA and CO₂ using ATP: ligase.']
+];
+const NAMES=['Oxidoreductase','Transferase','Hydrolase','Lyase','Isomerase','Ligase'];
+let rxOrder=RX.map((_,i)=>i).sort(()=>Math.random()-.5), rxI=0, rxOk=0, rxN=0;
+function showRx(){ const r=RX[rxOrder[rxI%RX.length]]; $('#clsName').textContent=r[0]; $('#clsRx').textContent=r[1]; $('#clsFb').hidden=true; $('#clsNext').hidden=true;
+  const o=$('#clsOpts'); o.innerHTML=''; NAMES.forEach((n,j)=>{const b=document.createElement('button'); b.textContent=n; b.onclick=()=>{
+    o.querySelectorAll('button').forEach((x,k)=>{x.disabled=true; if(k===r[2]) x.classList.add('right');}); if(j!==r[2]) b.classList.add('wrong');
+    rxN++; if(j===r[2]) rxOk++; $('#clsScore').textContent=rxOk+' / '+rxN; const fb=$('#clsFb'); fb.hidden=false; fb.innerHTML=(j===r[2]?'<b>Correct.</b> ':'<b>'+NAMES[r[2]]+'.</b> ')+r[3]; $('#clsNext').hidden=false;};
+    o.appendChild(b);}); }
+$('#clsNext').onclick=()=>{rxI++; showRx();}; showRx();
+
+/* three-point attachment */
+let tpM=false;
+$('#tp-btn').onclick=()=>{tpM=!tpM; const L=$('#tp-L'), R=$('#tp-R'), Lt=$('#tp-Lt'), Rt=$('#tp-Rt');
+  if(tpM){L.setAttribute('fill','var(--c3)'); Lt.textContent='C'; R.setAttribute('fill','var(--c1)'); Rt.textContent='A';
+    $('#tp-cap').innerHTML='<b>Mirror image.</b> Now C sits over site a and A over site c. Only B matches. However you rotate it, a mirror image can never put all three groups on their three sites at once, so the enzyme cannot act on it.'; $('#tp-btn').textContent='Show the correct isomer';}
+  else{L.setAttribute('fill','var(--c1)'); Lt.textContent='A'; R.setAttribute('fill','var(--c3)'); Rt.textContent='C';
+    $('#tp-cap').innerHTML='<b>Correct isomer.</b> A sits on a, B on b, C on c: all three points match, so the enzyme acts.'; $('#tp-btn').textContent='Show the mirror image';}};
+
+/* factor lab */
+const fsvg=$('#fsvg'), X0=70, X1=570, Y0=240, Y1=30;
+let fMode='enz', km=2;
+function axes(xl,yl,xt){ let s=`<g font-family="Archivo, sans-serif"><line x1="${X0}" y1="${Y1}" x2="${X0}" y2="${Y0}" stroke="var(--rule-strong)"/><line x1="${X0}" y1="${Y0}" x2="${X1}" y2="${Y0}" stroke="var(--rule-strong)"/>`;
+  s+=`<text class="sl sm" x="${(X0+X1)/2}" y="285" text-anchor="middle">${xl}</text><text class="sl sm" x="24" y="${(Y0+Y1)/2}" text-anchor="middle" transform="rotate(-90 24 ${(Y0+Y1)/2})">${yl}</text>`;
+  xt.forEach(([v,x])=>{s+=`<line x1="${x}" y1="${Y0}" x2="${x}" y2="${Y0+5}" stroke="var(--rule-strong)"/><text class="sm-mono" x="${x}" y="${Y0+19}" text-anchor="middle">${v}</text>`;}); return s; }
+function path(fn,xmin,xmax,ymax){ let d=''; for(let i=0;i<=200;i++){const xv=xmin+(xmax-xmin)*i/200, yv=fn(xv); const x=X0+(X1-X0)*(xv-xmin)/(xmax-xmin), y=Y0-(Y0-Y1)*yv/ymax; d+=(i?'L':'M')+x.toFixed(1)+' '+y.toFixed(1);} return d; }
+function drawF(keep){
+  let s='', cap='', ctl='';
+  if(fMode==='enz'){
+    s=axes('Enzyme concentration →','Velocity (v)',[[0,X0],['1×',X0+125],['2×',X0+250],['3×',X0+375],['4×',X1]]);
+    s+=`<path d="${path(x=>x,0,4,4.2)}" fill="none" stroke="var(--ind)" stroke-width="2.8"/>`;
+    s+=`<text class="sl" x="${X0+260}" y="${Y0-130}" style="fill:var(--ind);font-weight:700">straight line: v ∝ [E]</text></g>`;
+    cap='<b>Enzyme concentration.</b> With excess substrate, velocity is directly proportional to the amount of enzyme. Double the enzyme, double the rate. This is the basis of measuring serum enzymes.';
+  } else if(fMode==='sub'){
+    const vmax=100, xmax=20, ymax=110, xk=X0+(X1-X0)*km/xmax, yh=Y0-(Y0-Y1)*50/ymax, yv=Y0-(Y0-Y1)*100/ymax;
+    s=axes('Substrate concentration [S] (mmol/L) →','Velocity (v)',[[0,X0],[5,X0+125],[10,X0+250],[15,X0+375],[20,X1]]);
+    s+=`<line x1="${X0}" y1="${yv}" x2="${X1}" y2="${yv}" stroke="var(--gold)" stroke-dasharray="5 5"/><text class="sl" x="${X1-4}" y="${yv-7}" text-anchor="end" style="fill:var(--gold);font-weight:700">V<tspan baseline-shift="sub" font-size="9">max</tspan></text>`;
+    s+=`<line x1="${X0}" y1="${yh}" x2="${xk}" y2="${yh}" stroke="var(--ink-3)" stroke-dasharray="3 4"/><line x1="${xk}" y1="${yh}" x2="${xk}" y2="${Y0}" stroke="var(--ink-3)" stroke-dasharray="3 4"/>`;
+    s+=`<text class="sl sm" x="${X0+6}" y="${yh-6}">½ V<tspan baseline-shift="sub" font-size="8">max</tspan></text><text class="sl" x="${xk+6}" y="${Y0-8}" style="fill:var(--ind);font-weight:700">K<tspan baseline-shift="sub" font-size="9">m</tspan> = ${f1(km)}</text>`;
+    s+=`<path d="${path(x=>vmax*x/(km+x),0,xmax,ymax)}" fill="none" stroke="var(--ind)" stroke-width="2.8"/></g>`;
+    ctl=`<label for="kmS"><span>K<sub>m</sub> (affinity)</span> <b>${f1(km)} mmol/L</b></label><input type="range" id="kmS" min="0.1" max="10" step="0.1" value="${km}">`;
+    cap=`<b>Substrate concentration.</b> A rectangular hyperbola: nearly straight at first (first order), flat near V<sub>max</sub> (zero order). K<sub>m</sub> = ${f1(km)} mmol/L. ${km<1?'Low K<sub>m</sub>: high affinity, like hexokinase (≈0.05 mmol/L), which works well even at low glucose.':km>6?'High K<sub>m</sub>: low affinity, like glucokinase (≈10 mmol/L), which works mainly when glucose is high after a meal.':'Move the slider: lower K<sub>m</sub> means the curve rises faster (higher affinity).'}`;
+  } else if(fMode==='temp'){
+    const fn=t=>Math.pow(2,t/10)/(1+Math.exp((t-48)/3));
+    let mx=0; for(let t=0;t<=80;t+=0.5) mx=Math.max(mx,fn(t));
+    s=axes('Temperature (°C) →','Velocity (v)',[[0,X0],[20,X0+125],[40,X0+250],[60,X0+375],[80,X1]]);
+    s+=`<path d="${path(t=>fn(t)/mx,0,80,1.1)}" fill="none" stroke="var(--c4)" stroke-width="2.8"/>`;
+    const x37=X0+(X1-X0)*37/80; s+=`<line x1="${x37}" y1="${Y1}" x2="${x37}" y2="${Y0}" stroke="var(--gold)" stroke-dasharray="4 4"/><text class="sl" x="${x37-6}" y="${Y1+12}" text-anchor="end" style="fill:var(--gold);font-weight:700">37 °C body</text>`;
+    s+=`<text class="sl sm" x="${X0+20}" y="${Y0-60}">Q₁₀ ≈ 2: rate doubles</text><text class="sl sm" x="${X0+20}" y="${Y0-45}">every 10 °C</text><text class="sl sm" x="${X0+345}" y="${Y0-120}">above ~50 °C:</text><text class="sl sm" x="${X0+345}" y="${Y0-105}">heat denaturation</text></g>`;
+    cap='<b>Temperature.</b> Bell-shaped curve. Rising temperature speeds collisions (Q₁₀ ≈ 2) until the protein starts to unfold above about 50 °C; most enzymes are dead above 70 °C. The exact optimum on this curve is illustrative.';
+  } else {
+    const g=(x,m)=>Math.exp(-Math.pow(x-m,2)/(2*1.1*1.1));
+    s=axes('pH →','Relative activity',[[0,X0],[2,X0+71],[4,X0+143],[6,X0+214],[8,X0+286],[10,X0+357],[12,X0+429],[14,X1]]);
+    [[1.5,'var(--c4)','Pepsin 1–2'],[6.8,'var(--c2)','Salivary amylase ~6.8'],[9.5,'var(--c1)','ALP 9–10']].forEach(([m,c,l])=>{
+      s+=`<path d="${path(x=>g(x,m),0,14,1.15)}" fill="none" stroke="${c}" stroke-width="2.6"/>`; const x=X0+(X1-X0)*m/14; s+=`<text class="sl" x="${x}" y="${Y1+4}" text-anchor="middle" style="fill:${c};font-weight:700">${l}</text>`;});
+    s+='</g>';
+    cap='<b>pH.</b> Each enzyme has its own bell-shaped curve around its optimum pH. Most enzymes: 6–8. Pepsin works in stomach acid (1–2); alkaline phosphatase at 9–10; acid phosphatase at 4–5. Curve widths are illustrative.';
+  }
+  fsvg.innerHTML=s; $('#fcap').innerHTML=cap;
+  if(!keep){ $('#fctl').innerHTML=ctl; const k=$('#kmS'); if(k) k.addEventListener('input',e=>{km=+e.target.value; drawF(true);}); }
+  else { const lb=$('#fctl label b'); if(lb) lb.textContent=f1(km)+' mmol/L'; }
+}
+$$('#fsw button').forEach(b=>b.onclick=()=>{fMode=b.dataset.f; $$('#fsw button').forEach(x=>x.classList.toggle('on',x===b)); drawF();}); drawF();
+
+/* LDH electrophoresis */
+const LP=[[30,35,20,10,5],[40,33,15,8,4],[18,25,17,12,28]];
+const LC=['<b>Normal.</b> LDH-2 is the tallest band and LDH-2 &gt; LDH-1 (Vasudevan: 35% vs 30%).',
+ '<b>Myocardial infarction.</b> Dead heart muscle releases H₄ (LDH-1). LDH-1 now exceeds LDH-2: the <b>flipped pattern</b>, seen 12–24 h after the attack and lasting days.',
+ '<b>Liver disease (e.g. hepatitis).</b> LDH-5 (and LDH-4) rise because liver cells are rich in M-type subunits. Skeletal muscle injury gives a similar LDH-5 rise.'];
+function drawL(p){ const v=LP[p]; let s='<g font-family="Archivo, sans-serif">';
+  s+='<rect x="60" y="10" width="500" height="30" rx="6" fill="var(--surface-2)" stroke="var(--rule-strong)"/>';
+  s+='<text class="sl b" x="44" y="30" text-anchor="middle">+</text><text class="sl b" x="576" y="30" text-anchor="middle">−</text>';
+  const xs=[110,210,310,410,510];
+  v.forEach((val,i)=>{ s+=`<rect x="${xs[i]-22}" y="13" width="44" height="24" rx="4" fill="var(--ind)" fill-opacity="${(0.12+val/42).toFixed(2)}"/>`;
+    const h=val*3.4; s+=`<rect x="${xs[i]-26}" y="${196-h}" width="52" height="${h}" rx="4" fill="${i===0?'var(--c4)':i===4?'var(--c3)':'var(--ind)'}"/>`;
+    s+=`<text class="sm-mono" x="${xs[i]}" y="${190-h}" text-anchor="middle">${val}%</text><text class="sl b" x="${xs[i]}" y="214" text-anchor="middle">LDH-${i+1}</text><text class="sl sm" x="${xs[i]}" y="229" text-anchor="middle">${['H₄','H₃M','H₂M₂','HM₃','M₄'][i]}</text>`;});
+  s+='<line x1="60" y1="196" x2="560" y2="196" stroke="var(--rule-strong)"/></g>'; $('#lsvg').innerHTML=s; $('#lcap').innerHTML=LC[p]; }
+$$('#lsw button').forEach(b=>b.onclick=()=>{$$('#lsw button').forEach(x=>x.classList.toggle('on',x===b)); drawL(+b.dataset.p);}); drawL(0);
+
+/* MI timeline: [name, onset, peak, normalBy, fadeTo] in days */
+const MI=[['Myoglobin',0.08,0.27,1,null],['CK-MB',0.2,1,3,null],['Troponin I/T',0.17,0.75,7,14],['AST',0.6,2,5,null],['LDH',1.5,3.5,14,null]];
+(function(){ const x0=120,x1=600,dx=(x1-x0)/15; let s='<g font-family="Archivo, sans-serif">';
+  for(let d=0;d<=15;d+=1){const x=x0+d*dx; if(d%3===0){s+=`<line x1="${x}" y1="20" x2="${x}" y2="250" stroke="var(--rule)"/><text class="sm-mono" x="${x}" y="268" text-anchor="middle">${d}</text>`;}}
+  s+=`<text class="sl sm" x="${(x0+x1)/2}" y="290" text-anchor="middle">Days after onset of chest pain</text>`;
+  MI.forEach((m,i)=>{const y=40+i*44; s+=`<text class="sl b" x="${x0-10}" y="${y+5}" text-anchor="end">${m[0]}</text>`;
+    s+=`<rect x="${x0+m[1]*dx}" y="${y-8}" width="${(m[3]-m[1])*dx}" height="16" rx="8" fill="var(--c5)"/>`;
+    if(m[4]) s+=`<rect x="${x0+m[3]*dx}" y="${y-8}" width="${(m[4]-m[3])*dx}" height="16" rx="8" fill="var(--c5)" fill-opacity=".3"/>`;
+    s+=`<circle cx="${x0+m[2]*dx}" cy="${y}" r="6" fill="var(--gold)" stroke="var(--surface)" stroke-width="2"/>`;});
+  s+='</g>'; $('#misvg').innerHTML=s; })();
+
+/* viva */
+const VIVA=[
+ ['Define an enzyme.','Enzymes are biocatalysts synthesised by living cells; protein in nature (except ribozymes), colloidal, thermolabile and specific in action (Sat p. 85).'],
+ ['What is a holoenzyme?','The complete active enzyme: apoenzyme (protein, heat-labile) + coenzyme or cofactor (non-protein, heat-stable).'],
+ ['Difference between coenzyme and prosthetic group?','A coenzyme is loosely bound and removable by dialysis; a prosthetic group is tightly (often covalently) bound and not removed by dialysis.'],
+ ['Why are coenzymes called co-substrates?','Their affinity for the enzyme is similar to the substrate\'s, and they are chemically changed in the reaction (NAD⁺ → NADH), then regenerated by another reaction.'],
+ ['Give two metalloenzymes containing zinc.','Carbonic anhydrase, carboxypeptidase, alcohol dehydrogenase, alkaline phosphatase.'],
+ ['When was the IUB Enzyme Commission set up, and what are the six classes?','1961 (system in force since 1964). Oxidoreductases, Transferases, Hydrolases, Lyases, Isomerases, Ligases: OTHLIL.'],
+ ['What do the four digits of an EC number mean?','Class, subclass, sub-subclass, and the serial number of the enzyme. E.g. LDH = EC 1.1.1.27.'],
+ ['Difference between synthetase and synthase?','Synthetases use ATP directly and are ligases (glutamine synthetase); synthases do not (glycogen synthase, a transferase).'],
+ ['Name the types of enzyme specificity.','Stereospecificity, reaction specificity, substrate specificity (absolute, relative – group/bond, broad).'],
+ ['Give an example of absolute specificity.','Urease acts only on urea.'],
+ ['Define Km. What does a low Km mean?','Substrate concentration at half-maximal velocity. Low Km = high affinity of enzyme for substrate.'],
+ ['What is Q10?','The factor by which velocity rises for a 10 °C rise in temperature; about 2 for most enzymes.'],
+ ['Optimum pH of pepsin and alkaline phosphatase?','Pepsin 1–2; ALP 9–10 (Satyanarayana: 10–11).'],
+ ['Define isoenzymes.','Multiple molecular forms of an enzyme that catalyse the same reaction but differ in physical, chemical and immunological properties.'],
+ ['What is the flipped LDH pattern?','Normally LDH-2 > LDH-1. In myocardial infarction LDH-1 exceeds LDH-2.'],
+ ['Which CK isoenzyme is raised in MI?','CK-MB (CK-2).'],
+ ['What is the Regan isoenzyme?','A heat-stable, placental-like ALP found in some cancers (lung, liver, gut).'],
+ ['What are allozymes (alloenzymes)?','Variant forms of an enzyme produced by different alleles at the same gene locus; one person has one form, the population has many. Example: >400 G6PD variants.'],
+ ['What is scoline apnoea?','Prolonged paralysis after succinylcholine in people with an inherited variant of pseudocholinesterase that cannot break the drug down quickly.'],
+ ['Why must samples for LDH or ACP be free of haemolysis?','RBCs contain far more LDH (80–100×) and ACP than serum, so haemolysis gives falsely high values.']
+];
+$('#viva').innerHTML=VIVA.map(q=>`<details><summary>${q[0]}</summary><div class="ans">${q[1]}</div></details>`).join('');
+
+/* match game */
+const PAIRS=[['Holoenzyme','Apoenzyme + cofactor'],['Urease','Absolute specificity'],['Trypsin','Cuts after Arg and Lys'],['Km','[S] at half Vmax'],['LDH-1 (H₄)','Rises above LDH-2 in MI'],['CK-MM','Muscular dystrophy'],['Regan isoenzyme','Heat-stable ALP in cancer'],['G6PD variants','Allozymes on the X chromosome']];
+let selL=null, selR=null, ok=0, miss=0;
+function shuffle(a){a=a.slice(); for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1)); [a[i],a[j]]=[a[j],a[i]];} return a;}
+function buildMatch(){ ok=0; miss=0; selL=selR=null; $('#mOk').textContent='0 matched'; $('#mNo').textContent='0 misses'; $('#mCap').hidden=true;
+  const L=$('#mL'), R=$('#mR'); L.querySelectorAll('.tok').forEach(e=>e.remove()); R.querySelectorAll('.tok').forEach(e=>e.remove());
+  shuffle(PAIRS.map((p,i)=>[p[0],i])).forEach(([t,i])=>{const b=document.createElement('button'); b.className='tok'; b.textContent=t; b.dataset.i=i; b.dataset.s='L'; L.appendChild(b);});
+  shuffle(PAIRS.map((p,i)=>[p[1],i])).forEach(([t,i])=>{const b=document.createElement('button'); b.className='tok'; b.textContent=t; b.dataset.i=i; b.dataset.s='R'; R.appendChild(b);});
+  $$('#mL .tok, #mR .tok').forEach(b=>b.onclick=()=>pick(b)); }
+function pick(b){ if(b.disabled) return;
+  if(b.dataset.s==='L'){ if(selL) selL.classList.remove('sel'); selL=b; } else { if(selR) selR.classList.remove('sel'); selR=b; }
+  b.classList.add('sel');
+  if(selL&&selR){ if(selL.dataset.i===selR.dataset.i){ [selL,selR].forEach(x=>{x.classList.remove('sel'); x.classList.add('matched'); x.disabled=true;}); ok++; }
+    else { miss++; [selL,selR].forEach(x=>{x.classList.add('shake'); setTimeout(()=>x.classList.remove('shake','sel'),320);}); }
+    selL=selR=null; $('#mOk').textContent=ok+' matched'; $('#mNo').textContent=miss+' misses';
+    if(ok===PAIRS.length){ const c=$('#mCap'); c.hidden=false; c.innerHTML= miss===0?'<b>All 8, no misses.</b> Excellent.':`<b>All 8 matched</b> with ${miss} miss${miss>1?'es':''}. Shuffle and try for zero.`; } } }
+$('#mReset').onclick=buildMatch; buildMatch();
+
+/* MCQs */
+const Q=[
+ ['Enzymes are best described as:',['Carbohydrate catalysts','Biocatalysts made by living cells, mostly protein','Hormones that speed reactions','Vitamins that act as catalysts'],1,'Enzymes are biocatalysts synthesised by living cells; protein in nature except ribozymes (Sat p. 85).'],
+ ['An enzyme speeds up a reaction by:',['Changing the equilibrium constant','Raising the energy of products','Lowering the activation energy','Supplying ATP'],2,'Enzymes lower activation energy; they do not change the equilibrium (Sat p. 98; Vas p. 44).'],
+ ['The protein part of a holoenzyme is called the:',['Coenzyme','Apoenzyme','Prosthetic group','Cofactor'],1,'Holoenzyme = apoenzyme (protein, heat-labile) + coenzyme (non-protein, heat-stable).'],
+ ['Which statement about coenzymes is FALSE?',['They are organic and heat-stable','Most are derived from B-complex vitamins','They decide the substrate specificity of the enzyme','They can be separated by dialysis'],2,'Specificity depends on the apoenzyme; NAD⁺ serves both LDH and ADH (Sat p. 98).'],
+ ['A prosthetic group differs from a coenzyme because it:',['Is a protein','Is tightly bound and not removed by dialysis','Is always a metal','Is heat-labile'],1,'Prosthetic group = non-protein part tightly (covalently) bound to the enzyme.'],
+ ['Pyridoxal phosphate is the coenzyme for:',['Transaminases','Carboxylases','Dehydrogenases','Transketolase'],0,'PLP (vitamin B6) carries amino groups for ALT and AST.'],
+ ['Which enzyme is a metalloenzyme containing zinc?',['Enolase','Carbonic anhydrase','Salivary amylase','Hexokinase'],1,'Carbonic anhydrase, carboxypeptidase, ADH and ALP contain zinc; enolase is Mg²⁺-activated.'],
+ ['The IUB Enzyme Commission was appointed in:',['1926','1961','1972','1985'],1,'Set up in 1961; its system has been in force since 1964 (Sat p. 86).'],
+ ['In the EC number, the first digit denotes the:',['Serial number','Sub-subclass','Class (type of reaction)','Coenzyme used'],2,'Class, subclass, sub-subclass, serial number (Vas p. 41).'],
+ ['Hexokinase belongs to class:',['1 Oxidoreductases','2 Transferases','4 Lyases','6 Ligases'],1,'It transfers phosphate from ATP to glucose: EC 2.7.1.1.'],
+ ['Lipase is an example of:',['Hydrolase','Lyase','Transferase','Isomerase'],0,'Triacylglycerol acylhydrolase, EC 3.1.1.3; all digestive enzymes are hydrolases.'],
+ ['Aldolase is classified as a:',['Hydrolase','Lyase','Ligase','Isomerase'],1,'It splits fructose-1,6-bisphosphate without using water: lyase (EC 4).'],
+ ['Which enzyme is a ligase?',['Glycogen synthase','Glutamine synthetase','ALA synthase','Aldolase'],1,'Synthetases use ATP directly and are ligases; synthases are not (Vas Box 5.2).'],
+ ['Urease acts only on urea. This is:',['Group specificity','Absolute specificity','Broad specificity','Stereospecificity'],1,'Urease does not act even on thiourea (Vas p. 57).'],
+ ['Trypsin cleaves peptide bonds on the carboxyl side of:',['Phenylalanine and tyrosine','Arginine and lysine','Glycine and alanine','Proline'],1,'Chymotrypsin cuts after aromatic amino acids; trypsin after Arg and Lys.'],
+ ['The class of enzymes that does NOT show stereospecificity is:',['Hydrolases','Isomerases','Oxidoreductases','Ligases'],1,'Isomerases exist to interconvert isomers (Sat p. 95).'],
+ ['Km is defined as the substrate concentration at which velocity is:',['Maximum','Zero','Half of Vmax','Twice Vmax'],2,'Km = [S] at ½Vmax; low Km means high affinity.'],
+ ['Glucokinase differs from hexokinase in having:',['Lower Km for glucose','Higher Km for glucose','No need for ATP','Presence in brain'],1,'Glucokinase Km ≈ 10 mmol/L; hexokinase ≈ 0.05 mmol/L (Vas p. 50).'],
+ ['Q10 for most enzymes between 0 and 40 °C is about:',['0.5','1','2','10'],2,'Rate roughly doubles for each 10 °C rise until denaturation sets in.'],
+ ['Optimum pH of pepsin is:',['1–2','4–5','7','9–10'],0,'Pepsin 1–2, acid phosphatase 4–5, alkaline phosphatase 9–10.'],
+ ['Isoenzymes of the same enzyme differ in all EXCEPT:',['Electrophoretic mobility','Km value','The reaction catalysed','Heat stability'],2,'They catalyse the same reaction but differ in physical, chemical and kinetic properties.'],
+ ['In myocardial infarction, the LDH pattern shows:',['LDH-5 > LDH-4','LDH-1 > LDH-2','LDH-3 highest','All bands equal'],1,'The "flipped pattern": normally LDH-2 > LDH-1.'],
+ ['LDH-5 is made of:',['H₄','H₂M₂','M₄','HM₃'],2,'LDH-5 = M₄, from skeletal muscle and liver; slowest on electrophoresis.'],
+ ['Heat-labile alkaline phosphatase rising with bone pain suggests:',['Obstructive jaundice','Paget\'s disease of bone','Pregnancy','Prostate cancer'],1,'Bone ALP is the most heat-labile isoenzyme; very high in Paget\'s disease and rickets.'],
+ ['More than 400 variants of G6PD coded by one X-chromosome locus are examples of:',['True isoenzymes','Allozymes (alloenzymes)','Isoforms from glycosylation','Zymogens'],1,'Different alleles at the same locus produce allozymes (Vas p. 59).']
+];
+const quiz=$('#quiz'); let answered=0, score=0; $('#qn').textContent=Q.length;
+function buildQuiz(){ answered=0; score=0; $('#qs').textContent=0; $('#qt').textContent=0;
+  quiz.innerHTML=Q.map((q,i)=>`<div class="qi" data-q="${i}"><div class="stem"><span class="n">${String(i+1).padStart(2,'0')}</span><span>${q[0]}</span></div><div class="opts">${q[1].map((o,j)=>`<button class="opt" data-j="${j}"><span class="k">${'ABCD'[j]}</span><span>${o}</span></button>`).join('')}</div><div class="why2" hidden></div></div>`).join('');
+  $$('#quiz .qi').forEach(card=>{ const q=Q[+card.dataset.q];
+    card.querySelectorAll('.opt').forEach(btn=>btn.onclick=()=>{ const j=+btn.dataset.j, right=j===q[2];
+      card.querySelectorAll('.opt').forEach(b=>{b.disabled=true; if(+b.dataset.j===q[2]) b.classList.add('right');}); if(!right) btn.classList.add('wrong');
+      const w=card.querySelector('.why2'); w.hidden=false; w.innerHTML=(right?'<b>Correct.</b> ':'<b>Answer: '+'ABCD'[q[2]]+'.</b> ')+q[3];
+      answered++; if(right) score++; $('#qs').textContent=score; $('#qt').textContent=answered; }); }); }
+$('#qReset').onclick=buildQuiz; buildQuiz();
+
+/* cases */
+const CASES=[
+ ['Chest pain','A 55-year-old man arrives 5 hours after crushing chest pain. Total CK is only slightly raised, but CK-MB is 12% of total CK. On day 3, an LDH electrophoresis is done.','Why measure CK-MB rather than total CK, and what LDH pattern do you expect on day 3?','CK-MB is the heart isoenzyme. It is normally a small fraction of total CK (under 2–5%), so even doubling of the heart fraction can hide inside a "normal" total CK; measuring the isoenzyme catches it early (3–6 h). By day 3, LDH-1 (H₄, released from heart) will exceed LDH-2: the flipped pattern. Today, troponin I or T would also be sent, as the preferred marker. (Vas p. 267–269; Sat p. 110–112.)'],
+ ['Dark urine after malaria treatment','A 20-year-old man from Odisha is given primaquine for vivax malaria. Three days later he is pale, jaundiced and passes cola-coloured urine. His mother says his uncle had the same problem after eating fava beans.','What enzyme is likely deficient, and why is it an example of an allozyme?','Glucose-6-phosphate dehydrogenase (G6PD). Without enough NADPH, RBCs cannot keep glutathione reduced, so peroxides from primaquine destroy them (drug-induced haemolysis; favism with fava beans). G6PD has more than 400 variants from one X-linked locus; low-activity variants are allozymes. Males are affected; heterozygous females are carriers. The trait is common in malaria regions because it protects against falciparum malaria. (Vas p. 59, 271–272.)'],
+ ['Patient will not wake up','A healthy 30-year-old woman has a short operation under general anaesthesia with succinylcholine. The paralysis normally wears off in minutes, but she needs ventilation for 3 hours.','Which enzyme variant explains this?','An inherited variant of pseudocholinesterase (type II, liver cholinesterase) that cannot hydrolyse succinylcholine quickly: "scoline apnoea". It is an allelic (allozyme) difference; family members should be tested before surgery. (Vas p. 271.)'],
+ ['Bone pain in an elderly woman','A 68-year-old woman has bone pain and a bowed shin. Serum ALP is 650 U/L (normal 40–125); GGT and bilirubin are normal. When the serum is heated at 56 °C for 10 minutes, most ALP activity disappears.','Which ALP isoenzyme is raised, and what is the likely diagnosis?','The bone (pre-β, heat-labile) isoenzyme. Normal GGT points away from the liver. Very high ALP from bone with this picture suggests Paget\'s disease of bone. Heat stability is a classic way to separate isoenzymes: bone burns, placenta persists. (Vas p. 270.)']
+];
+$('#cases').innerHTML=CASES.map((c,i)=>`<div class="case"><div class="ch">Case ${i+1} · ${c[0]}</div><p>${c[1]}</p><p><strong>${c[2]}</strong></p><details><summary>Show the explanation</summary><div class="ans">${c[3]}</div></details></div>`).join('');
+})();
+</script>
+
+</body>
+</html>
